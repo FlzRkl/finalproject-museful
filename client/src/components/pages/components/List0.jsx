@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom';
 import ListItem from './ListItem';
 
 export default function List0() {
-  const [list, setList] = useState(null);
+  const [lists, setLists] = useState([]);
+  const [list, setList] = useState('');
 
   const handleAdd = () => {
-    console.log(list);
+    setLists([
+      ...lists,
+      {
+        id: lists.length,
+        value: list,
+      },
+    ]);
   };
 
   const handleChange = (e) => {
@@ -44,9 +51,17 @@ export default function List0() {
       </form>
 
       <hr />
-      <ListItem />
+      {/* <ListItem props={lists} /> */}
       <div className='col-lg-8'>
         <ul class='list-group list-group-flush'>
+          {lists.map((item) => (
+            <li
+              class='list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-center'
+              key={item.id}
+            >
+              {item.value}{' '}
+            </li>
+          ))}
           <li class='list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-center'>
             Cras justo odio
             <span class='badge badge-primary badge-pill'>0</span>
