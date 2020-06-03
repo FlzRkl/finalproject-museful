@@ -3,6 +3,7 @@ import './App.scss';
 import Appbar from './components/layout/Appbar';
 import About from './components/pages/About';
 import Component from './components/pages/Component';
+import Features from './components/pages/Features';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import List0 from './components/pages/components/List0';
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route path='/component'>
               <Component />
+            </Route>
+            <Route path='/features'>
+              <Features />
             </Route>
             <Route path='/'>
               <Home />
