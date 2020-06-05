@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ListsContext } from './../../../App';
 
 export default function ListItem({ lists }) {
+  const subList = 0;
+  const listsContext = useContext(ListsContext);
+  console.log(listsContext.listState.subList);
   return (
     <>
       <ul className='list-group list-group-flush'>
@@ -10,7 +14,9 @@ export default function ListItem({ lists }) {
             key={item.id}
           >
             {item.value}{' '}
-            <span className='badge badge-primary badge-pill'>0</span>
+            {subList ? (
+              <span className='badge badge-primary badge-pill'>{subList}</span>
+            ) : null}
           </li>
         ))}{' '}
       </ul>{' '}

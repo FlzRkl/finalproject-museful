@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { WorkTrackerContext } from './../../../App';
 
 export default function ListComponent1({ lists }) {
+  const workTrackerContext = useContext(WorkTrackerContext);
+  console.log(workTrackerContext);
   return (
-    <>
+    <div>
       <ul className='list-group list-group-flush'>
         {lists.map((item) => (
           <Link
@@ -13,13 +16,13 @@ export default function ListComponent1({ lists }) {
           >
             <div className='d-flex w-70 justify-content-between'>
               <h6 className='mb-1 '>List group item heading</h6>
-              <small>3 days ago</small>
+              <small>{workTrackerContext.wTState.date}</small>
             </div>
             <p className='mb-1 h2'>{item.value} </p>
-            <small>Donec id elit non mi porta.</small>
+            <small>underline Footnote</small>
           </Link>
         ))}{' '}
       </ul>
-    </>
+    </div>
   );
 }

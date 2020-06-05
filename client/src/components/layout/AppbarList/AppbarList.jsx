@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const listObjekt = {
-  list0: { Component0: ['Component0', 'Component1', 'Component2'] },
+  list0: { Component0: ['ListComponent', 'Component1', 'Component2'] },
 };
 
 export default function AppbarList() {

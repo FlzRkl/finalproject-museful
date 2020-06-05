@@ -9,7 +9,7 @@ function Calendar() {
     { date: '2020-01-09', count: 2 },
     { date: '2020-01-11', count: 4 },
     { date: '2020-01-14', count: 5 },
-    { date: '2020-01-15' },
+    { date: '2020-06-03', count: 3 },
   ]);
 
   return (
@@ -17,15 +17,17 @@ function Calendar() {
       <CalendarHeatmap
         values={values}
         showWeekdayLabels={true}
-        onMouseOver={(event, value) => console.log(value)}
+        // onMouseOver={(event, value) => console.log(value)}
         titleForValue={(value) => {
           if (value) {
-            return `Date is ${value.date}, Count: ${value.count}`;
+            return `${value.count} Hours`;
+          } else if (!value) {
+            return `0 Hours`;
           }
         }}
-        tooltipDataAttrs={(value) => {
-          return { 'data-tooltip': 'Tooltip: ' + value };
-        }}
+        // tooltipDataAttrs={(value) => {
+        //   return { 'data-tooltip': 'Tooltip: ' + value };
+        // }}
         classForValue={(value) => {
           if (!value) {
             return 'color-empty';
