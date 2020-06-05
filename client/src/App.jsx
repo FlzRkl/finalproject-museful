@@ -36,12 +36,19 @@ const wTReducer = (state, action) => {
   }
 };
 
-const initialList = { list: 'test', subList: () => 3 + 3 };
+const initialList = [];
 
 const listReducer = (state, action) => {
   switch (action.type) {
-    case 'incrementI':
-      return state.input + 1;
+    case 'submit':
+      return [
+        {
+          id: state.length + 1,
+          value: action.value,
+          subList: state.length,
+        },
+        ...state,
+      ];
     case 'reset':
       return initialList;
     default:
