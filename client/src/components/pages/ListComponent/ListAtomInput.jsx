@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ListItem from './ListItem';
-import ListComponent1 from './ListComponent1';
+import ListItem1 from './ListItem1';
+import ListItem2 from './ListItem2';
 
-export default function List0() {
+function ListAtomInput() {
   const [lists, setLists] = useState([]);
   const [list, setList] = useState('');
 
@@ -53,9 +53,11 @@ export default function List0() {
 
       <hr />
       <div className='col-lg-8'>
-        <ListItem lists={lists} />
-        <ListComponent1 lists={lists} />
+        <ListItem1 lists={lists} />
+        {/* <ListItem2 lists={lists} /> */}
       </div>
     </>
   );
 }
+
+export default ListAtomInput;
