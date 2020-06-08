@@ -12,18 +12,25 @@ function ListAtomInput() {
     setList(e.target.value);
   };
 
+  const isValid = () => {
+    const regex = new RegExp('^\\S.*');
+    let check = regex.test(list);
+    if (check) {
+      listsContext.listDispatch({
+        type: 'submit',
+        value: list,
+      });
+      setList('');
+    }
+  };
   console.log('onchange');
   return (
     <>
-      <h1>List Null</h1>
+      <h1>{listsContext.listState.title}</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          listsContext.listDispatch({
-            type: 'submit',
-            value: list,
-          });
-          setList('');
+          isValid();
         }}
         className='form'
       >
@@ -43,11 +50,7 @@ function ListAtomInput() {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                listsContext.listDispatch({
-                  type: 'submit',
-                  value: list,
-                });
-                setList('');
+                isValid();
               }}
               className='input-group-text'
               id='basic-addon2'

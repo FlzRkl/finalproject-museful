@@ -7,6 +7,7 @@ import Features from './components/pages/Features';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ListAtomInput from './components/pages/ListComponent/ListAtomInput';
+import uuid from 'react-uuid';
 
 const currentDate = (date) => (date = new Date().toISOString());
 
@@ -36,24 +37,27 @@ const wTReducer = (state, action) => {
   }
 };
 
-const initialList = [];
+const initialList = { title: 'List No Null', content: [] };
 
 const listReducer = (state, action) => {
   switch (action.type) {
     case 'submit':
-      return [
-        {
-          id: state.length + 1,
-          value: action.value,
-          subList: null,
-        },
-        ...state,
-      ];
+      return {
+        title: state.title,
+        content: [
+          {
+            id: uuid(),
+            value: action.value,
+          },
+          ...state.content,
+        ],
+      };
+
     case 'subList':
       return {
         subList: [
           {
-            id: state.length + 1,
+            id: state.length,
             value: action.value,
             subList: null,
           },
