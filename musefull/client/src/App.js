@@ -1,38 +1,32 @@
-import React, {Component} from "react";
+import React, { Fragment } from "react";
 
 //ROUTER
-import {BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //COMPONENTS
-import Dashboard from './components/dashboard/Dashboard.js';
-import Highscores from './components/highscores/Highscores.js';
-import LandingPage from './components/landingPage/LandingPage.js';
-import Login from './components/login/Login.js';
-import Settings from './components/settings/Settings.js';
-
+import NavBar from "./components/constants/NavBar";
+import LandingPage from "./components/landingPage/LandingPage";
+import Routes from "./components/routing/Routes";
 
 //STYLING
-import "./_App.scss";
+import "./style/_App.scss";
 
 //REDUX
-import { Provider } from  'react-redux';
-import  store  from  './store';
-
-import moduleName from 'module'
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
     <Provider store={store}>
-    <BrowserRouter>
-    <div className='App'>
-     <h1> Musefull App </h1>
-    <Route component= {LandingPage} path="/" exact />
-     <Route component= {Login} path="/login" />
-     <Route component= {Dashboard} path="/dashboard" />
-     <Route component= {Highscores} path="/dashboard/highscores" />
-<Route component= {Settings} path="/dashboard/settings" />     
-    </div>
-    </BrowserRouter>
+      <Router>
+        <Fragment className='App'>
+          <NavBar />
+          <Switch>
+            <Route exact path='/' component={LandingPage} />
+            <Route component={Routes} />
+          </Switch>
+        </Fragment>
+      </Router>
     </Provider>
   );
 }

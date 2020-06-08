@@ -1,25 +1,21 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-export const LandingPage = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const LandingPage = () => {
+  return (
+    <div className='container'>
+      <h1> Welcome to the Musefull App </h1>
+    </div>
+  );
+};
 
 LandingPage.propTypes = {
-    prop: PropTypes
-}
+  prop: PropTypes,
+};
 
-const mapStateToProps = (state) => ({
-    
-})
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandingPage)
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
