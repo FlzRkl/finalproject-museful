@@ -45,10 +45,21 @@ const listReducer = (state, action) => {
         {
           id: state.length + 1,
           value: action.value,
-          subList: state.length,
+          subList: null,
         },
         ...state,
       ];
+    case 'subList':
+      return {
+        subList: [
+          {
+            id: state.length + 1,
+            value: action.value,
+            subList: null,
+          },
+          ...state,
+        ],
+      };
     case 'reset':
       return initialList;
     default:
@@ -60,6 +71,8 @@ export const WorkTrackerContext = React.createContext(initialWorkTracker);
 export const ListsContext = React.createContext(initialList);
 
 function App() {
+  console.log('onchange');
+
   const [workTracker, wTDispatch] = useReducer(wTReducer, initialWorkTracker);
   const [lists, listDispatch] = useReducer(listReducer, initialList);
 

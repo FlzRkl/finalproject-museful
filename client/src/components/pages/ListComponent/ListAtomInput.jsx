@@ -12,6 +12,7 @@ function ListAtomInput() {
     setList(e.target.value);
   };
 
+  console.log('onchange');
   return (
     <>
       <h1>List Null</h1>
