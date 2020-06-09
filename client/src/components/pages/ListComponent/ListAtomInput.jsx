@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import ListItem1 from './ListItem1';
 // import ListItem2 from './ListItem2';
 import { ListsContext } from './../../../App';
 
 function ListAtomInput() {
   const listsContext = useContext(ListsContext);
-
+  const inputEl = useRef(null);
   const [list, setList] = useState('');
 
   const handleChange = (e) => {
@@ -23,6 +23,10 @@ function ListAtomInput() {
       setList('');
     }
   };
+
+  useEffect(() => {
+    inputEl.current.focus();
+  }, []);
   console.log('onchange');
   return (
     <>
@@ -36,6 +40,7 @@ function ListAtomInput() {
       >
         <div className='input-group mb-3'>
           <input
+            ref={inputEl}
             type='text'
             className='form-control'
             placeholder='Enter an Idea !'
