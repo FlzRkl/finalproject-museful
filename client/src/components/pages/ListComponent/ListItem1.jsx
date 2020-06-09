@@ -2,14 +2,21 @@ import React, { useContext, useRef, useState, useEffect } from 'react';
 import { ListsContext } from './../../../App';
 
 export default function ListItem() {
+  console.log('onchange');
   const listsContext = useContext(ListsContext);
   const lists = listsContext.listState.content;
-  const [hoverRef, isHovered] = useHover();
-
-  console.log('onchange');
-
+  const [hover, setHover] = useState(false);
   const isElement = (e) => {
-    console.log(e.target);
+    console.log(e.target.id);
+    console.log(lists);
+    const listElEnter = lists.filter((item) => {
+      if (e.target.id == item.id) {
+        setHover(true);
+        return item;
+      }
+    });
+    console.log(listElEnter);
+    return listElEnter;
   };
 
   const rabbitHole = () => {};
@@ -21,16 +28,16 @@ export default function ListItem() {
           ? lists.map((item) => (
               <li
                 // contentEditable={true}
-                ref={hoverRef}
-                // onMouseEnter={isElement}
+                onMouseEnter={isElement}
                 className='list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-center'
                 key={item.id}
+                id={item.id}
               >
                 {item.value}
-                {isHovered ? (
+                {false ? (
                   <span className='badge'>
                     <svg
-                      class='bi bi-box-arrow-in-down-right'
+                      className='bi bi-box-arrow-in-down-right'
                       width='1em'
                       height='1em'
                       viewBox='0 0 16 16'
@@ -38,15 +45,15 @@ export default function ListItem() {
                       xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        fill-rule='evenodd'
+                        fillRule='evenodd'
                         d='M14.5 13a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 13V8a.5.5 0 0 1 1 0v5a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H9a.5.5 0 0 1 0-1h4A1.5 1.5 0 0 1 14.5 3v10z'
                       />
                       <path
-                        fill-rule='evenodd'
+                        fillRule='evenodd'
                         d='M4.5 10a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V5a.5.5 0 0 0-1 0v4.5H5a.5.5 0 0 0-.5.5z'
                       />
                       <path
-                        fill-rule='evenodd'
+                        fillRule='evenodd'
                         d='M10.354 10.354a.5.5 0 0 0 0-.708l-8-8a.5.5 0 1 0-.708.708l8 8a.5.5 0 0 0 .708 0z'
                       />
                     </svg>
@@ -62,30 +69,30 @@ export default function ListItem() {
   );
 }
 
-// MO-Hook
-function useHover(e) {
-  const [value, setValue] = useState(false);
+// // MO-Hook
+// function useHover(e) {
+//   const [value, setValue] = useState(false);
 
-  const ref = useRef(null);
+//   const ref = useRef(null);
 
-  const handleMouseOver = () => setValue(true);
-  const handleMouseOut = () => setValue(false);
+//   const handleMouseOver = () => setValue(true);
+//   const handleMouseOut = () => setValue(false);
 
-  useEffect(
-    () => {
-      const node = ref.current;
-      if (node) {
-        node.addEventListener('mouseover', handleMouseOver);
-        node.addEventListener('mouseout', handleMouseOut);
+//   useEffect(
+//     () => {
+//       const node = ref.current;
+//       if (node) {
+//         node.addEventListener('mouseover', handleMouseOver);
+//         node.addEventListener('mouseout', handleMouseOut);
 
-        return () => {
-          node.removeEventListener('mouseover', handleMouseOver);
-          node.removeEventListener('mouseout', handleMouseOut);
-        };
-      }
-    },
-    [ref.current] // Recall only if ref changes
-  );
+//         return () => {
+//           node.removeEventListener('mouseover', handleMouseOver);
+//           node.removeEventListener('mouseout', handleMouseOut);
+//         };
+//       }
+//     },
+//     [ref.current] // Recall only if ref changes
+//   );
 
-  return [ref, value];
-}
+//   return [ref, value];
+// }
