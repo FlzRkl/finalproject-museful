@@ -9,6 +9,7 @@ import LandingPage from "./components/landingPage/LandingPage";
 import Routes from "./components/routing/Routes";
 
 //STYLING
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/_App.scss";
 
 //REDUX
@@ -19,7 +20,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Fragment className='App'>
+        <Fragment className='bodyS'>
           <NavBar />
           <Switch>
             <Route exact path='/' component={LandingPage} />
