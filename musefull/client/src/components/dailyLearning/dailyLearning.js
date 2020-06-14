@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,24 +7,20 @@ import { Link } from "react-router-dom";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const LandingPage = () => {
+export const dailyLearning = () => {
   return (
     <div className='bodyS'>
-      <h1> Welcome to the Musefull App </h1>
+      <h1>Daily Learning</h1>
       <Link className='' to='/dashboard'>
         <p className='btnBack'>
-          <FontAwesomeIcon
-            icon={faAngleLeft}
-            transform={{ rotate: 270 }}
-            size='3x'
-          />
+          <FontAwesomeIcon icon={faAngleLeft} size='3x' />
         </p>
       </Link>
     </div>
   );
 };
 
-LandingPage.propTypes = {
+dailyLearning.propTypes = {
   prop: PropTypes,
 };
 
@@ -32,4 +28,4 @@ const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
+export default connect(mapStateToProps, mapDispatchToProps)(dailyLearning);

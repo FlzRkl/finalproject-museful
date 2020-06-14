@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://admin:fuL-mu$E2020?!@museful-app-cluster-6fdek.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret": "sl_myJwtSecret"
+}
