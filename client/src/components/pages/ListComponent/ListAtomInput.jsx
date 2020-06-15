@@ -27,10 +27,11 @@ function ListAtomInput() {
   useEffect(() => {
     inputEl.current.focus();
   }, []);
+
   console.log('onchange');
   return (
     <>
-      <h1>{listsContext.listState.title}</h1>
+      <h1>{listsContext.listState[0].title}</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();

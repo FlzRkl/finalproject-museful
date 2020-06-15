@@ -37,33 +37,46 @@ const wTReducer = (state, action) => {
   }
 };
 
-const initialList = { title: 'List No Null', content: [] };
+const initialList = [{ id: uuid(), title: 'List No Null', subList: [] }];
 
 const listReducer = (state, action) => {
   switch (action.type) {
     case 'submit':
-      return {
-        title: state.title,
-        content: [
-          {
-            id: uuid(),
-            value: action.value,
-          },
-          ...state.content,
-        ],
-      };
+      return [
+        {
+          ...state[0],
+          subList: [
+            {
+              id: uuid(),
+              value: action.value,
+              subList: [],
+            },
+            ...state[0].subList,
+          ],
+        },
+      ];
 
     case 'subList':
-      return {
-        subList: [
-          {
-            id: state.length,
-            value: action.value,
-            subList: null,
-          },
-          ...state,
-        ],
-      };
+      const i = findItemNested(state, action.id, 'subList');
+      console.log(i);
+      return [
+        {
+          ...state[0],
+          subList: [
+            {
+              ...state[0].subList[i],
+              subList: [
+                {
+                  id: uuid(),
+                  value: action.value,
+                },
+                ...state[0].subList[i].subList,
+              ],
+            },
+          ],
+        },
+      ];
+
     case 'reset':
       return initialList;
     default:
@@ -80,6 +93,7 @@ function App() {
   const [workTracker, wTDispatch] = useReducer(wTReducer, initialWorkTracker);
   const [lists, listDispatch] = useReducer(listReducer, initialList);
 
+  console.log(lists);
   return (
     <>
       <WorkTrackerContext.Provider
@@ -119,3 +133,13 @@ function App() {
 }
 
 export default App;
+
+const findItemNested = (arr, itemId, nestingKey) =>
+  arr.reduce((a, item, currentIndex = 0) => {
+    if (a) return a;
+    if (item.id === itemId) return currentIndex;
+    if (item[nestingKey])
+      return findItemNested(item[nestingKey], itemId, nestingKey);
+  }, null);
+//const res = findItemNested(array, 959, 'subList');
+//console.log(res);

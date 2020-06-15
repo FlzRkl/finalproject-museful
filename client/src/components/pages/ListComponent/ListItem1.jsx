@@ -4,22 +4,23 @@ import { ListsContext } from './../../../App';
 export default function ListItem() {
   console.log('onchange');
   const listsContext = useContext(ListsContext);
-  const lists = listsContext.listState.content;
-  const [hover, setHover] = useState(false);
-  const isElement = (e) => {
-    console.log(e.target.id);
-    console.log(lists);
+  const lists = listsContext.listState[0].subList;
+  //const [hover, setHover] = useState(false);
+
+  const rabbitHole = (e) => {
     const listElEnter = lists.filter((item) => {
-      if (e.target.id == item.id) {
-        setHover(true);
+      if (e.target.id === item.id) {
+        //setHover(true);
+        listsContext.listDispatch({
+          type: 'subList',
+          id: item.id,
+        });
+        console.log(lists);
         return item;
       }
     });
-    console.log(listElEnter);
     return listElEnter;
   };
-
-  const rabbitHole = () => {};
 
   return (
     <>
@@ -28,7 +29,7 @@ export default function ListItem() {
           ? lists.map((item) => (
               <li
                 // contentEditable={true}
-                onMouseEnter={isElement}
+                onClick={rabbitHole}
                 className='list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-center'
                 key={item.id}
                 id={item.id}
