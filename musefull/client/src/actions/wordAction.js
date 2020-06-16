@@ -1,11 +1,22 @@
-import { FETCH_POSTS, NEW_POST } from  './types'
+import { FETCH_MEANING_SIMILAR, NEW_POST } from "./actionTypes";
 
-export const fetchPosts = () => (dispatch) => {
-  fetch("https://jsonplaceholder.typicode.com/posts")
+export const fetchML = () => (dispatch) => {
+  fetch("https://api.datamuse.com/words?ml=house") //Replace "house" with input value
     .then((res) => res.json())
     .then((posts) =>
       dispatch({
-        type: FETCH_POSTS,
+        type: FETCH_MEANING_SIMILAR,
+        payload: posts,
+      })
+    );
+};
+
+export const fetchSP = () => (dispatch) => {
+  fetch("https://api.datamuse.com/words?sp=a*") //Replace "a*" with random Letter
+    .then((res) => res.json())
+    .then((posts) =>
+      dispatch({
+        type: FETCH_WORDS,
         payload: posts,
       })
     );
@@ -27,8 +38,6 @@ export const createPost = (postData) => (dispatch) => {
       })
     );
 };
-
-
 
 /////////////////////////
 /*

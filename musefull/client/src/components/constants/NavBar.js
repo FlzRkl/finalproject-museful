@@ -9,36 +9,40 @@ import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, NavItem, NavbarBrand } from "react-bootstrap";
 
+let iconSize = "3x";
+
 const NavBar = () => {
   return (
-    <Nav justify className='nav align-items-center fluid navS'>
-      {/* <NavItem className='nav-item'>
-        <Link className='links  nav-link' to='/'>
-          Home
-        </Link>
-      </NavItem> */}
-      <NavItem className='nav-item'>
-        <Link className='links nav-link' to='/login'>
+    <Nav justify className='navS'>
+      <NavItem className=''>
+        <Link className='links ' to='/login'>
           Login
         </Link>
       </NavItem>
-      <FontAwesomeIcon icon={faCog} pulse color='white' size='3x' />
-      <NavbarBrand className='nav-item'>
-        <Link className='logo nav-link' to='/'>
+      <FontAwesomeIcon
+        icon={faCog}
+        pulse
+        color='white'
+        size={iconSize}
+        className='iconNav'
+      />
+      <NavbarBrand className=''>
+        <Link className='logo ' to='/'>
           TMA:The Museful App
         </Link>
       </NavbarBrand>
-      <FontAwesomeIcon icon={faGraduationCap} spin color='white' size='3x' />
-      <NavItem className='nav-item'>
-        <Link className='links nav-link' to='/dashboard'>
+      <FontAwesomeIcon
+        icon={faGraduationCap}
+        spin
+        color='white'
+        size={iconSize}
+        className='iconNav'
+      />
+      <NavItem className=''>
+        <Link className='links ' to='/dashboard'>
           Dashboard
         </Link>
       </NavItem>
-      {/* <NavItem className='nav-item'>
-        <Link className='links nav-link' to='/dashboard/highscores'>
-          Highscores
-        </Link>
-      </NavItem> */}
     </Nav>
   );
 };
