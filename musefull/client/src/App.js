@@ -9,7 +9,7 @@ import LandingPage from "./components/landingPage/LandingPage";
 import Routes from "./components/routing/Routes";
 
 //STYLING
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/_App.scss";
 
 //REDUX

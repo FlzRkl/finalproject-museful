@@ -16,7 +16,7 @@ const LandingPage = () => {
           <FontAwesomeIcon
             icon={faAngleLeft}
             transform={{ rotate: 270 }}
-            size='3x'
+            size='1x'
           />
         </p>
       </Link>

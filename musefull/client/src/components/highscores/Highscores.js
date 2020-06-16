@@ -13,7 +13,7 @@ export const Highscores = () => {
       <h1>Highscores</h1>
       <Link className='' to='/dashboard'>
         <p className='btnBack'>
-          <FontAwesomeIcon icon={faAngleLeft} size='3x' />
+          <FontAwesomeIcon icon={faAngleLeft} size='1x' />
         </p>
       </Link>
     </div>

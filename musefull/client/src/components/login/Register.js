@@ -7,16 +7,20 @@ export const Register = () => {
     <Fragment>
       <form className='bodyS'>
         <h1>Hi! Would you like to join us? Then please sign up.</h1>
-        <div className='mt-4'>
-          <label className='d-block '>Username</label>
+        <div className=''>
+          <label for='username' className='d-block '>
+            Username
+          </label>
           <input type='text' name='username' className='' />
         </div>
-        <div className='mt-4'>
-          <label className='d-block '>Password</label>
-          <input type='text' name='username' className='' />
+        <div className=''>
+          <label for='password' className='d-block'>
+            Password
+          </label>
+          <input type='text' name='password' className='' />
         </div>
-        <div className='mt-4'>
-          <input type='submit' className='btnS m-auto ' value='Sign Up' />
+        <div className=''>
+          <input type='submit' className='btnForm' value='Sign Up' />
         </div>
       </form>
     </Fragment>
