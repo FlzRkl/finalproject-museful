@@ -30,3 +30,8 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
+
+//LIST
+export const SUBMIT_ITEM = 'SUBMIT_ITEM';
+export const OPEN_ITEM = 'OPEN_ITEM';
+export const SORT_ITEMS = 'SORT_ITEMS';
