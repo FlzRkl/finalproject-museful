@@ -1,11 +1,12 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
-import { ListsContext } from './../../../App';
+import { ListsContext } from './store';
 
 export default function ListItems() {
   console.log('onchange');
   const listsContext = useContext(ListsContext);
-  const lists = listsContext.listState[0].subList;
+  const lists = listsContext[0].subList;
   //const [hover, setHover] = useState(false);
+  console.log(listsContext[0]);
 
   const rabbitHole = (e) => {
     const listElEnter = lists.filter((item) => {

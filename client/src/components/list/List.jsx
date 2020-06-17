@@ -6,6 +6,7 @@ function List() {
   const listsContext = useContext(ListsContext);
   const inputEl = useRef(null);
   const [list, setList] = useState('');
+  console.log(listsContext[0]);
 
   const handleChange = (e) => {
     setList(e.target.value);
@@ -30,7 +31,7 @@ function List() {
   console.log('onchange');
   return (
     <>
-      <h1>{listsContext.listState[0].title}</h1>
+      <h1>{listsContext[0].title}</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();

@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // STYLE
-import { faCog } from "@fortawesome/free-solid-svg-icons";
-import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, NavItem, NavbarBrand } from "react-bootstrap";
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Nav, NavItem, NavbarBrand } from 'react-bootstrap';
 
-let iconSize = "3x";
+let iconSize = '3x';
 
 const NavBar = () => {
   return (
     <Nav justify className='navS'>
       <NavItem className=''>
-        <Link className='links ' to='/login'>
+        <Link className='links ' to='/signin'>
           Login
         </Link>
       </NavItem>
