@@ -1,39 +1,97 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const gravatar = require('gravatar');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+const { check, validationResult } = require('express-validator');
 
-//User Model
-const User = require("../../models/User");
+const User = require('../../models/User');
 
-// @route GET api/users
-// @description get all Users
-// @access Public
-router.get("/", (req, res) => {
-  User.find()
-    .sort({ date: -1 })
-    .then((users) => res.json(users));
-});
+//@route  Post api/users
+// @desc  Register user route
+//@access Public
+router.post(
+  '/',
+  [
+    check('name', 'Name is required').not().isEmpty(),
+    check('email', 'Please include a valid email').isEmail(),
+    check(
+      'password',
+      'Please enter a password with 6 or more characters'
+    ).isLength({
+      min: 6,
+    }),
+  ],
+  async (req, res) => {
+    // console.log(req.body)
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      });
+    }
+    const { name, email, password } = req.body;
 
-// @route POST api/users
-// @description create a User
-// @access Public
-router.post("/", (req, res) => {
-  const newUser = new User({
-    name: req.body.name,
-  });
-  newUser.save().then((user) => res.json(user));
-});
+    try {
+      let user = await User.findOne({
+        email,
+      });
+      //See if the user exist
+      if (user) {
+        return res.status(400).json({
+          errors: [
+            {
+              msg: 'User already exists',
+            },
+          ],
+        });
+      }
+      //Get users gravatar
+      const avatar = gravatar.url(email, {
+        s: '200', //decides default size
+        r: 'pg', //basically we can't have any naked people or anything
+        d: 'mm', //  it gives you a default image which is like a user icon
+      });
 
-// @route DELETE api/users
-// @description delete a User
-// @access Public
-router.delete("/:id", (req, res) => {
-  User.findById(req.params.id)
-    .then((item) =>
-      item.remove().then(() => {
-        res.json({ success: true });
-      })
-    )
-    .catch((err) => res.status(404).json({ success: false }));
-});
+      user = new User({
+        name,
+        email,
+        avatar,
+        password,
+      });
+
+      //Encrypt the password
+      const salt = await bcrypt.genSalt(10); //to do the hashing with
+
+      user.password = await bcrypt.hash(password, salt);
+
+      await user.save();
+
+      //Return the jsonwebtoken
+      const payload = {
+        user: {
+          id: user.id, //mongoose they use an abstarction -- no need for the under score --
+        },
+      };
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        {
+          expiresIn: 360000,
+        },
+        (err, token) => {
+          if (err) throw err;
+          res.json({
+            token,
+          });
+        }
+      );
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
 
 module.exports = router;
