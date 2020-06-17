@@ -1,7 +1,7 @@
 /* We need the action types to chose for every action
 which part of our state should be changed */
 
-import { FETCH_MEANING_SIMILAR } from "../actions/actionTypes";
+import { FETCH_MEANING_SIMILAR } from '../actions/actionTypes';
 
 /* this initialState below will represent the state saved in the store and any change to it here will change also the state in the store  */
 /* How is that :
