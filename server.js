@@ -1,26 +1,29 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-
-const users = require("./routes/api/users");
-
+const express = require('express');
+const connectDB = require('./config/db');
 const app = express();
 
-// Bodyparser Middleware
-app.use(bodyParser.json());
+// Connect Database
+connectDB();
 
-//DB Config
-const db = require("./config/keys").mongoURI;
+//Init Middleware
+// app.use(bodyParser.json())
+app.use(
+  express.json({
+    extended: false,
+  })
+);
 
-//Connect to Mongo
-mongoose
-  .connect(db)
-  .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log(err.message));
+app.get('/', (req, res) => res.send('API Running ...'));
 
-//Defining the route
-app.use("/api/users", users);
+//Define Routes
+// app.use('/api/users', require('./routes/api/users'));
+// app.use('/api/auth', require('./routes/api/auth'));
+// app.use('/api/profile', require('./routes/api/profile'));
+// app.use('/api/posts', require('./routes/api/posts'));
+app.use('/api/listItem', require('./routes/api/listItem'));
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5555;
 
-app.listen(port, () => console.log(`Server started on PORT ${port}`));
+app.listen(PORT, () => {
+  console.log(`Server is listening to port: ${PORT}`);
+});
