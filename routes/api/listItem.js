@@ -4,9 +4,14 @@ const { check, validationResult } = require('express-validator');
 
 const Item = require('../../models/Item');
 
-//@route  GET api/posts
+//@route  GET api/listItem
 // @desc  Test route
 //@access Public
+
+router.get('/', async (req, res) => {
+  //Get User and ListObjects
+});
+
 router.get('/:id', async (req, res) => {
   let id = req.params.id;
   if (id) {
@@ -45,9 +50,20 @@ router.post(
         errors: errors.array(),
       });
     }
-    const { aboveItemId, title, desc, text, pic, video, list, link } = req.body;
+    const {
+      aboveItemId,
+      user,
+      title,
+      desc,
+      text,
+      pic,
+      video,
+      list,
+      link,
+    } = req.body;
 
     let item = new Item({
+      user,
       title,
       desc,
       text,

@@ -1,44 +1,35 @@
-import React, { useState, useContext, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ListItems from './ListItems';
-import { ListsContext } from './store';
+import './list.scss';
+import { ItemFilter } from './ItemFilter';
 
-function List() {
-  const listsContext = useContext(ListsContext);
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { submitItem } from '../../actions/listAction';
+
+const List = ({ submitItem }) => {
   const inputEl = useRef(null);
   const [list, setList] = useState('');
-  console.log(listsContext[0]);
+  console.log(list);
 
   const handleChange = (e) => {
     setList(e.target.value);
   };
 
-  const isValid = () => {
-    const regex = new RegExp('^\\S.*');
-    let check = regex.test(list);
-    if (check) {
-      listsContext.listDispatch({
-        type: 'submit',
-        value: list,
-      });
-      setList('');
-    }
+  const submit = (e) => {
+    e.preventDefault();
+    submitItem(list);
+    setList('');
   };
 
   useEffect(() => {
     inputEl.current.focus();
   }, []);
 
-  console.log('onchange');
   return (
     <>
-      <h1>{listsContext[0].title}</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          isValid();
-        }}
-        className='form'
-      >
+      <h1>lvl1 List </h1>
+      <form onSubmit={submit} className='form'>
         <div className='input-group mb-3'>
           <input
             ref={inputEl}
@@ -54,10 +45,7 @@ function List() {
           />
           <div className='input-group-append'>
             <button
-              onClick={(e) => {
-                e.preventDefault();
-                isValid();
-              }}
+              onClick={submit}
               className='input-group-text'
               id='basic-addon2'
             >
@@ -65,6 +53,7 @@ function List() {
             </button>
           </div>
         </div>
+        <ItemFilter />
       </form>
 
       <hr />
@@ -73,6 +62,12 @@ function List() {
       </div>
     </>
   );
-}
+};
 
-export default List;
+List.propTypes = {
+  submitItem: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({});
+
+export default connect(mapStateToProps, { submitItem })(List);
