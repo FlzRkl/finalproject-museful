@@ -7,17 +7,11 @@ export default function (state = initialState, action) {
     case SUBMIT_ITEM:
       return {
         ...state,
-        subList: [
-          {
-            id: state.length,
-            value: action.value,
-            subList: [],
-          },
-          ...state[0].subList,
-        ],
       };
-    case 'reset':
-      return initialState;
+    case OPEN_ITEM:
+      return {
+        ...state,
+      };
     default:
       return state;
   }
