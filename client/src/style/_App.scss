@@ -1,12 +1,12 @@
-// BOOTSTRAP IMPORT
-// @import "~bootstrap/scss/bootstrap";
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
 
 // VARIABLES
 $lGradLight: linear-gradient(#c0c0c0, #5a5a5a, #242424);
 $lGradDark: linear-gradient(#0f2027, #203a43, #2c5364);
 $ColorDark: rgb(59, 59, 59);
 $font: monospace; /*"Comic Sans MS", cursive, sans-serif;*/
-$fontLogo: "monospace";
+$fontLogo: 'monospace';
 $fontColor: #fff;
 $fontAlert: rgb(223, 90, 90);
 $fontSize1: 2rem;
