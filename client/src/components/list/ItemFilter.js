@@ -2,30 +2,48 @@ import React from 'react';
 import cx from 'classnames';
 
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { SET_ITEM_FILTER } from '../../actions/actionTypes';
 
-import { setFilter } from '../../actions/listAction';
 import { ITEM_FILTERS } from './Item_Filters';
 
-export const ItemFilter = ({ activeFilter, setFilter }) => {
+export const ItemFilter = () => {
+  const activeFilter = useSelector((state) => state.list.filter);
+  const dispatch = useDispatch();
   return (
     <div>
-      <div className='item-filters'>
+      <div className='item-filters form-check form-check-inline'>
         {Object.keys(ITEM_FILTERS).map((filterKey) => {
           const currentFilter = ITEM_FILTERS[filterKey];
           return (
-            <span
+            <div
               key={`item-filter-${currentFilter}`}
               className={cx(
-                'filter',
-                currentFilter === activeFilter && 'filter--active'
+                `item-filter-${currentFilter} form-check form-check-inline`,
+                currentFilter === activeFilter && `active`
               )}
-              onClick={() => {
-                setFilter(currentFilter);
-              }}
+              onClick={() =>
+                dispatch({
+                  type: SET_ITEM_FILTER,
+                  payload: currentFilter,
+                })
+              }
             >
-              {currentFilter}
-            </span>
+              <input
+                className='form-check-input'
+                type='radio'
+                id={`filter-${currentFilter}`}
+                name={`item-filter-radio`}
+                value={`option-${currentFilter}`}
+              />
+              <label
+                className='form-check-label'
+                for={`filter-${currentFilter}`}
+              >
+                {' '}
+                {currentFilter}
+              </label>
+            </div>
           );
         })}
       </div>
@@ -34,17 +52,8 @@ export const ItemFilter = ({ activeFilter, setFilter }) => {
 };
 
 ItemFilter.propTypes = {
-  prop: PropTypes,
+  setFilter: PropTypes.func,
+  activeFilter: PropTypes.string,
 };
 
-const mapStateToProps = (state) => {
-  return { activeFilter: state.list.filter };
-};
-
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  { setFilter },
-  mapDispatchToProps
-)(ItemFilter);
+export default ItemFilter;

@@ -3,14 +3,13 @@ import ListItems from './ListItems';
 import './list.scss';
 import { ItemFilter } from './ItemFilter';
 
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { submitItem } from '../../actions/listAction';
-
-const List = ({ submitItem }) => {
+const List = () => {
   const inputEl = useRef(null);
   const [list, setList] = useState('');
-  console.log(list);
+  const lists = useSelector((state) => state.list.item);
 
   const handleChange = (e) => {
     setList(e.target.value);
@@ -58,7 +57,9 @@ const List = ({ submitItem }) => {
 
       <hr />
       <div className='col-lg-8'>
-        <ListItems />
+        <ul className='list-group list-group-flush'>
+          <ListItems />
+        </ul>
       </div>
     </>
   );
@@ -68,6 +69,4 @@ List.propTypes = {
   submitItem: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({});
-
-export default connect(mapStateToProps, { submitItem })(List);
+export default List;

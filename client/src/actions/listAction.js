@@ -63,7 +63,8 @@ export const loadItem = (id) => async (dispatch) => {
 };
 
 export const setFilter = (filter) => (dispatch) => {
-  dispatch({ type: SET_ITEM_FILTER, payload: { filter } });
+  console.log(filter);
+  dispatch({ type: SET_ITEM_FILTER, payload: filter });
 };
 
 // export const sortItem = (itemId) => (dispatch) => {
