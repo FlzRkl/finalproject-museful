@@ -15,8 +15,10 @@ const initialState = {
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
+  console.log(`type: ${type}, payload: ${payload}`);
   switch (type) {
     case SUBMIT_ITEM:
+      console.log('stischpatcj');
       return {
         ...state,
         mainList: {
