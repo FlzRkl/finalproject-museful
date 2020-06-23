@@ -1,7 +1,8 @@
 export const ITEM_FILTERS = {
-  PIC: 'Picture',
+  LIST: 'List',
   TEXT: 'Text',
   VIDEO: 'Video',
-  LIST: 'List',
+  BOOK: 'Book',
+  PIC: 'Picture',
   LINK: 'Link',
 };

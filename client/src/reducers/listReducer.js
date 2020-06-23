@@ -8,7 +8,6 @@ import { ITEM_FILTERS } from '../components/list/Item_Filters';
 
 const initialState = {
   mainList: {},
-  itemList: [],
   loading: true,
   filter: ITEM_FILTERS.LIST,
 };
@@ -30,12 +29,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         mainList: payload.item,
-        itemList: payload.itemList,
         loading: false,
       };
     case OPEN_ITEM:
       return {
         ...state,
+        mainList: payload.item,
+        loading: false,
       };
     case SET_ITEM_FILTER:
       return {

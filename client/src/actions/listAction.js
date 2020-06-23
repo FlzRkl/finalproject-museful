@@ -9,8 +9,6 @@ import {
 } from './actionTypes';
 
 export const submitItem = (inputItem) => (dispatch) => {
-  // const regex = new RegExp('^\\S.*');
-  // let check = regex.test(inputItem);
   if (inputItem) {
     dispatch({
       type: SUBMIT_ITEM,
@@ -45,8 +43,9 @@ export const openItem = (itemId) => (dispatch) => {
 };
 
 export const loadItem = (id) => async (dispatch) => {
+  // if(id)
   try {
-    const res = await axios.get('/api/listItem/5eea8fb9d01e89e9e5c90130');
+    const res = await axios.get('/api/listItem/5ef0a66ac20dd6271a518d8f');
     dispatch({
       type: LOAD_ITEM,
       payload: res.data,
