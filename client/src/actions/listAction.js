@@ -43,26 +43,28 @@ export const openItem = (itemId) => (dispatch) => {
 };
 
 export const loadItem = (id) => async (dispatch) => {
-  // if(id)
-  try {
-    const res = await axios.get('/api/listItem/5ef0a66ac20dd6271a518d8f');
-    dispatch({
-      type: LOAD_ITEM,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: SET_ALERT,
-      payload: {
-        msg: 'No Lists Found',
-        type: 'warning',
-      },
-    });
+  if (id) {
+    console.log(id);
+    try {
+      const res = await axios.get(`/api/listItem/${id}`);
+      dispatch({
+        type: LOAD_ITEM,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: SET_ALERT,
+        payload: {
+          msg: 'No Lists Found',
+          type: 'warning',
+        },
+      });
+    }
   }
 };
 
 export const setFilter = (filter) => (dispatch) => {
-  console.log(filter);
+  // console.log(filter);
   dispatch({ type: SET_ITEM_FILTER, payload: filter });
 };
 

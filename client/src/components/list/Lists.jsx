@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Cards from './Cards';
+import { loadItem } from '../../actions/listAction';
 
-const Lists = () => {
+const Lists = ({ loadItem }) => {
   const userLists = useSelector((state) => state.auth.user.list);
 
   const handleClick = (e) => {
     const id = e.target.closest('li').id;
     console.log(id);
+    loadItem(id);
   };
   return (
     <>
@@ -20,20 +24,11 @@ const Lists = () => {
             onClick={handleClick}
             className='col-xs-12 col-sm-6 col-md-6 col-lg-4'
           >
-            <div className='card border-dark mb-3'>
-              <div className='card-body text-dark'>
-                <h5 className='card-title'>{item.title}</h5>
-                <p className='card-text'>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-              <div class='card-footer bg-transparent border-warning'>
-                Footer
-              </div>
-            </div>
+            <Link to='/dashboard/listComponent'>
+              <Cards item={item} />
+            </Link>
           </li>
-        ))}
+        ))}{' '}
       </ul>
     </>
   );
@@ -43,9 +38,6 @@ Lists.propTypes = {
   prop: PropTypes.array,
 };
 
-// const mapStateToProps = (state) => {
-//   const lists = state.auth.user.list;
-//   return lists;
-// };
+const mapStateToProps = (state) => {};
 
-export default Lists;
+export default connect(mapStateToProps, { loadItem })(Lists);

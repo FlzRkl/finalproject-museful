@@ -1,22 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-export default function ListItems() {
-  const lists = useSelector((state) => state.list.item);
-  console.log(lists);
-  // const rabbitHole = (e) => {
-  //   const listElEnter = lists.filter((item) => {
-  //     if (e.target.id === item.id) {
-  //       return item;
-  //     }
-  //   });
-  //   return listElEnter;
-  // };
-
+export default function ListItems({ subList }) {
   return (
     <>
-      {lists
-        ? lists.map((item) => (
+      {subList
+        ? subList.map((item) => (
             <li
               // onClick={rabbitHole}
               className='list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-center '

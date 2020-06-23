@@ -13,7 +13,7 @@ import Register from '../login/Register';
 import Settings from '../settings/Settings.js';
 import SearchML from '../searchML/SearchML';
 import SearchRhy from '../searchRhy/SearchRhy';
-import List from '../list/List';
+import ListComponent from '../list/ListComponent';
 import Lists from '../list/Lists';
 
 const Routes = () => {
@@ -34,7 +34,11 @@ const Routes = () => {
         <Route component={Settings} exact path='/dashboard/settings' />
         <Route component={SearchML} exact path='/dashboard/searchml' />
         <Route component={SearchRhy} exact path='/dashboard/searchrhy' />
-        <Route component={List} exact path='/dashboard/list' />
+        <Route
+          component={ListComponent}
+          exact
+          path='/dashboard/listComponent'
+        />
         <Route component={Lists} exact path='/dashboard/lists' />
         <Route component={NotFound} />
       </Switch>

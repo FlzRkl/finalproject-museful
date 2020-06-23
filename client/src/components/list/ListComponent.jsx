@@ -8,11 +8,23 @@ import { connect, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { submitItem } from '../../actions/listAction';
 
-export const List = ({ loadItem }) => {
+export const ListComponent = ({ loadItem }) => {
   const inputEl = useRef(null);
   const [list, setList] = useState('');
-  const lists = useSelector((state) => state.list.mainList);
-  console.log(lists);
+  const [lists, setLists] = useState([]);
+  const mainList = useSelector((state) => state.list.mainList);
+
+  const isArr = (arrList) => {
+    let res = Object.values(mainList);
+    arrList = res.filter((item) => Array.isArray(item));
+    let result = arrList.map((item) => {
+      if (item) {
+        <ListItems subList={item} />;
+      }
+    });
+    console.log(result);
+    return;
+  };
 
   const handleChange = (e) => {
     setList(e.target.value);
@@ -20,18 +32,19 @@ export const List = ({ loadItem }) => {
 
   const submit = (e) => {
     e.preventDefault();
-    submitItem(list);
+    // submitItem(list);
     setList('');
   };
 
   useEffect(() => {
     inputEl.current.focus();
     loadItem();
-  }, [loadItem]);
+    isArr();
+  }, [loadItem, isArr]);
 
   return (
     <>
-      <h1>lvl1 List </h1>
+      <h1 className='mb-4'>{mainList.title}</h1>
       <form onSubmit={submit} className='form'>
         <div className='input-group mb-3'>
           <input
@@ -61,15 +74,13 @@ export const List = ({ loadItem }) => {
 
       <hr />
       <div className='col-lg-8'>
-        <ul className='list-group list-group-flush'>
-          <ListItems />
-        </ul>
+        <ul className='list-group list-group-flush'>{<ListItems />}</ul>
       </div>
     </>
   );
 };
 
-List.propTypes = {
+ListComponent.propTypes = {
   submitItem: PropTypes.func.isRequired,
 };
 
@@ -77,4 +88,4 @@ const mapStateToProps = (state) => ({
   list: state.list,
 });
 
-export default connect(mapStateToProps, { loadItem })(List);
+export default connect(mapStateToProps, { loadItem })(ListComponent);
