@@ -13,7 +13,7 @@ let iconSize = '3x';
 
 const NavBar = () => {
   return (
-    <Nav justify className='navS'>
+    <Nav className='navS'>
       <NavItem className=''>
         <Link className='links ' to='/signin'>
           Login

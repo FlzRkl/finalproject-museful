@@ -11,7 +11,7 @@ const Lists = () => {
   };
   return (
     <>
-      <h1>Storage</h1>
+      <h1 className='mb-4'>Storage</h1>
       <ul className='list' id='list-list'>
         {userLists.map((item) => (
           <li
