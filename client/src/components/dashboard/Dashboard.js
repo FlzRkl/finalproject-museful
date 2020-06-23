@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
-    <div className='bodyS'>
+    <div className='body-St'>
       <div className='btnContainer'>
         <Link className='btnS' to='/dashboard/daily-learning'>
           Daily Learning
@@ -22,8 +22,8 @@ const Dashboard = () => {
         <Link className='btnS' to='/dashboard/searchrhy'>
           searchRhy
         </Link>
-        <Link className='btnS' to='/dashboard/list'>
-          List
+        <Link className='btnS' to='/dashboard/lists'>
+          Lists
         </Link>
       </div>
     </div>

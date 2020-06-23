@@ -14,6 +14,7 @@ import Settings from '../settings/Settings.js';
 import SearchML from '../searchML/SearchML';
 import SearchRhy from '../searchRhy/SearchRhy';
 import List from '../list/List';
+import Lists from '../list/Lists';
 
 const Routes = () => {
   return (
@@ -34,6 +35,7 @@ const Routes = () => {
         <Route component={SearchML} exact path='/dashboard/searchml' />
         <Route component={SearchRhy} exact path='/dashboard/searchrhy' />
         <Route component={List} exact path='/dashboard/list' />
+        <Route component={Lists} exact path='/dashboard/lists' />
         <Route component={NotFound} />
       </Switch>
     </Fragment>

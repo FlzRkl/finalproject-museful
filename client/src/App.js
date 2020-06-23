@@ -15,27 +15,27 @@ import './style/_App.scss';
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
-import { loadItem } from './actions/listAction';
 import setAuthToken from './utils/setAuthToken';
 
 const App = () => {
   useEffect(() => {
     setAuthToken(localStorage.token);
     store.dispatch(loadUser());
-    store.dispatch(loadItem());
   }, []);
 
   return (
     <Provider store={store}>
-      <Router>
-        <Fragment>
-          <NavBar />
-          <Switch>
-            <Route exact path='/' component={LandingPage} />
-            <Route component={Routes} />
-          </Switch>
-        </Fragment>
-      </Router>
+      <div className='container-sn'>
+        <Router>
+          <Fragment>
+            <NavBar />
+            <Switch>
+              <Route exact path='/' component={LandingPage} />
+              <Route component={Routes} />
+            </Switch>
+          </Fragment>
+        </Router>
+      </div>
     </Provider>
   );
 };

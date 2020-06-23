@@ -2,14 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import ListItems from './ListItems';
 import './list.scss';
 import { ItemFilter } from './ItemFilter';
+import { loadItem } from '../../actions/listAction';
 
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { submitItem } from '../../actions/listAction';
-const List = () => {
+
+export const List = ({ loadItem }) => {
   const inputEl = useRef(null);
   const [list, setList] = useState('');
-  const lists = useSelector((state) => state.list.item);
+  const lists = useSelector((state) => state.list.mainList);
+  console.log(lists);
 
   const handleChange = (e) => {
     setList(e.target.value);
@@ -23,7 +26,8 @@ const List = () => {
 
   useEffect(() => {
     inputEl.current.focus();
-  }, []);
+    loadItem();
+  }, [loadItem]);
 
   return (
     <>
@@ -69,4 +73,8 @@ List.propTypes = {
   submitItem: PropTypes.func.isRequired,
 };
 
-export default List;
+const mapStateToProps = (state) => ({
+  list: state.list,
+});
+
+export default connect(mapStateToProps, { loadItem })(List);
