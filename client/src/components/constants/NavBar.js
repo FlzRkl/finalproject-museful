@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 // STYLE
@@ -9,9 +9,19 @@ import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Nav, NavItem, NavbarBrand } from 'react-bootstrap';
 
+//Functions
+import { loadItem } from '../../actions/listAction';
+
 let iconSize = '3x';
 
-const NavBar = () => {
+const NavBar = ({ loadItem }) => {
+  const aboveItem = useSelector((state) => state.list.aboveItem);
+
+  const handleClick = (e) => {
+    console.log(aboveItem);
+    loadItem(aboveItem);
+  };
+
   return (
     <>
       <Nav className='navS'>
@@ -47,6 +57,7 @@ const NavBar = () => {
       </Nav>
       <div className='bread'>
         <svg
+          onClick={handleClick}
           className='bi bi-arrow-left-circle-fill'
           width='1.5em'
           height='1.5em'
@@ -90,8 +101,8 @@ NavBar.propTypes = {
   prop: PropTypes,
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({ list: state.list });
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, { loadItem })(NavBar);
