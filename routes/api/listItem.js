@@ -93,6 +93,7 @@ router.post(
       obj[key] = {
         id: saved_item._id,
         title: saved_item.title,
+        tag: saved_item.tag,
       };
       await Item.findByIdAndUpdate(
         aboveItemId,
@@ -108,6 +109,7 @@ router.post(
         list: {
           id: saved_item._id,
           title: saved_item.title,
+          tag: saved_item.tag,
         },
       };
       await User.findByIdAndUpdate(

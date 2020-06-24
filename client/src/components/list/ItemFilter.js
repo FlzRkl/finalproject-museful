@@ -38,7 +38,7 @@ export const ItemFilter = () => {
               />
               <label
                 className='form-check-label'
-                for={`filter-${currentFilter}`}
+                htmlFor={`filter-${currentFilter}`}
               >
                 {' '}
                 {currentFilter}

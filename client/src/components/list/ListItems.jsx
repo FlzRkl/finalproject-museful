@@ -1,19 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-export default function ListItems({ subList }) {
+export default function ListItems({ item }) {
   return (
     <>
-      {subList
-        ? subList.map((item) => (
-            <li
-              // onClick={rabbitHole}
-              className='list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-center '
-              key={item._id}
-              id={item._id}
-            >
-              {item.title}
-              <span className='badge'>
+      <ul>
+        {item
+          ? item.map((item) => (
+              <li
+                // onClick={rabbitHole}
+                className='list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-center '
+                key={item.id}
+                id={item.id}
+              >
+                {item.title ? item.title : item}
+                {/* <span className='badge'>
                 <svg
                   className='bi bi-box-arrow-in-down-right'
                   width='1em'
@@ -35,10 +35,11 @@ export default function ListItems({ subList }) {
                     d='M10.354 10.354a.5.5 0 0 0 0-.708l-8-8a.5.5 0 1 0-.708.708l8 8a.5.5 0 0 0 .708 0z'
                   />
                 </svg>
-              </span>
-            </li>
-          ))
-        : null}
+              </span> */}
+              </li>
+            ))
+          : null}
+      </ul>
     </>
   );
 }

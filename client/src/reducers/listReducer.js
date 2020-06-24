@@ -1,23 +1,26 @@
 import {
   SUBMIT_ITEM,
-  OPEN_ITEM,
+  ABOVE_ITEM,
   LOAD_ITEM,
+  FILTERED_LIST,
   SET_ITEM_FILTER,
 } from '../actions/actionTypes';
 import { ITEM_FILTERS } from '../components/list/Item_Filters';
 
 const initialState = {
   mainList: {},
+  aboveItem: '',
+  filteredList: [],
   loading: true,
   filter: ITEM_FILTERS.LIST,
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
-  console.log(`type: ${type}, payload: ${payload}`);
+  console.log(`type: ${type}, payload: `, payload);
   switch (type) {
     case SUBMIT_ITEM:
-      console.log('stischpatcj');
+      console.log('gatcha');
       return {
         ...state,
         mainList: {
@@ -31,11 +34,15 @@ export default function (state = initialState, action) {
         mainList: payload.item,
         loading: false,
       };
-    case OPEN_ITEM:
+    case ABOVE_ITEM:
       return {
         ...state,
-        mainList: payload.item,
-        loading: false,
+        aboveItem: payload,
+      };
+    case FILTERED_LIST:
+      return {
+        ...state,
+        filteredList: payload,
       };
     case SET_ITEM_FILTER:
       return {

@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, connect } from 'react-redux';
+import { useSelector, connect, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Cards from './Cards';
 import { loadItem } from '../../actions/listAction';
+import { ABOVE_ITEM } from '../../actions/actionTypes';
 
 const Lists = ({ loadItem }) => {
   const userLists = useSelector((state) => state.auth.user.list);
+  const dispatch = useDispatch();
 
   const handleClick = (e) => {
     const id = e.target.closest('li').id;
-    console.log(id);
     loadItem(id);
+    // console.log(id);
+    dispatch({
+      type: ABOVE_ITEM,
+      payload: id,
+    });
   };
+
   return (
     <>
       <h1 className='mb-4'>Storage</h1>

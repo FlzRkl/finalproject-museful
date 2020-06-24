@@ -1,8 +1,9 @@
 import axios from 'axios';
 import {
   SUBMIT_ITEM,
-  OPEN_ITEM,
+  ABOVE_ITEM,
   LOAD_ITEM,
+  FILTERED_LIST,
   SORT_ITEMS,
   SET_ITEM_FILTER,
   SET_ALERT,
@@ -25,10 +26,10 @@ export const submitItem = (inputItem) => (dispatch) => {
   }
 };
 
-export const openItem = (itemId) => (dispatch) => {
+export const aboveItem = (itemId) => (dispatch) => {
   if (itemId) {
     dispatch({
-      type: OPEN_ITEM,
+      type: ABOVE_ITEM,
       payload: itemId,
     });
   } else {
@@ -66,6 +67,38 @@ export const loadItem = (id) => async (dispatch) => {
 export const setFilter = (filter) => (dispatch) => {
   // console.log(filter);
   dispatch({ type: SET_ITEM_FILTER, payload: filter });
+};
+
+export const getListArr = (mainList) => (dispatch) => {
+  const getValues = Object.values(mainList)
+    .filter((item) => Array.isArray(item))
+    .filter((item) => item.length > 0);
+  const getKeys = [];
+  for (let item in mainList) {
+    let x = mainList[item];
+    let y = Array.isArray(x)
+      ? x.length > 0
+        ? getKeys.push(item)
+        : null
+      : null;
+  }
+  // console.log(getKeys, getValues, mainList);
+  const getLists = [getKeys, getValues];
+  // console.log(getLists);
+  if (getLists) {
+    dispatch({
+      type: FILTERED_LIST,
+      payload: getLists,
+    });
+  } else {
+    dispatch({
+      type: SET_ALERT,
+      payload: {
+        msg: 'The Filtered Array is false',
+        type: 'warning',
+      },
+    });
+  }
 };
 
 // export const sortItem = (itemId) => (dispatch) => {
