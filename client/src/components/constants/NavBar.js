@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // STYLE
 import { faCog } from '@fortawesome/free-solid-svg-icons';
@@ -15,11 +16,13 @@ import { loadItem } from '../../actions/listAction';
 let iconSize = '3x';
 
 const NavBar = ({ loadItem }) => {
-  const aboveItem = useSelector((state) => state.list.aboveItem);
+  const aboveItem = useSelector((state) => state.list.mainList.aboveItem);
+  const history = useHistory();
 
   const handleClick = (e) => {
+    //aboveItem is undefined??
     console.log(aboveItem);
-    loadItem(aboveItem);
+    aboveItem ? loadItem(aboveItem) : history.push('/dashboard/lists');
   };
 
   return (
@@ -75,7 +78,7 @@ const NavBar = ({ loadItem }) => {
           />
         </svg>
         //Breadcrum
-        <svg
+        {/* <svg
           className='bi bi-arrow-right-circle-fill'
           width='1.5em'
           height='1.5em'
@@ -91,7 +94,7 @@ const NavBar = ({ loadItem }) => {
             fillRule='evenodd'
             d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z'
           />
-        </svg>
+        </svg> */}
       </div>
     </>
   );
