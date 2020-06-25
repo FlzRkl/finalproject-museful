@@ -57,8 +57,8 @@ export const ListComponent = ({ loadItem, getListArr }) => {
             ref={inputEl}
             type='text'
             className='form-control'
-            placeholder='Enter an Idea !'
-            aria-label='Enter an Idea !'
+            placeholder='Enter an Item !'
+            aria-label='Enter an Item !'
             aria-describedby='basic-addon2'
             value={list}
             name='inputList0'
@@ -79,7 +79,7 @@ export const ListComponent = ({ loadItem, getListArr }) => {
       </form>
       <hr />
       <div className='col-lg-8'>
-        <ul className='list-group list-group-flush bg-secondary'>
+        <ul className='list-group list-group-flush bg-light text-dark text-center'>
           {data
             ? data.map((item, index) => (
                 <>
