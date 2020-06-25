@@ -1,16 +1,13 @@
 .container {
   margin: 0 auto;
   max-width: 400px;
-  color: #F1F7ED;
+  color: #f1f7ed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 40vh;
-
 }
-
-
 
 .title {
   font-size: 35px;
@@ -20,12 +17,13 @@
 
 .searchInput {
   padding: 10px;
-  background-color: #112D32;
-  color: #F1F7ED;
+  background-color: #112d32;
+  color: #f1f7ed;
   width: 100%;
   font-size: 18px;
   border-color: transparent;
-  border-bottom: 2px solid #F1F7ED;
+  border-bottom: 2px solid #f1f7ed;
+  border-radius: 0.5em;
   position: sticky;
   top: 0;
 }
@@ -40,7 +38,6 @@
 
 .resultsContainer {
   width: 100%;
-
 }
 
 .resultContainer {
@@ -52,9 +49,8 @@
 }
 
 .resultContainer a {
-  color: #F1F7ED;
+  color: #f1f7ed;
   text-decoration: none;
-
 }
 
 .definition {
@@ -62,3 +58,4 @@
   font-style: italic;
   text-transform: none;
 }
+

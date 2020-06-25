@@ -14,7 +14,7 @@ const User = require('../../models/User');
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
-    console.log(user);
+    //console.log(user);
     res.json(user);
   } catch (err) {
     console.error(err.message);
@@ -74,6 +74,7 @@ router.post(
         },
       };
 
+      //Expires in 4 Days and 4 Hours
       jwt.sign(
         payload,
         config.get('jwtSecret'),

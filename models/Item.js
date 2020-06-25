@@ -1,23 +1,38 @@
 const mongoose = require('mongoose');
 
 const ItemSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
+  },
   title: {
     type: String,
     required: true,
   },
+  tag: {
+    type: String,
+    required: true,
+  },
+  aboveItemId: {
+    type: String,
+  },
   desc: {
     type: String,
   },
-  text: {
+  list: {
     type: Array,
   },
-  pic: {
+  text: {
     type: Array,
   },
   video: {
     type: Array,
   },
-  list: {
+  book: {
+    type: Array,
+  },
+  pic: {
     type: Array,
   },
   link: {
