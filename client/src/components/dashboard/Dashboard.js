@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const Dashboard = () => {
   return (
     <div className='body-St'>
+
       <div className='btnContainer'>
         <Link className='btnS' to='/dashboard/daily-learning'>
           Daily Learning
@@ -24,6 +25,7 @@ const Dashboard = () => {
         </Link>
         <Link className='btnS' to='/dashboard/lists'>
           Lists
+
         </Link>
       </div>
     </div>

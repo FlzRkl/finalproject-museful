@@ -18,7 +18,6 @@ router.get('/:id', async (req, res) => {
         errors: [{ msg: 'Item not found!' }],
       });
     }
-
     return res.status(200).json({
       item,
     });

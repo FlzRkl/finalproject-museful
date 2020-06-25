@@ -36,6 +36,7 @@ const App = () => {
           </Fragment>
         </Router>
       </div>
+
     </Provider>
   );
 };

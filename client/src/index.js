@@ -7,6 +7,7 @@ import './fontAwesome';
 import './style/_index.scss';
 import 'bootstrap';
 
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
