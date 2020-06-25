@@ -83,8 +83,7 @@ function SearchML() {
           doFetch(`https://api.datamuse.com/words?ml=${query}`);
 
           event.preventDefault();
-        }}
-      >
+        }}>
         <Input
           placeholder='Enter Initial Word'
           id='initial-word-form'
@@ -95,8 +94,7 @@ function SearchML() {
         <Button
           type='submit'
           className='btn btn-success'
-          style={{ marginTop: '8px' }}
-        >
+          style={{ marginTop: '8px' }}>
           Search
         </Button>
       </Form>
@@ -109,7 +107,7 @@ function SearchML() {
         <CardBody>
           {data.map((item) => (
             <CardGroup key={item.word} id='related-word'>
-              <Button href={item.word} color='success'>
+              <Button href={item.word} className='success'>
                 {item.word}
               </Button>
             </CardGroup>

@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
-import mlReducer from './mlReducer';
-import spReducer from './spReducer';
+import searchReducer from './searchReducer';
 import alert from './alert';
 import auth from './auth';
 import listReducer from './listReducer';
@@ -8,8 +7,7 @@ import listReducer from './listReducer';
 //other reducers might be and should be imporetd here
 
 export default combineReducers({
-  mlReducer,
-  spReducer,
+  search: searchReducer,
   alert,
   auth,
   list: listReducer,
