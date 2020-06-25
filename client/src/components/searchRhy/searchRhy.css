@@ -24,7 +24,6 @@
   border-color: transparent;
   border-bottom: 2px solid #f1f7ed;
   border-radius: 0.5em;
-
   position: sticky;
   top: 0;
 }
@@ -59,3 +58,4 @@
   font-style: italic;
   text-transform: none;
 }
+

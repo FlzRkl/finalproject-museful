@@ -38,3 +38,4 @@ export const LOAD_ITEM = 'LOAD_ITEM';
 export const SORT_ITEMS = 'SORT_ITEMS';
 export const SET_ITEM_FILTER = 'SET_ITEM_FILTER';
 export const FILTERED_LIST = 'FILTERED_LIST';
+

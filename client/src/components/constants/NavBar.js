@@ -4,6 +4,7 @@ import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
+
 // STYLE
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
@@ -97,6 +98,7 @@ const NavBar = ({ loadItem }) => {
         </svg> */}
       </div>
     </>
+
   );
 };
 
@@ -109,3 +111,4 @@ const mapStateToProps = (state) => ({ list: state.list });
 const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, { loadItem })(NavBar);
+
