@@ -16,7 +16,7 @@ import { loadItem } from '../../actions/listAction';
 let iconSize = '3x';
 
 const NavBar = ({ loadItem }) => {
-  const aboveItem = useSelector((state) => state.list.mainList.aboveItem);
+  const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
   const history = useHistory();
 
   const handleClick = (e) => {
