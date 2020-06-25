@@ -1,0 +1,49 @@
+{
+  "name": "musefull",
+  "version": "1.0.0",
+  "description": "Final Project of FBW4 at DCI Hamburg",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix ./client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix ./client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FBW4-LL/Final-Project.git"
+  },
+  "keywords": [
+    "learning",
+    "mern",
+    "app",
+    "js",
+    "es6",
+    "react",
+    "mongodb",
+    "nodejs",
+    "express"
+  ],
+  "author": "Filiz, Harris, Lana, Sascha and Stefan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FBW4-LL/Final-Project/issues"
+  },
+  "homepage": "https://github.com/FBW4-LL/Final-Project#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.18"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
+}
