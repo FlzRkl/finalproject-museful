@@ -1,4 +1,5 @@
 import { TOGGLE_WORDS } from "./actionTypes";
+import { SET_VISIBILITY_FILTER } from "./actionTypes";
 
 export function toggleWords(index) {
   return { type: TOGGLE_WORDS, index };
