@@ -13,6 +13,8 @@ const Dashboard = () => {
         </Link>
         <Link className='btnS' to='/dashboard/progress'>
           Progress
+        </Link>        <Link className='btnS' to='/dashboard/searchword'>
+          SearchWord
         </Link>
         <Link className='btnS' to='/dashboard/settings'>
           Settings
