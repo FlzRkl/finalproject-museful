@@ -1,10 +1,7 @@
-//POSTS
-export const FETCH_POSTS = 'FETCH_POSTS';
-export const NEW_POST = 'NEW_POST';
-
-//DATAMUSE
+//SEARCH
+export const FETCH_INIT = 'FETCH_INIT';
 export const FETCH_WORDS = 'FETCH_WORDS';
-export const FETCH_MEANING_SIMILAR = 'FETCH_MEANING_SIMILAR';
+export const SET_SEARCH_FILTER = 'SET_ITEM_FILTER';
 
 //USAGE
 export const TOGGLE_WORDS = 'TOGGLE_WORDS';
@@ -38,4 +35,3 @@ export const LOAD_ITEM = 'LOAD_ITEM';
 export const SORT_ITEMS = 'SORT_ITEMS';
 export const SET_ITEM_FILTER = 'SET_ITEM_FILTER';
 export const FILTERED_LIST = 'FILTERED_LIST';
-

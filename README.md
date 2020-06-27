@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+# This is FILIZ' Branch
+DCI Hamburg Final Project FBW4 Language Learning
+---> "CHECKED finally"
+=======
 # MASTERBRANCH!
 
 ## Final-Project
@@ -17,3 +22,4 @@ Please create a Folder on your PC
 ### If you have any questions, please ask.
 
 // If you want to hire us, please reach out to us via email or Github! -- to this better with ascci
+>>>>>>> 08cd106e1eb1c5abf2639d209885e5d531baab42

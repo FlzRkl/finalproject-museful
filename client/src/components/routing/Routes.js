@@ -12,10 +12,10 @@ import NotFound from '../constants/NotFound';
 import Register from '../login/Register';
 import Settings from '../settings/Settings.js';
 import SearchML from '../searchML/SearchML';
+import SearchWord from '../searchWord/SearchWord';
 import SearchRhy from '../searchRhy/SearchRhy';
 import ListComponent from '../list/ListComponent';
 import Lists from '../list/Lists';
-
 
 const Routes = () => {
   return (
@@ -31,7 +31,8 @@ const Routes = () => {
           exact
           path='/dashboard/daily-learning'
         />
-        <Route component={Progress} exact path='/dashboard/progress' />
+        <Route component={Progress} exact path='/dashboard/progress' />{' '}
+        <Route component={SearchWord} exact path='/dashboard/searchword' />
         <Route component={Settings} exact path='/dashboard/settings' />
         <Route component={SearchML} exact path='/dashboard/searchml' />
         <Route component={SearchRhy} exact path='/dashboard/searchrhy' />
