@@ -1,37 +1,49 @@
 {
-  "name": "finalproject",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
-  },
+  "name": "musefull",
+  "version": "1.0.0",
+  "description": "Final Project of FBW4 at DCI Hamburg",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "client-install": "npm install --prefix ./client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix ./client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FBW4-LL/Final-Project.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [
+    "learning",
+    "mern",
+    "app",
+    "js",
+    "es6",
+    "react",
+    "mongodb",
+    "nodejs",
+    "express"
+  ],
+  "author": "Filiz, Harris, Lana, Sascha and Stefan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FBW4-LL/Final-Project/issues"
+  },
+  "homepage": "https://github.com/FBW4-LL/Final-Project#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.18"
   },
   "devDependencies": {
-    "node-sass": "^4.14.0"
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
   }
 }
