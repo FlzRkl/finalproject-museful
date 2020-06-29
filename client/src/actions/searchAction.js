@@ -3,17 +3,32 @@ import {
   FETCH_WORDS,
   SET_ALERT,
   SET_SEARCH_FILTER,
+  SORT_ITEMS,
 } from './actionTypes';
 import axios from 'axios';
+import {
+  searchFilters
+} from "./searchFilters";
+import SearchFilter from '../components/searchWord/SearchFilter';
 
-export const fetchWord = (word) => async (dispatch) => {
-  const url = 'https://api.datamuse.com/words?ml=';
+export const fetchWord = (word, filter) => async (dispatch) => {
+  const url = 'https://api.datamuse.com/words?';
+  let fQuery = ''
+  for (let item in searchFilters) {
+    if (item == filter) {
+      console.log(searchFilters[item])
+      fQuery = searchFilters[item]
+    }
+    // console.log(fQuery)
+  }
+
   if (word) {
-    dispatch({ type: FETCH_INIT });
+    dispatch({
+      type: FETCH_INIT
+    });
     try {
-      console.log(url + word);
-
-      const result = await axios(url + word);
+      console.log(url + fQuery + word);
+      const result = await axios(url + fQuery + word);
       console.log(result);
       dispatch({
         type: FETCH_WORDS,
@@ -33,7 +48,10 @@ export const fetchWord = (word) => async (dispatch) => {
 
 export const setFilter = (filter) => (dispatch) => {
   // console.log(filter);
-  dispatch({ type: SET_SEARCH_FILTER, payload: filter });
+  dispatch({
+    type: SET_SEARCH_FILTER,
+    payload: filter
+  });
 };
 /////////////////////////
 /*
