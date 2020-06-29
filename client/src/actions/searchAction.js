@@ -11,7 +11,7 @@ export const fetchWord = (word) => async (dispatch) => {
   if (word) {
     dispatch({ type: FETCH_INIT });
     try {
-      console.log(url + word);
+      // console.log(url + word);
 
       const result = await axios(url + word);
       console.log(result);
@@ -31,7 +31,7 @@ export const fetchWord = (word) => async (dispatch) => {
   }
 };
 
-export const setFilter = (filter) => (dispatch) => {
+export const setSearchFilter = (filter) => (dispatch) => {
   // console.log(filter);
   dispatch({ type: SET_SEARCH_FILTER, payload: filter });
 };

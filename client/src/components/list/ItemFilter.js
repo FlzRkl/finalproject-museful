@@ -12,7 +12,7 @@ export const ItemFilter = () => {
   const dispatch = useDispatch();
   return (
     <div>
-      <div className='item-filters form-check form-check-inline'>
+      <div className='item-filters form-check form-check-inline mb-3'>
         {Object.keys(ITEM_FILTERS).map((filterKey) => {
           const currentFilter = ITEM_FILTERS[filterKey];
           return (
@@ -52,7 +52,7 @@ export const ItemFilter = () => {
 };
 
 ItemFilter.propTypes = {
-  setFilter: PropTypes.func,
+  setItemFilter: PropTypes.func,
   activeFilter: PropTypes.string,
 };
 

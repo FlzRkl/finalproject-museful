@@ -8,34 +8,47 @@ import { loadItem, getListArr } from '../../actions/listAction';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { ABOVE_ITEM } from '../../actions/actionTypes';
 
-export const ListComponent = ({ loadItem, getListArr }) => {
+export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
   const inputEl = useRef(null);
-  const [list, setList] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState([]);
   const mainList = useSelector((state) => state.list.mainList);
   const filteredList = useSelector((state) => state.list.filteredList);
+  const filter = useSelector((state) => state.list.filter);
+  const user = useSelector((state) => state.auth.user._id);
+  const currentId = useSelector((state) => state.list.mainList._id);
   const [tags, setTags] = useState([]);
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    setList(e.target.value);
+  const handleChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleChangeContent = (e) => {
+    setContent(e.target.value);
   };
 
   const handleClick = (e) => {
     const id = e.target.closest('li').id;
-    // dispatch({
-    //   type: ABOVE_ITEM,
-    //   payload: id,
-    // });
     loadItem(id);
     console.log(id);
   };
 
+  let submitObject = {
+    user: user,
+    title: title,
+    tag: filter,
+    [filter]: content,
+    aboveItemId: currentId,
+  };
+
   const submit = (e) => {
     e.preventDefault();
-    // submitItem(list);
-    //console.log(lists);
-    setList('');
+    submitItem(submitObject, currentId);
+    setTitle('');
+    setContent('');
+    // loadItem(currentId);
   };
 
   useEffect(() => {
@@ -50,32 +63,50 @@ export const ListComponent = ({ loadItem, getListArr }) => {
 
   return (
     <>
-      <h1 className='mb-4'>{mainList.title}</h1>
-      <form onSubmit={submit} className='form'>
-        <div className='input-group mb-3'>
+      <h1 className='mb-3'>{mainList.title}</h1> <ItemFilter />
+      <form
+        onSubmit={submit}
+        className='form col-xs-12 col-sm-10 col-md-8 col-lg-6'
+      >
+        <div className='input-group mb-2'>
+          <div className='input-group-prepend'>
+            <span className='input-group-text' id='inüput-addon-filter'>
+              @@
+            </span>
+          </div>
           <input
             ref={inputEl}
             type='text'
             className='form-control'
-            placeholder='Enter an Item !'
-            aria-label='Enter an Item !'
-            aria-describedby='basic-addon2'
-            value={list}
+            placeholder='Title'
+            aria-label='Title'
+            aria-describedby='input-title'
+            value={title}
             name='inputList0'
             id='inputList0'
-            onChange={handleChange}
+            onChange={handleChangeTitle}
           />
           <div className='input-group-append'>
             <button
               onClick={submit}
               className='input-group-text'
-              id='basic-addon2'
+              id='input-addon-add'
             >
               Add
             </button>
           </div>
         </div>
-        <ItemFilter />
+        <div className='row'>
+          <div className='input-group mb-3'>
+            <textarea
+              className='form-control'
+              placeholder='Content'
+              aria-label='Content'
+              value={content}
+              onChange={handleChangeContent}
+            ></textarea>
+          </div>
+        </div>
       </form>
       <hr />
       <div className='col-lg-8'>
@@ -109,6 +140,6 @@ const mapStateToProps = (state) => ({
   list: state.list,
 });
 
-export default connect(mapStateToProps, { loadItem, getListArr })(
+export default connect(mapStateToProps, { submitItem, loadItem, getListArr })(
   ListComponent
 );

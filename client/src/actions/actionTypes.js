@@ -1,7 +1,7 @@
 //SEARCH
 export const FETCH_INIT = 'FETCH_INIT';
 export const FETCH_WORDS = 'FETCH_WORDS';
-export const SET_SEARCH_FILTER = 'SET_ITEM_FILTER';
+export const SET_SEARCH_FILTER = 'SET_SEARCH_FILTER';
 
 //USAGE
 export const TOGGLE_WORDS = 'TOGGLE_WORDS';
@@ -30,7 +30,7 @@ export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 
 //LIST
 export const SUBMIT_ITEM = 'SUBMIT_ITEM';
-export const ABOVE_ITEM = 'ABOVE_ITEM';
+export const LAST_ITEM = 'LAST_ITEM';
 export const LOAD_ITEM = 'LOAD_ITEM';
 export const SORT_ITEMS = 'SORT_ITEMS';
 export const SET_ITEM_FILTER = 'SET_ITEM_FILTER';
