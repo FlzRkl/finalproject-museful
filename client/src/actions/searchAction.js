@@ -29,6 +29,7 @@ export const fetchWord = (word, filter) => async (dispatch) => {
     try {
       console.log(url + fQuery + word);
       const result = await axios(url + fQuery + word);
+
       console.log(result);
       dispatch({
         type: FETCH_WORDS,
@@ -46,7 +47,7 @@ export const fetchWord = (word, filter) => async (dispatch) => {
   }
 };
 
-export const setFilter = (filter) => (dispatch) => {
+export const setSearchFilter = (filter) => (dispatch) => {
   // console.log(filter);
   dispatch({
     type: SET_SEARCH_FILTER,

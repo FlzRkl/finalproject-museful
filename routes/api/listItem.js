@@ -1,15 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
+const auth = require('../../middleware/auth');
+const checkObjectId = require('../../middleware/checkObjectId');
 
 const Item = require('../../models/Item');
 const User = require('../../models/User');
 
-//@route  GET api/listItem
-// @desc  Test route
+//@route  GET api/listItem/:id
+//@desc  Get listITems
 //@access Public
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', [auth, checkObjectId('id')], async (req, res) => {
   let id = req.params.id;
   if (id) {
     let item = await Item.findById(id);
@@ -41,9 +43,13 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// @route    POST api/listITem/submit
+// @desc     Post an Item
+// @access   Private
 router.post(
   '/submit',
   [
+    auth,
     check('title', 'Title is required').not().isEmpty(),
     check('tag', 'Tag is required').not().isEmpty(),
     check('user', 'UserId is required').not().isEmpty(),
@@ -126,5 +132,27 @@ router.post(
     });
   }
 );
+
+// @route    DELETE api/listITem/:id
+// @desc     Delete an Item
+// @access   Private
+router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
+  try {
+    const item = await Item.findById(req.params.id);
+
+    // Check user
+    if (item.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'User not authorized' });
+    }
+
+    await item.remove();
+
+    res.json({ msg: 'ListItem removed' });
+  } catch (err) {
+    console.error(err.message);
+
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;

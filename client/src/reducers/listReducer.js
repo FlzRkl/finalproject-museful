@@ -1,6 +1,6 @@
 import {
   SUBMIT_ITEM,
-  ABOVE_ITEM,
+  LAST_ITEM,
   LOAD_ITEM,
   FILTERED_LIST,
   SET_ITEM_FILTER,
@@ -9,7 +9,7 @@ import { ITEM_FILTERS } from '../components/list/Item_Filters';
 
 const initialState = {
   mainList: {},
-  aboveItem: '',
+  lastItem: '',
   filteredList: [],
   loading: true,
   filter: ITEM_FILTERS.LIST,
@@ -34,10 +34,10 @@ export default function (state = initialState, action) {
         mainList: payload.item,
         loading: false,
       };
-    case ABOVE_ITEM:
+    case LAST_ITEM:
       return {
         ...state,
-        aboveItem: payload,
+        lastItem: payload,
       };
     case FILTERED_LIST:
       return {
