@@ -11,7 +11,7 @@ import { ABOVE_ITEM } from '../../actions/actionTypes';
 export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
   const inputEl = useRef(null);
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState([]);
+  const [desc, setDesc] = useState([]);
   const mainList = useSelector((state) => state.list.mainList);
   const filteredList = useSelector((state) => state.list.filteredList);
   const filter = useSelector((state) => state.list.filter);
@@ -25,8 +25,8 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
     setTitle(e.target.value);
   };
 
-  const handleChangeContent = (e) => {
-    setContent(e.target.value);
+  const handleChangeDesc = (e) => {
+    setDesc(e.target.value);
   };
 
   const handleClick = (e) => {
@@ -39,16 +39,20 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
     user: user,
     title: title,
     tag: filter,
-    [filter]: content,
+    desc: desc,
     aboveItemId: currentId,
+  };
+
+  const setInter = async () => {
+    setInterval(loadItem(currentId), 1000);
   };
 
   const submit = (e) => {
     e.preventDefault();
     submitItem(submitObject, currentId);
     setTitle('');
-    setContent('');
-    // loadItem(currentId);
+    setDesc('');
+    setInter();
   };
 
   useEffect(() => {
@@ -100,10 +104,10 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
           <div className='input-group mb-3'>
             <textarea
               className='form-control'
-              placeholder='Content'
-              aria-label='Content'
-              value={content}
-              onChange={handleChangeContent}
+              placeholder='Add Describtion'
+              aria-label='Desc'
+              value={desc}
+              onChange={handleChangeDesc}
             ></textarea>
           </div>
         </div>
