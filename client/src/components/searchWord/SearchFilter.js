@@ -54,7 +54,7 @@ export const SearchFilter = () => {
 };
 
 SearchFilter.propTypes = {
-  setFilter: PropTypes.func,
+  setSearchFilter: PropTypes.func,
   activeFilter: PropTypes.string,
 };
 
