@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect, useSelector, useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-
 
 // STYLE
 import { faCog } from '@fortawesome/free-solid-svg-icons';
@@ -13,17 +12,25 @@ import { Nav, NavItem, NavbarBrand } from 'react-bootstrap';
 
 //Functions
 import { loadItem } from '../../actions/listAction';
+import { LAST_ITEM } from '../../actions/actionTypes';
 
 let iconSize = '3x';
 
 const NavBar = ({ loadItem }) => {
+  let location = useLocation();
+  console.log(location);
   const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const id = useSelector((state) => state.list.lastItem);
 
   const handleClick = (e) => {
-    //aboveItem is undefined??
     console.log(aboveItem);
     aboveItem ? loadItem(aboveItem) : history.push('/dashboard/lists');
+    dispatch({
+      type: LAST_ITEM,
+      payload: id,
+    });
   };
 
   return (
@@ -72,8 +79,8 @@ const NavBar = ({ loadItem }) => {
           <path
             transform='translate(1, 1)'
             stroke='white'
-            stroke-width='1'
-            stroke-linecap='round'
+            strokeWidth='1'
+            strokeLinecap='round'
             fillRule='evenodd'
             d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.646 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L6.207 7.5H11a.5.5 0 0 1 0 1H6.207l2.147 2.146z'
           />
@@ -98,17 +105,13 @@ const NavBar = ({ loadItem }) => {
         </svg> */}
       </div>
     </>
-
   );
 };
 
-NavBar.propTypes = {
-  prop: PropTypes,
-};
+NavBar.propTypes = {};
 
 const mapStateToProps = (state) => ({ list: state.list });
 
 const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, { loadItem })(NavBar);
-

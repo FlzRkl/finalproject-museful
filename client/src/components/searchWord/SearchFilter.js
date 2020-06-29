@@ -20,14 +20,15 @@ export const SearchFilter = () => {
               key={`item-filter-${currentFilter}`}
               className={cx(
                 `item-filter-${currentFilter} form-check form-check-inline`,
-                currentFilter === activeFilter && `active`,
+                currentFilter === activeFilter && `active`
               )}
               onClick={() =>
                 dispatch({
                   type: SET_SEARCH_FILTER,
                   payload: currentFilter,
                 })
-              }>
+              }
+            >
               <input
                 className='form-check-input'
                 type='radio'
@@ -37,7 +38,8 @@ export const SearchFilter = () => {
               />
               <label
                 className='form-check-label'
-                htmlFor={`filter-${currentFilter}`}>
+                htmlFor={`filter-${currentFilter}`}
+              >
                 {' '}
                 {currentFilter}
               </label>
@@ -50,7 +52,7 @@ export const SearchFilter = () => {
 };
 
 SearchFilter.propTypes = {
-  setFilter: PropTypes.func,
+  setSearchFilter: PropTypes.func,
   activeFilter: PropTypes.string,
 };
 
