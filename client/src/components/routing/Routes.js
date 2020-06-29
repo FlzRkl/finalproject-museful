@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // ROUTES
@@ -18,6 +18,11 @@ import ListComponent from '../list/ListComponent';
 import Lists from '../list/Lists';
 
 const Routes = () => {
+  useEffect(() => {
+    return () => {
+      console.log('will unmount');
+    };
+  }, []);
   return (
     <Fragment>
       <Switch>

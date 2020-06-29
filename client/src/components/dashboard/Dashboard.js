@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { LAST_ITEM } from '../../actions/actionTypes';
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const id = useSelector((state) => state.list.lastItem);
+
+  const handleClick = () => {
+    dispatch({
+      type: LAST_ITEM,
+      payload: id,
+    });
+  };
   return (
     <div className='body-St'>
-
       <div className='btnContainer'>
         <Link className='btnS' to='/dashboard/daily-learning'>
           Daily Learning
         </Link>
         <Link className='btnS' to='/dashboard/progress'>
           Progress
-        </Link>        <Link className='btnS' to='/dashboard/searchword'>
+        </Link>
+        <Link className='btnS' to='/dashboard/searchword'>
           SearchWord
         </Link>
         <Link className='btnS' to='/dashboard/settings'>
@@ -27,7 +37,6 @@ const Dashboard = () => {
         </Link>
         <Link className='btnS' to='/dashboard/lists'>
           Lists
-
         </Link>
       </div>
     </div>
