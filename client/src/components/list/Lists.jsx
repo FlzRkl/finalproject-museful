@@ -4,7 +4,7 @@ import { useSelector, connect, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Cards from './Cards';
 import { loadItem } from '../../actions/listAction';
-import { ABOVE_ITEM } from '../../actions/actionTypes';
+import { LAST_ITEM } from '../../actions/actionTypes';
 
 const Lists = ({ loadItem }) => {
   const userLists = useSelector((state) => state.auth.user.list);
@@ -15,14 +15,14 @@ const Lists = ({ loadItem }) => {
     loadItem(id);
     // console.log(id);
     dispatch({
-      type: ABOVE_ITEM,
+      type: LAST_ITEM,
       payload: id,
     });
   };
 
   return (
     <>
-      <h1 className='mb-4'>Storage</h1>
+      <h1 className='mb-4'>List Storage</h1>
       <ul className='list' id='list-list'>
         {userLists.map((item) => (
           <li
@@ -41,9 +41,7 @@ const Lists = ({ loadItem }) => {
   );
 };
 
-Lists.propTypes = {
-  prop: PropTypes.array,
-};
+Lists.propTypes = {};
 
 const mapStateToProps = (state) => {};
 
