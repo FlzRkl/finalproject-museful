@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Cards from './Cards';
 import { loadItem } from '../../actions/listAction';
 import { LAST_ITEM } from '../../actions/actionTypes';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { submitItem } from '../../actions/listAction';
 
@@ -23,8 +23,9 @@ const Lists = ({ loadItem, submitItem }) => {
     });
   };
 
-  const formStyle = {
-    display: 'none',
+  const [style, setStyle] = useState(false);
+  const formStyle = () => {
+    setStyle(!style);
   };
 
   const [title, setTitle] = useState('');
@@ -60,18 +61,30 @@ const Lists = ({ loadItem, submitItem }) => {
   return (
     <>
       <h1 className='mb-4'>List Storage</h1>
-      <div className='btn' onClick={handleAdd}>
-        {' '}
-        <FontAwesomeIcon
-          icon={faPlus}
-          color='white'
-          size={'2x'}
-          className='iconAdd'
-        />
+      <div className='btn' onClick={formStyle}>
+        {style ? (
+          <FontAwesomeIcon
+            icon={faPlus}
+            color='white'
+            size={'2x'}
+            className='iconAdd'
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faMinus}
+            color='white'
+            size={'2x'}
+            className='iconAdd'
+          />
+        )}
       </div>
       <form
         onSubmit={submit}
-        className='form col-xs-12 col-sm-10 col-md-8 col-lg-6'
+        className={
+          style == true
+            ? 'd-none form col-xs-12 col-sm-10 col-md-8 col-lg-6'
+            : 'd-block form col-xs-12 col-sm-10 col-md-8 col-lg-6'
+        }
       >
         <div className='input-group mb-2'>
           <input
