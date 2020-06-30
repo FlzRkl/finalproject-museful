@@ -43,16 +43,12 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
     aboveItemId: currentId,
   };
 
-  const setInter = async () => {
-    setInterval(loadItem(currentId), 1000);
-  };
-
   const submit = (e) => {
     e.preventDefault();
     submitItem(submitObject, currentId);
     setTitle('');
     setDesc('');
-    setInter();
+    loadItem(currentId);
   };
 
   useEffect(() => {
