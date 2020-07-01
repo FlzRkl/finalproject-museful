@@ -99,6 +99,7 @@ ul li label {
   margin: 0 1.5rem 0 0;
   z-index: 9;
   cursor: pointer;
+  transition: all 0.25s linear;
   -webkit-transition: all 0.25s linear;
 }
 
@@ -142,9 +143,9 @@ input[type='radio']:checked ~ .check::before {
   background: $fontAlert;
 }
 
-input[type='radio']:checked ~ label {
-  // color: $fontAlert;
-}
+// input[type='radio']:checked ~ label {
+//   // color: $fontAlert;
+// }
 
 //////////////////////
 .toggle {
@@ -189,8 +190,8 @@ input[type='radio']:checked ~ label {
   margin: 0;
 }
 
-.searchResult {
-}
+// .searchResult {
+// }
 
 ////TEXT
 .header {
