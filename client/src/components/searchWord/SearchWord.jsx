@@ -26,20 +26,21 @@ export const SearchWord = ({ fetchWord }) => {
     console.log("submit Searchhhhhhhhhhhhhhhhhhhhhhhhhhh");
   };
   return (
-    <>
+    <div className="dashboard d-flexColumn">
       <SearchFilter />
       <form id="formSearch" onSubmit={handleSearch}>
         <input
-          placeholder="Enter Initial Word"
+          placeholder="Please enter a word.."
           id="initial-word-form"
           type="text"
           value={word}
           onChange={handleChange}
+          className="input"
         />
         <button
           onClick={handleSearch}
           type="submit"
-          className="btn btn-success"
+          className="inputSearch"
           style={{ marginTop: "8px" }}
         >
           Search
@@ -51,17 +52,17 @@ export const SearchWord = ({ fetchWord }) => {
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        <div className="card-body">
+        <div className="searchResult">
           {data
             ? data.map((item) => (
                 <div key={item.word} id={item.word}>
-                  <button className="btn btn-success">{item.word}</button>
+                  <button className="btnI">{item.word}</button>
                 </div>
               ))
             : null}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

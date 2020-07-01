@@ -9,14 +9,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const LandingPage = () => {
   return (
-    <div className='bodyS'>
-      <h1> Welcome to the Musefull App </h1>
-      <Link className='' to='/dashboard'>
-        <p className='btnBack'>
+    <div className="bodyS">
+      <h1> Welcome to the Mussseefull App </h1>
+      <Link className="" to="/dashboard">
+        <p className="btnBack">
           <FontAwesomeIcon
             icon={faAngleLeft}
             transform={{ rotate: 270 }}
-            size='1x'
+            size="1x"
           />
         </p>
       </Link>

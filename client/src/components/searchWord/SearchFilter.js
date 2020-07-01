@@ -1,53 +1,47 @@
-import React from 'react';
-import cx from 'classnames';
+import React from "react";
+import cx from "classnames";
 
-import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
-import { SET_SEARCH_FILTER } from '../../actions/actionTypes';
+import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { SET_SEARCH_FILTER } from "../../actions/actionTypes";
 
-import { SEARCH_FILTERS } from './Search_Filters';
+import { SEARCH_FILTERS } from "./Search_Filters";
 
 export const SearchFilter = () => {
   const activeFilter = useSelector((state) => state.search.filter);
   const dispatch = useDispatch();
   return (
     <div>
-      <div className='item-filters form-check form-check-inline'>
-        {' '}
+      <ul className="d-flex">
         {Object.keys(SEARCH_FILTERS).map((filterKey) => {
           const currentFilter = SEARCH_FILTERS[filterKey];
 
           return (
-            <div
-              key={`item-filter-${currentFilter}`}
-              className={cx(
-                `item-filter-${currentFilter} form-check form-check-inline`,
-                currentFilter === activeFilter && `active`
-              )}
-              onClick={() =>
-                dispatch({
-                  type: SET_SEARCH_FILTER,
-                  payload: filterKey,
-                })
-              }
-            >
+            <li className="d-flex">
               <input
-                className='form-check-input'
-                type='radio'
+                className=""
+                type="radio"
                 id={`filter-${currentFilter}`}
                 name={`item-filter-radio`}
                 value={`option-${currentFilter}`}
               />
-              <label
-                className='form-check-label'
-                htmlFor={`filter-${currentFilter}`}
-              >
+              <label className="" htmlFor={`filter-${currentFilter}`}>
                 {currentFilter}
               </label>
-            </div>
+              <div
+                key={`item-filter-${currentFilter}`}
+                className="check"
+                onClick={() =>
+                  dispatch({
+                    type: SET_SEARCH_FILTER,
+                    payload: filterKey,
+                  })
+                }
+              ></div>
+            </li>
           );
-        })}{' '}
-      </div>{' '}
+        })}
+      </ul>
     </div>
   );
 };
