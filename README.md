@@ -1,30 +1,19 @@
-# This is STEFANs Branch
+# MASTERBRANCH!
 
 ## Final-Project
 
-DCI Hamburg Final Project FBW4 Language Learning
+### DCI Hamburg Final Project FBW4 Language Learning
 
-### Structuring Standards
+Please create a Folder on your PC  
+ Clone your Branch from gitHub into it  
+ Open VisualStudio Code  
+ Add Folder to Workspace  
+ Change working branch(bottom left in VS Code) from Master to your Branch  
+ Update your(!) readme File with "Checked <yourName>"  
+ Save and Push to your Branch on gitHub.
 
-"There are many different views on the ideal order of imported modules. I recommend you just look around and find the one which works for you.
-When it comes to me, I usually group imports by type && sort them alphabetically (that’s optional). I also tend to keep the following order:
+### Thank you!
 
-1. Standard modules
-2. Third-party modules
-3. Your code imports (components, etc.)
-4. Imports specific to the module (e.g. CSS, PNG, etc.)
-5. Code only used for tests
-   "
+### If you have any questions, please ask.
 
-### Fetch Syntax && Error handling
-
-function handleErrors(response) {
-if (!response.ok) {
-throw Error(response.statusText);
-}
-return response;
-}
-fetch("http://httpstat.us/500")
-.then(handleErrors)
-.then(response => console.log("ok") )
-.catch(error => console.log(error) );
+// If you want to hire us, please reach out to us via email or Github! -- to this better with ascci
