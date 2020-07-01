@@ -15,14 +15,9 @@ export const submitItem = (inputItem, id) => async (dispatch) => {
   const regex = new RegExp('^\\S.*');
   let check = regex.test(inputItem.title);
   if (check) {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    const body = JSON.stringify(inputItem);
     try {
-      const res = await axios.post(`/api/listItem/submit`, body, config);
+      const res = await axios.post(`/api/listItem/submit`, inputItem);
+      console.log(res);
       dispatch(setAlert('Item Created', 'success'));
     } catch (err) {
       const errors = err.response.data.errors;
