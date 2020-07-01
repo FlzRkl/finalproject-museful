@@ -24,11 +24,11 @@ const NavBar = ({ loadItem }) => {
   const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
   const history = useHistory();
 
-  const handleClick = (e) => {
-    //aboveItem is undefined??
-    console.log(aboveItem);
-    aboveItem ? loadItem(aboveItem) : history.push("/dashboard/lists");
-  };
+  // const handleClick = (e) => {
+  //   //aboveItem is undefined??
+  //   console.log(aboveItem);
+  //   aboveItem ? loadItem(aboveItem) : history.push("/dashboard/lists");
+  // };
 
   //TOGGLE HOOK
   // const [theme, toggleTheme] = useDarkMode();
@@ -62,7 +62,7 @@ const NavBar = ({ loadItem }) => {
                   </NavItem> */}{" "}
         </div>{" "}
         <NavbarBrand className="header link">
-          <Link className="link" to="/dashboard">
+          <Link className="link neon" to="/dashboard">
             <span> TMA: </span>The Museful App{" "}
           </Link>{" "}
         </NavbarBrand>{" "}
