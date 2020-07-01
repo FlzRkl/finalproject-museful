@@ -9,7 +9,9 @@ import {
   SET_ALERT,
 } from './actionTypes';
 
-import { setAlert } from './alert';
+import {
+  setAlert
+} from './alert';
 
 export const submitItem = (inputItem, id) => async (dispatch) => {
   const regex = new RegExp('^\\S.*');
@@ -76,7 +78,10 @@ export const loadItem = (id) => async (dispatch) => {
 
 export const setItemFilter = (filter) => (dispatch) => {
   // console.log(filter);
-  dispatch({ type: SET_ITEM_FILTER, payload: filter });
+  dispatch({
+    type: SET_ITEM_FILTER,
+    payload: filter
+  });
 };
 
 export const getListArr = (mainList) => (dispatch) => {
@@ -86,11 +91,11 @@ export const getListArr = (mainList) => (dispatch) => {
   const getKeys = [];
   for (let item in mainList) {
     let x = mainList[item];
-    let y = Array.isArray(x)
-      ? x.length > 0
-        ? ((item = item[0].toUpperCase() + item.slice(1)), getKeys.push(item))
-        : null
-      : null;
+    let y = Array.isArray(x) ?
+      x.length > 0 ?
+      ((item = item[0].toUpperCase() + item.slice(1)), getKeys.push(item)) :
+      null :
+      null;
   }
   // console.log(getKeys, getValues, mainList);
   const getLists = [getKeys, getValues];

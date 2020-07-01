@@ -9,23 +9,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const dailyLearning = () => {
   return (
-    <div className='bodyS'>
-      <h1>Daily Learning</h1>
-      <Link className='' to='/dashboard'>
-        <p className='btnBack'>
-          <FontAwesomeIcon icon={faAngleLeft} size='1x' />
-        </p>
+    <div className="bodyS">
+      <h1> Daily Learning </h1>{" "}
+      <Link className="" to="/dashboard">
+        <p className="btnBack">
+          <FontAwesomeIcon icon={faAngleLeft} size="1x" />
+        </p>{" "}
       </Link>
-
-      {/* <input type='text' value='Give it a try!' /> */}
-      <input
-        type='submit'
-        value='Try'
-        className='btnForm'
+      {/* <input type='text' value='Give it a try!' /> */}{" "}
+      <button
+        type="submit"
+        className="btnI"
         onClick={() => {
           const name = prompt("What are you looking for?");
         }}
-      />
+      >
+        Search{" "}
+      </button>{" "}
     </div>
   );
 };

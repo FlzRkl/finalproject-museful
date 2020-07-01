@@ -6,7 +6,9 @@ import {
   SORT_ITEMS,
 } from './actionTypes';
 import axios from 'axios';
-import { searchFilters } from './searchFilters';
+import {
+  searchFilters
+} from './searchFilters';
 import SearchFilter from '../components/searchWord/SearchFilter';
 
 const datamuse = axios.create({
