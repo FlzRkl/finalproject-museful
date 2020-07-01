@@ -1,0 +1,17 @@
+$body-bg: #ccc;
+.input-group {
+  width: inherit;
+}
+
+.list-group-item {
+  border-bottom: 1px solid #ffe493;
+}
+
+.list-group-flush > .list-group-item:last-child {
+  border-bottom-width: 1 !important;
+}
+
+.list-group-item-dark {
+  color: #b9bbbe;
+  background-color: #282c34;
+}
