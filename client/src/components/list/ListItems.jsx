@@ -13,6 +13,8 @@ export default function ListItems({ item }) {
                 id={item.id}
               >
                 {item.title ? item.title : item}
+                {item.desc ? item.desc : <h5>null Desc</h5>}
+
                 {/* <span className='badge'>
                 <svg
                   className='bi bi-box-arrow-in-down-right'

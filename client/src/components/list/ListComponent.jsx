@@ -27,6 +27,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
 
   const handleChangeDesc = (e) => {
     setDesc(e.target.value);
+    console.log(desc);
   };
 
   const handleClick = (e) => {
@@ -43,16 +44,12 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
     aboveItemId: currentId,
   };
 
-  const setInter = async () => {
-    setInterval(loadItem(currentId), 1000);
-  };
-
   const submit = (e) => {
     e.preventDefault();
     submitItem(submitObject, currentId);
     setTitle('');
     setDesc('');
-    setInter();
+    loadItem(currentId);
   };
 
   useEffect(() => {
@@ -67,7 +64,9 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
 
   return (
     <>
-      <h1 className='mb-3'>{mainList.title}</h1> <ItemFilter />
+      <h1 className='mb-3'>{mainList.title}</h1>
+      <h3 className='mb-3'>{mainList.desc}</h3>
+      <ItemFilter />
       <form
         onSubmit={submit}
         className='form col-xs-12 col-sm-10 col-md-8 col-lg-6'
