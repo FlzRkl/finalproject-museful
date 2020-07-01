@@ -18,7 +18,7 @@ let iconSize = '3x';
 
 const NavBar = ({ loadItem }) => {
   let location = useLocation();
-  console.log(location);
+  // console.log(location);
   const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
   const history = useHistory();
   const dispatch = useDispatch();
