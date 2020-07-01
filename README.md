@@ -16,4 +16,4 @@ Please create a Folder on your PC
 
 ### If you have any questions, please ask.
 
-// If you want to hire us, please reach out to us via email or Github! -- to this better with ascci
+// If you want to hire us, please reach out to us via email or Github! -- do this better with ascci
