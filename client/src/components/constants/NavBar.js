@@ -42,8 +42,9 @@ const NavBar = ({ loadItem }) => {
               <FontAwesomeIcon
                 icon={faGraduationCap}
                 // spin
-                color='white'
+                // color='green'
                 size={iconSize}
+                className='faIcon'
               />
             </Link>
           </NavItem>
@@ -52,8 +53,9 @@ const NavBar = ({ loadItem }) => {
               <FontAwesomeIcon
                 icon={faCog}
                 spin
-                color='white'
+                // color='white'
                 size={iconSize}
+                className='faIcon'
               />
             </Link>
           </NavItem>

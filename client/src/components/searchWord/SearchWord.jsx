@@ -36,6 +36,7 @@ export const SearchWord = ({ fetchWord }) => {
           value={word}
           onChange={handleChange}
           className='input'
+          autocomplete='off'
         />
         <button
           onClick={handleSearch}

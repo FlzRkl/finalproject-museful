@@ -14,6 +14,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const iconSize = "1x";
 
 const Dashboard = () => {
+  if (window.matchMedia("(prefers-color-scheme)").media !== "not all") {
+    console.log("🎉 Dark mode is supported");
+  } else {
+    console.log("Dark mode not supported");
+  }
+
+  console.log(window.matchMedia("(prefers-color-scheme:dark)"));
+
   return (
     <div className='dashboard'>
       <Link className='subHeader link' to='/dashboard/daily-learning'>

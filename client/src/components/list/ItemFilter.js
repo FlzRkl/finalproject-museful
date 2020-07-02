@@ -1,18 +1,18 @@
-import React from 'react';
-import cx from 'classnames';
+import React from "react";
+import cx from "classnames";
 
-import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
-import { SET_ITEM_FILTER } from '../../actions/actionTypes';
+import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { SET_ITEM_FILTER } from "../../actions/actionTypes";
 
-import { ITEM_FILTERS } from './Item_Filters';
+import { ITEM_FILTERS } from "./Item_Filters";
 
 export const ItemFilter = () => {
   const activeFilter = useSelector((state) => state.list.filter);
   const dispatch = useDispatch();
   return (
     <div>
-      <div className='item-filters form-check form-check-inline mb-3'>
+      <div className=''>
         {Object.keys(ITEM_FILTERS).map((filterKey) => {
           const currentFilter = ITEM_FILTERS[filterKey];
           return (
@@ -40,7 +40,7 @@ export const ItemFilter = () => {
                 className='form-check-label'
                 htmlFor={`filter-${currentFilter}`}
               >
-                {' '}
+                {" "}
                 {currentFilter}
               </label>
             </div>
