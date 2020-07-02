@@ -1,6 +1,6 @@
 export const SEARCH_FILTERS = {
   RHYM: 'Rhyme',
-  ML: 'Means like',
+  ML: 'Means-like',
   SYN: 'Synonym',
   ANT: 'Antonyme',
 };

@@ -6,13 +6,11 @@ import {
   SORT_ITEMS,
 } from './actionTypes';
 import axios from 'axios';
-import {
-  searchFilters
-} from './searchFilters';
+import { searchFilters } from './searchFilters';
 import SearchFilter from '../components/searchWord/SearchFilter';
 
 const datamuse = axios.create({
-  baseURL: 'https://api.datamuse.com/words?',
+  baseURL: 'https://api.datamuse.com/words',
 });
 
 export const fetchWord = (word, filter) => async (dispatch) => {
@@ -31,7 +29,7 @@ export const fetchWord = (word, filter) => async (dispatch) => {
     });
     try {
       // console.log(url + fQuery + word);
-      const result = await datamuse.get(fQuery + word);
+      const result = await datamuse.get('?' + fQuery + word);
 
       console.log(result);
       dispatch({
