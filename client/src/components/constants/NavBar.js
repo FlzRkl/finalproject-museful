@@ -1,28 +1,28 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 //TOGGLE
 // import Toggle from "./Darkmode/Toggle";
 // import { useDarkMode } from "./Darkmode/useDarkMode";
 
 // STYLE
-import { faCog } from "@fortawesome/free-solid-svg-icons";
-import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, NavItem, NavbarBrand } from "react-bootstrap";
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Nav, NavItem, NavbarBrand } from 'react-bootstrap';
 
 //Functions
-import { loadItem } from "../../actions/listAction";
+import { loadItem } from '../../actions/listAction';
 
 //ICONSIZE
-let iconSize = "3x";
+let iconSize = '3x';
 
 const NavBar = ({ loadItem }) => {
-  const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
-  const history = useHistory();
+  // const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
+  // const history = useHistory();
 
   // const handleClick = (e) => {
   //   //aboveItem is undefined??
@@ -35,33 +35,33 @@ const NavBar = ({ loadItem }) => {
 
   return (
     <>
-      <Nav className="navbar">
-        <div className="settings">
-          <NavItem className="link">
-            <Link className=" " to="/dashboard/progress">
+      <Nav className='navbar'>
+        <div className='settings'>
+          <NavItem className='link'>
+            <Link className=' ' to='/dashboard/progress'>
               <FontAwesomeIcon
                 icon={faGraduationCap}
                 // spin
-                color="#fff"
+                color='#fff'
                 size={iconSize}
-              />{" "}
-            </Link>{" "}
-          </NavItem>{" "}
-          <NavItem className="link">
-            <Link className=" " to="/dashboard/settings">
-              <FontAwesomeIcon icon={faCog} spin color="#fff" size={iconSize} />{" "}
-            </Link>{" "}
-          </NavItem>{" "}
+              />{' '}
+            </Link>{' '}
+          </NavItem>{' '}
+          <NavItem className='link'>
+            <Link className=' ' to='/dashboard/settings'>
+              <FontAwesomeIcon icon={faCog} spin color='#fff' size={iconSize} />{' '}
+            </Link>{' '}
+          </NavItem>{' '}
           {/* <NavItem className='link'>
                     <Toggle theme={theme} toggleTheme={toggleTheme} />
-                  </NavItem> */}{" "}
-        </div>{" "}
-        <NavbarBrand className="header link">
-          <Link className="link" to="/dashboard">
-            <span> TMA: </span>The Museful App{" "}
-          </Link>{" "}
-        </NavbarBrand>{" "}
-      </Nav>{" "}
+                  </NavItem> */}{' '}
+        </div>{' '}
+        <NavbarBrand className='header link'>
+          <Link className='link' to='/dashboard'>
+            <span> TMA: </span>The Museful App{' '}
+          </Link>{' '}
+        </NavbarBrand>{' '}
+      </Nav>{' '}
       {/* <div className=''>
                 <svg
                   onClick={handleClick}
@@ -101,7 +101,7 @@ const NavBar = ({ loadItem }) => {
                   />
  <
       /svg>  <
-      /div> */}{" "}
+      /div> */}{' '}
     </>
   );
 };
@@ -113,8 +113,6 @@ NavBar.propTypes = {
 const mapStateToProps = (state) => ({
   list: state.list,
 });
-
-const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, {
   loadItem,
