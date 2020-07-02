@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './list.scss';
 import PropTypes from 'prop-types';
 import ListItems from './ListItems';
@@ -6,7 +6,6 @@ import { ItemFilter } from './ItemFilter';
 import { submitItem } from '../../actions/listAction';
 import { loadItem, getListArr } from '../../actions/listAction';
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { ABOVE_ITEM } from '../../actions/actionTypes';
 
 export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
   const inputEl = useRef(null);

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 function Cards({ item }) {
   return (
@@ -17,7 +16,5 @@ function Cards({ item }) {
     </div>
   );
 }
-
-Cards.propTypes = {};
 
 export default Cards;
