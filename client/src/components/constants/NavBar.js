@@ -4,7 +4,6 @@ import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-
 // STYLE
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
@@ -43,7 +42,7 @@ const NavBar = ({ loadItem }) => {
         />
         <NavbarBrand className=''>
           <Link className='logo ' to='/'>
-            TMA:The Museful App
+            Musefulla
           </Link>
         </NavbarBrand>
         <FontAwesomeIcon
@@ -67,8 +66,7 @@ const NavBar = ({ loadItem }) => {
           height='1.5em'
           viewBox='0 0 18 18'
           fill='currentColor'
-          xmlns='http://www.w3.org/2000/svg'
-        >
+          xmlns='http://www.w3.org/2000/svg'>
           <path
             transform='translate(1, 1)'
             stroke='white'
@@ -98,7 +96,6 @@ const NavBar = ({ loadItem }) => {
         </svg> */}
       </div>
     </>
-
   );
 };
 
@@ -111,4 +108,3 @@ const mapStateToProps = (state) => ({ list: state.list });
 const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, { loadItem })(NavBar);
-

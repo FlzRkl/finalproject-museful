@@ -1,0 +1,6 @@
+.bodyStF {
+  display: -webkit-box;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  background-color: #26115a;
+}

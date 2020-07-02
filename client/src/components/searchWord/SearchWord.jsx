@@ -4,6 +4,7 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 import { FETCH_WORDS } from '../../actions/actionTypes';
 import { fetchWord } from '../../actions/searchAction';
 import SearchFilter from './SearchFilter';
+import './SearchWord.css';
 
 export const SearchWord = ({ fetchWord }) => {
   const [word, setWord] = useState('');
@@ -31,8 +32,9 @@ export const SearchWord = ({ fetchWord }) => {
       <SearchFilter />
       <form id='formSearch' onSubmit={handleSearch}>
         <input
-          placeholder='Enter Initial Word'
-          id='initial-word-form'
+          placeholder='What r u searching for?'
+          //id='initial-word-form'
+          id='glowing-pulse-form'
           type='text'
           value={word}
           onChange={handleChange}
@@ -40,8 +42,10 @@ export const SearchWord = ({ fetchWord }) => {
         <button
           onClick={handleSearch}
           type='submit'
-          className='btn btn-success'
-          style={{ marginTop: '8px' }}>
+          //className='btn btn-success'
+          id='btnF'
+          //style={{ marginTop: '8px' }}
+        >
           Search
         </button>
       </form>
@@ -51,11 +55,11 @@ export const SearchWord = ({ fetchWord }) => {
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        <div className='card-body'>
+        <div className='btnContainerF'>
           {data
             ? data.map((item) => (
                 <div key={item.word} id={item.word}>
-                  <button className='btn btn-success'>{item.word}</button>
+                  <a className='glowButtonF'>{item.word}</a>
                 </div>
               ))
             : null}

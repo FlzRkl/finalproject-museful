@@ -6,28 +6,27 @@ import { Link } from 'react-router-dom';
 const Dashboard = () => {
   return (
     <div className='body-St'>
-
-      <div className='btnContainer'>
-        <Link className='btnS' to='/dashboard/daily-learning'>
+      <div className='btnContainerF'>
+        <Link className='btnSFil' to='/dashboard/daily-learning'>
           Daily Learning
         </Link>
-        <Link className='btnS' to='/dashboard/progress'>
+        <Link className='btnSFil' to='/dashboard/progress'>
           Progress
-        </Link>        <Link className='btnS' to='/dashboard/searchword'>
+        </Link>{' '}
+        <Link className='btnSFil' to='/dashboard/searchword'>
           SearchWord
         </Link>
-        <Link className='btnS' to='/dashboard/settings'>
+        <Link className='btnSFil' to='/dashboard/settings'>
           Settings
         </Link>
-        <Link className='btnS' to='/dashboard/searchml'>
+        <Link className='btnSFil' to='/dashboard/searchml'>
           searchML
         </Link>
-        <Link className='btnS' to='/dashboard/searchrhy'>
+        <Link className='btnSFil' to='/dashboard/searchrhy'>
           searchRhy
         </Link>
-        <Link className='btnS' to='/dashboard/lists'>
+        <Link className='btnSFil' to='/dashboard/lists'>
           Lists
-
         </Link>
       </div>
     </div>
