@@ -2,11 +2,11 @@
 //COLORS
 $lGradLight: linear-gradient(#ffdd00, #fbb034);
 $lGradDark: radial-gradient(#0f2027, #203a43, #2c5364);
-$ColorDefault: linear-gradient(#ffdd00, #fbb034);
+$ColorDefault: linear-gradient(#0f2027, #203a43, #2c5364);
 $ColorLight: #c7c7c7;
 //FONTS
 $font: "monospace";
-$fontColorDefault: #ffffff;
+$fontColorDefault: white;
 $fontAlert: rgb(223, 90, 90);
 //SIZING
 $fontSizeH: 2.5rem;
@@ -14,13 +14,14 @@ $fontSizeH2: 1.5rem;
 $fontSizeT: 1rem;
 //SHADOWS
 $textShadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
-$textShadow2: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
-  0px 18px 23px rgba(0, 0, 0, 0.1);
+$textShadow2: 0px 4px 3px rgba(0, 0, 0, 0.4),
+0px 8px 13px rgba(0, 0, 0, 0.1),
+0px 18px 23px rgba(0, 0, 0, 0.1);
 //BORDERS
 $borderRadius: 4px;
 $borderRadiusSH: 4px;
-$borderH: 0.5rem solid $fontColorDefault;
-$borderSH: 0.3rem solid $fontColorDefault;
+$borderH: 0.2rem solid $fontColorDefault;
+$borderSH: 0.2rem solid $fontColorDefault;
 $borderRadiusInput: 4px 0 0 4px;
 
 ////RESET
@@ -37,7 +38,7 @@ body {
   min-width: 320px;
   font-family: monospace;
   font-size: $fontSizeT;
-  background: $lGradLight;
+  background: $ColorDefault;
   color: $fontColorDefault;
   display: flex;
   flex-direction: column;
@@ -134,15 +135,15 @@ ul li .check::before {
   -webkit-transition: background 0.25s linear;
 }
 
-input[type="radio"]:checked ~ .check {
+input[type="radio"]:checked~.check {
   border: 1rem solid $fontAlert;
 }
 
-input[type="radio"]:checked ~ .check::before {
+input[type="radio"]:checked~.check::before {
   background: $fontAlert;
 }
 
-input[type="radio"]:checked ~ label {
+input[type="radio"]:checked~label {
   // color: $fontAlert;
 }
 
@@ -189,13 +190,14 @@ input[type="radio"]:checked ~ label {
   margin: 0;
 }
 
-.searchResult {
-}
+.searchResult {}
 
 ////TEXT
 .header {
   font-size: $fontSizeH;
-  font-weight: bolder;
+  // font-weight: bolder;
+  // background: $ColorDefault;
+  letter-spacing: 0.09em;
   border: $borderH;
   border-radius: $borderRadius;
   padding: 1rem 2rem;
@@ -236,9 +238,11 @@ input[type="radio"]:checked ~ label {
 .settings :nth-child(1) {
   order: 1;
 }
+
 .settings :nth-child(2) {
   order: 3;
 }
+
 .settings :nth-child(3) {
   order: 2;
 }
@@ -250,6 +254,7 @@ input[type="radio"]:checked ~ label {
 .link:hover {
   text-decoration: none;
 }
+
 .link span {
   color: $fontAlert;
 }
@@ -258,6 +263,7 @@ input[type="radio"]:checked ~ label {
   display: inline-flex;
   justify-content: space-around;
 }
+
 .settings .link {
   margin: 2rem;
 }
@@ -275,7 +281,7 @@ input[type="radio"]:checked ~ label {
   display: inline-block;
   text-align: center;
   padding: 1rem;
-  background: $ColorDefault;
+  // background: $ColorDefault;
   justify-content: center;
   font-weight: bolder;
   font-size: $fontSizeT;
@@ -285,11 +291,13 @@ input[type="radio"]:checked ~ label {
 
   bottom: 0;
 }
+
 .copyright {
   border-radius: $borderRadius;
   padding: 0 1rem;
   display: inline-flex;
 }
+
 .aboutUs {
   font-size: $fontSizeH;
   border: $borderSH;
@@ -368,6 +376,7 @@ ul.d-flex {
   display: flex;
   align-items: center;
 }
+
 .d-flexColumn {
   display: flex;
   flex-direction: column;
@@ -394,6 +403,7 @@ ul.d-flex {
   height: 100%;
   visibility: visible;
 }
+
 .aboutUs:hover .underlay {
   font-size: 0;
 }
@@ -417,6 +427,7 @@ ul.d-flex {
       0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78),
       0 0 54px rgba(30, 132, 242, 0.92);
   }
+
   to {
     text-shadow: 0 0 6px rgba(202, 228, 225, 0.98),
       0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58),
@@ -435,6 +446,7 @@ ul.d-flex {
   .dashboard .link {
     margin: 0.5rem;
   }
+
   .profiles {
     flex-wrap: wrap;
   }
@@ -471,9 +483,11 @@ ul.d-flex {
   .dashboard {
     flex-wrap: wrap;
   }
+
   .dashboard .link {
     margin: 1rem;
   }
+
   .profiles {
     flex-wrap: wrap;
   }
@@ -481,6 +495,7 @@ ul.d-flex {
   .profiles .link {
     margin: 1rem;
   }
+
   ul.d-flex {
     display: flex;
   }
@@ -496,6 +511,7 @@ ul.d-flex {
   .profiles {
     flex-wrap: nowrap;
   }
+
   .dashboard.pro {
     flex-direction: column;
   }

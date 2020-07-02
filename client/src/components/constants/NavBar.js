@@ -18,7 +18,7 @@ import { Nav, NavItem, NavbarBrand } from "react-bootstrap";
 import { loadItem } from "../../actions/listAction";
 
 //ICONSIZE
-let iconSize = "4x";
+let iconSize = "3x";
 
 const NavBar = ({ loadItem }) => {
   const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
@@ -42,19 +42,14 @@ const NavBar = ({ loadItem }) => {
               <FontAwesomeIcon
                 icon={faGraduationCap}
                 // spin
-                color="white"
+                color="#fff"
                 size={iconSize}
               />{" "}
             </Link>{" "}
           </NavItem>{" "}
           <NavItem className="link">
             <Link className=" " to="/dashboard/settings">
-              <FontAwesomeIcon
-                icon={faCog}
-                spin
-                color="white"
-                size={iconSize}
-              />{" "}
+              <FontAwesomeIcon icon={faCog} spin color="#fff" size={iconSize} />{" "}
             </Link>{" "}
           </NavItem>{" "}
           {/* <NavItem className='link'>
@@ -62,7 +57,7 @@ const NavBar = ({ loadItem }) => {
                   </NavItem> */}{" "}
         </div>{" "}
         <NavbarBrand className="header link">
-          <Link className="link neon" to="/dashboard">
+          <Link className="link" to="/dashboard">
             <span> TMA: </span>The Museful App{" "}
           </Link>{" "}
         </NavbarBrand>{" "}
