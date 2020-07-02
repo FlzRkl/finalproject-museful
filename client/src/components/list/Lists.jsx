@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { useSelector, connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -21,23 +21,27 @@ const Lists = ({ loadItem }) => {
   };
 
   return (
-    <div className='dashboard'>
-      <h1 className='mb-4'>List Storage</h1>
-      <ul className='list' id='list-list'>
-        {userLists.map((item) => (
-          <li
-            key={item.id}
-            id={item.id}
-            onClick={handleClick}
-            className='col-xs-12 col-sm-6 col-md-6 col-lg-4'
-          >
-            <Link to='/dashboard/listComponent'>
-              <Cards item={item} />
-            </Link>
-          </li>
-        ))}{" "}
-      </ul>
-    </div>
+    <Fragment>
+      {loadItem ? (
+        <div className='dashboard d-flexColumn'>
+          <h1 className=''>List Storage</h1>
+          <ul className='' id='list-list'>
+            {userLists.map((item) => (
+              <li
+                key={item.id}
+                id={item.id}
+                onClick={handleClick}
+                className='text'
+              >
+                <Link to='/dashboard/listComponent'>
+                  <Cards item={item} />
+                </Link>
+              </li>
+            ))}{" "}
+          </ul>
+        </div>
+      ) : null}
+    </Fragment>
   );
 };
 

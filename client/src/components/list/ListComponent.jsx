@@ -62,22 +62,20 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
   }, [filteredList]);
 
   return (
-    <div className='dashboard'>
-      <h1 className='mb-3'>{mainList.title}</h1> <ItemFilter />
-      <form
-        onSubmit={submit}
-        className='form col-xs-12 col-sm-10 col-md-8 col-lg-6'
-      >
-        <div className='input-group mb-2'>
-          <div className='input-group-prepend'>
+    <div className='dashboard d-flexColumn'>
+      <h1 className='mb-3'>{mainList.title}</h1>
+      <ItemFilter />
+      <form onSubmit={submit} className=''>
+        <div className='d-flex'>
+          {/* <div className='input-group-prepend'>
             <span className='input-group-text' id='inüput-addon-filter'>
               @@
             </span>
-          </div>
+          </div> */}
           <input
             ref={inputEl}
             type='text'
-            className='form-control'
+            className='input'
             placeholder='Title'
             aria-label='Title'
             aria-describedby='input-title'
@@ -89,7 +87,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
           <div className='input-group-append'>
             <button
               onClick={submit}
-              className='input-group-text'
+              className='inputSearch'
               id='input-addon-add'
             >
               Add

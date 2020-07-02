@@ -21,9 +21,9 @@ export class registerModal extends Component {
       <div className='dashboard d-flexColumn'>
         <h1>Hi! Welcome to the Musefull App.</h1>
         <h3>Are you interested how it works? Then please:</h3>
-        <button className='btnA'>Register</button>
+        <button className='btnI'>Register</button>
         <h3>You are already registered? Then please login:</h3>
-        <button className='btnA'>Login</button>
+        <button className='btnI'>Login</button>
       </div>
     );
   }
