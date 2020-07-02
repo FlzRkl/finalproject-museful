@@ -1,16 +1,16 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // STYLE
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LandingPage = () => {
   return (
     <div className='bodyS'>
-      <h1> Welcome to the Musefull App </h1>
+      <h1> Welcome To Musefulla </h1>
       <Link className='' to='/dashboard'>
         <p className='btnBack'>
           <FontAwesomeIcon
