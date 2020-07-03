@@ -329,6 +329,26 @@ input[type='radio']:checked ~ .check::before {
   padding: 0.5rem 1rem;
 }
 
+.daily-learning {
+  border-color: $fontAlert;
+  animation: border-flicker 4s linear infinite;
+  //animation: glow 4s linear infinite;
+}
+
+.search-word {
+  animation: glow 4s linear infinite;
+}
+
+.lists {
+  border-color: rgba(16, 134, 232, 0.73);
+  animation: border-flicker 4s linear infinite;
+}
+
+.logout {
+  border-color: orange;
+  animation: border-flicker 2s linear infinite;
+}
+
 .text {
   font-size: $fontSizeT;
 }
