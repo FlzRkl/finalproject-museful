@@ -16,16 +16,18 @@ const iconSize = '1x';
 const Dashboard = () => {
   return (
     <div className='dashboard'>
-      <Link className='subHeader link' to='/dashboard/daily-learning'>
+      <Link
+        className='subHeader link daily-learning'
+        to='/dashboard/daily-learning'>
         <FontAwesomeIcon icon={faListUl} size={iconSize} />{' '}
       </Link>{' '}
-      <Link className='subHeader link' to='/dashboard/search-word'>
+      <Link className='subHeader link search-word' to='/dashboard/search-word'>
         <FontAwesomeIcon icon={faSearch} size={iconSize} />{' '}
       </Link>{' '}
-      <Link className='subHeader link' to='/dashboard/lists'>
+      <Link className='subHeader link lists' to='/dashboard/lists'>
         <FontAwesomeIcon icon={faClipboard} size={iconSize} />{' '}
       </Link>{' '}
-      <Link className='subHeader link' to='/dashboard/logout'>
+      <Link className='subHeader link logout' to='/dashboard/logout'>
         <FontAwesomeIcon icon={faDoorOpen} size={iconSize} />{' '}
       </Link>{' '}
     </div>
