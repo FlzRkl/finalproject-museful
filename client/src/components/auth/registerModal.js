@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 export class registerModal extends Component {
   state = {
     modal: false,
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
     msg: null,
   };
 
@@ -19,10 +19,13 @@ export class registerModal extends Component {
   render() {
     return (
       <div className='dashboard d-flexColumn'>
-        <h1>Hi! Welcome to the Musefull App.</h1>
-        <h3>Are you interested how it works? Then please:</h3>
+        <h1>Imagine, discover and create your own learning space!</h1>
+        <h3>
+          Are you interested how your museful space works and looks like? Then,
+          please here you go.
+        </h3>
         <button className='btnA'>Register</button>
-        <h3>You are already registered? Then please login:</h3>
+        <h3>You are already in? Welcome back again.</h3>
         <button className='btnA'>Login</button>
       </div>
     );
