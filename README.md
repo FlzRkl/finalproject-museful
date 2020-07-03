@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# This is FILIZ' Branch
-DCI Hamburg Final Project FBW4 Language Learning
----> "CHECKED finally"
-=======
 # MASTERBRANCH!
 
 ## Final-Project
@@ -14,12 +9,11 @@ Please create a Folder on your PC
  Open VisualStudio Code  
  Add Folder to Workspace  
  Change working branch(bottom left in VS Code) from Master to your Branch  
- Update your(!) readme File with "Checked <yourName>"  
+ Update your(!) readme File with "Checked <Filiz>"  
  Save and Push to your Branch on gitHub.
 
 ### Thank you!
 
 ### If you have any questions, please ask.
 
-// If you want to hire us, please reach out to us via email or Github! -- to this better with ascci
->>>>>>> 08cd106e1eb1c5abf2639d209885e5d531baab42
+// If you want to hire us, please reach out to us via email or Github! -- do this better with ascci

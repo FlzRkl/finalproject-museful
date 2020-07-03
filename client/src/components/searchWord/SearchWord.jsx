@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { FETCH_WORDS } from '../../actions/actionTypes';
+
 import { fetchWord } from '../../actions/searchAction';
 import SearchFilter from './SearchFilter';
-import './SearchWord.css';
 
 export const SearchWord = ({ fetchWord }) => {
   const [word, setWord] = useState('');
   const isLoading = useSelector((state) => state.search.isLoading);
   const isError = useSelector((state) => state.search.isError);
   const data = useSelector((state) => state.search.data);
+  const filter = useSelector((state) => state.search.filter);
+
   // const dispatch = useDispatch();
-  console.log(data);
+  console.log(filter);
 
   const handleChange = (e) => {
     setWord(e.target.value);
@@ -20,32 +21,27 @@ export const SearchWord = ({ fetchWord }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    fetchWord(word);
-    // dispatch({
-    //   type: FETCH_WORDS,
-    //   payload: word,
-    // });
+    fetchWord(word, filter);
+
     console.log('submit Searchhhhhhhhhhhhhhhhhhhhhhhhhhh');
   };
   return (
-    <>
+    <div className='dashboard d-flexColumn'>
       <SearchFilter />
       <form id='formSearch' onSubmit={handleSearch}>
         <input
-          placeholder='What r u searching for?'
-          //id='initial-word-form'
-          id='glowing-pulse-form'
+          placeholder='Please enter a word..'
+          id='initial-word-form'
           type='text'
           value={word}
           onChange={handleChange}
+          className='input'
         />
         <button
           onClick={handleSearch}
           type='submit'
-          //className='btn btn-success'
-          id='btnF'
-          //style={{ marginTop: '8px' }}
-        >
+          className='inputSearch'
+          style={{ marginTop: '8px' }}>
           Search
         </button>
       </form>
@@ -55,17 +51,17 @@ export const SearchWord = ({ fetchWord }) => {
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        <div className='btnContainerF'>
+        <div className='searchResult'>
           {data
             ? data.map((item) => (
                 <div key={item.word} id={item.word}>
-                  <a className='glowButtonF'>{item.word}</a>
+                  <button className='btnI'>{item.word}</button>
                 </div>
               ))
             : null}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -12,11 +12,11 @@ export const ItemFilter = () => {
   const dispatch = useDispatch();
   return (
     <div>
-      <div className='item-filters form-check form-check-inline'>
+      <ul className='item-filters form-check form-check-inline mb-3'>
         {Object.keys(ITEM_FILTERS).map((filterKey) => {
           const currentFilter = ITEM_FILTERS[filterKey];
           return (
-            <div
+            <li
               key={`item-filter-${currentFilter}`}
               className={cx(
                 `item-filter-${currentFilter} form-check form-check-inline`,
@@ -43,16 +43,17 @@ export const ItemFilter = () => {
                 {' '}
                 {currentFilter}
               </label>
-            </div>
+              <div className='check'></div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </div>
   );
 };
 
 ItemFilter.propTypes = {
-  setFilter: PropTypes.func,
+  setItemFilter: PropTypes.func,
   activeFilter: PropTypes.string,
 };
 

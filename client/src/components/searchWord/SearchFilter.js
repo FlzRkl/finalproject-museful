@@ -12,45 +12,46 @@ export const SearchFilter = () => {
   const dispatch = useDispatch();
   return (
     <div>
-      <div className='item-filters form-check form-check-inline'>
+      <ul className='d-flex'>
         {Object.keys(SEARCH_FILTERS).map((filterKey) => {
           const currentFilter = SEARCH_FILTERS[filterKey];
           return (
-            <div
+            <li
+              className='d-flex'
               key={`item-filter-${currentFilter}`}
-              className={cx(
-                `item-filter-${currentFilter} form-check form-check-inline`,
-                currentFilter === activeFilter && `active`,
-              )}
               onClick={() =>
                 dispatch({
                   type: SET_SEARCH_FILTER,
-                  payload: currentFilter,
+                  payload: filterKey,
                 })
-              }>
+              }
+            >
               <input
-                className='form-check-input'
+                className='check-label'
                 type='radio'
                 id={`filter-${currentFilter}`}
                 name={`item-filter-radio`}
                 value={`option-${currentFilter}`}
               />
-              <label
-                className='form-check-label'
-                htmlFor={`filter-${currentFilter}`}>
-                {' '}
+              <label className='' htmlFor={`filter-${currentFilter}`}>
                 {currentFilter}
               </label>
-            </div>
+              <div
+                className={cx(
+                  `item-filter-${currentFilter} check`,
+                  currentFilter === activeFilter && `active`
+                )}
+              ></div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </div>
   );
 };
 
 SearchFilter.propTypes = {
-  setFilter: PropTypes.func,
+  setSearchFilter: PropTypes.func,
   activeFilter: PropTypes.string,
 };
 
