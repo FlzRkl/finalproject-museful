@@ -14,14 +14,14 @@ $fontSizeH2: 1.5rem;
 $fontSizeT: 1rem;
 //SHADOWS
 $textShadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
-$textShadow2: 0px 4px 3px rgba(0, 0, 0, 0.4),
-0px 8px 13px rgba(0, 0, 0, 0.1),
-0px 18px 23px rgba(0, 0, 0, 0.1);
+$textShadow2: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+  0px 18px 23px rgba(0, 0, 0, 0.1);
 //BORDERS
 $borderRadius: 4px;
 $borderRadiusSH: 4px;
 $borderH: 0.2rem solid $fontColorDefault;
 $borderSH: 0.2rem solid $fontColorDefault;
+$borderF: 0.2rem solid #1086e8;
 $borderRadiusInput: 4px 0 0 4px;
 
 ////RESET
@@ -77,11 +77,14 @@ img {
   font-size: $fontSizeH2;
   font-weight: bolder;
   background: $ColorDefault;
-  color: $fontColorDefault;
-  border: $borderSH;
+  color: $fontAlert;
+  border: $borderF;
   padding: 0.5rem 1rem;
   margin: 1rem;
   border-radius: $borderRadius;
+  animation: border-flicker 2s linear infinite;
+  animation: text-flicker 3s linear infinite;
+  text-transform: uppercase;
 }
 
 //CHECKBOX
@@ -136,11 +139,11 @@ ul li .check::before {
   -webkit-transition: background 0.25s linear;
 }
 
-input[type='radio']:checked~.check {
+input[type='radio']:checked ~ .check {
   border: 1rem solid $fontAlert;
 }
 
-input[type='radio']:checked~.check::before {
+input[type='radio']:checked ~ .check::before {
   background: $fontAlert;
 }
 
@@ -200,10 +203,64 @@ input[type='radio']:checked~.check::before {
   // font-weight: bolder;
   // background: $ColorDefault;
   letter-spacing: 0.09em;
-  border: $borderH;
+  border: $borderF;
   border-radius: $borderRadius;
   padding: 1rem 2rem;
   margin: 0 1rem;
+  animation: border-flicker 2s linear infinite;
+}
+
+/*
+.header link {
+  text-align: center;
+  position: absolute;
+  border: 5px solid #1086e8;
+  width: 300px;
+  top: 150px;
+  border-radius: 20px;
+  left: 50%;
+  margin: -50px 0 0 -150px;
+  animation: border-flicker 2s linear infinite;
+}*/
+
+@keyframes border-flicker {
+  0% {
+    opacity: 0.1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+  2% {
+    opacity: 1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+  4% {
+    opacity: 0.1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+
+  8% {
+    opacity: 1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+  70% {
+    opacity: 0.7;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+  100% {
+    opacity: 1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
 }
 
 .subHeader {
@@ -259,6 +316,62 @@ input[type='radio']:checked~.check::before {
 
 .link span {
   color: $fontAlert;
+  animation: text-flicker 3s linear infinite;
+}
+
+@keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+
+  2% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  8% {
+    opacity: 0.1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  9% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  12% {
+    opacity: 0.1;
+    text-shadow: 0px 0px rgba(242, 22, 22, 1);
+  }
+  20% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  25% {
+    opacity: 0.3;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  30% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+
+  70% {
+    opacity: 0.7;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+
+  72% {
+    opacity: 0.2;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+
+  77% {
+    opacity: 0.9;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  100% {
+    opacity: 0.9;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
 }
 
 .settings {
@@ -377,6 +490,8 @@ ul.d-flex {
 .d-flex {
   display: flex;
   align-items: center;
+  margin-top: 0.2rem;
+  padding-top: 0.2rem;
 }
 
 .d-flexColumn {
