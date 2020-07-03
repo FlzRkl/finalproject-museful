@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const LandingPage = () => {
   return (
     <div className='bodyS'>
-      <h1> Welcome To Musefulla </h1>
+      <h1> Welcome to the Mussseefull App </h1>
       <Link className='' to='/dashboard'>
         <p className='btnBack'>
           <FontAwesomeIcon

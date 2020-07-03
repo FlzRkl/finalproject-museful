@@ -1,35 +1,44 @@
 import axios from 'axios';
 import {
   SUBMIT_ITEM,
-  ABOVE_ITEM,
+  LAST_ITEM,
   LOAD_ITEM,
   FILTERED_LIST,
-  SORT_ITEMS,
   SET_ITEM_FILTER,
   SET_ALERT,
 } from './actionTypes';
 
-export const submitItem = (inputItem) => (dispatch) => {
-  if (inputItem) {
-    dispatch({
-      type: SUBMIT_ITEM,
-      payload: inputItem,
-    });
-  } else {
-    dispatch({
-      type: SET_ALERT,
-      payload: {
-        msg: 'Please enter some Text',
-        type: 'warning',
-      },
-    });
+import { setAlert } from './alert';
+
+export const submitItem = (inputItem, id) => async (dispatch) => {
+  const regex = new RegExp('^\\S.*');
+  let check = regex.test(inputItem.title);
+  if (check) {
+    try {
+      const res = await axios.post(`/api/listItem/submit`, inputItem);
+      console.log(res);
+      dispatch(setAlert('Item Created', 'success'));
+    } catch (err) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        dispatch({
+          type: SET_ALERT,
+          payload: {
+            msg: err.response.statusText,
+            status: err.response.status,
+          },
+        });
+      }
+    }
+    // loadItem(id);
   }
 };
 
-export const aboveItem = (itemId) => (dispatch) => {
+export const lastItem = (itemId) => (dispatch) => {
   if (itemId) {
     dispatch({
-      type: ABOVE_ITEM,
+      type: LAST_ITEM,
       payload: itemId,
     });
   } else {
@@ -64,9 +73,12 @@ export const loadItem = (id) => async (dispatch) => {
   }
 };
 
-export const setFilter = (filter) => (dispatch) => {
+export const setItemFilter = (filter) => (dispatch) => {
   // console.log(filter);
-  dispatch({ type: SET_ITEM_FILTER, payload: filter });
+  dispatch({
+    type: SET_ITEM_FILTER,
+    payload: filter,
+  });
 };
 
 export const getListArr = (mainList) => (dispatch) => {
@@ -78,13 +90,13 @@ export const getListArr = (mainList) => (dispatch) => {
     let x = mainList[item];
     let y = Array.isArray(x)
       ? x.length > 0
-        ? getKeys.push(item)
+        ? ((item = item[0].toUpperCase() + item.slice(1)), getKeys.push(item))
         : null
       : null;
+    console.log(y);
   }
   // console.log(getKeys, getValues, mainList);
   const getLists = [getKeys, getValues];
-  // console.log(getLists);
   if (getLists) {
     dispatch({
       type: FILTERED_LIST,
@@ -94,7 +106,7 @@ export const getListArr = (mainList) => (dispatch) => {
     dispatch({
       type: SET_ALERT,
       payload: {
-        msg: 'The Filtered Array is false',
+        msg: 'The Filtered Array Input is false',
         type: 'warning',
       },
     });

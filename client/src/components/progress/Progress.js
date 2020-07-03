@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from "react-router-dom";
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import './progress.scss';
@@ -17,7 +17,7 @@ export const Progress = () => {
   ]);
 
   return (
-    <>
+    <div className='heatmap'>
       <CalendarHeatmap
         values={values}
         showWeekdayLabels={true}
@@ -39,7 +39,7 @@ export const Progress = () => {
           return `color-scale-${value.count}`;
         }}
       />
-    </>
+    </div>
   );
 };
 
