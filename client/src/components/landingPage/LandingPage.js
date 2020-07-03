@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const LandingPage = () => {
   return (
     <div className='bodyS'>
-      <h1> Welcome to the Mussseefull App </h1>
+      <h1> Welcome To Your Museful Space </h1>
       <Link className='' to='/dashboard'>
         <p className='btnBack'>
           <FontAwesomeIcon

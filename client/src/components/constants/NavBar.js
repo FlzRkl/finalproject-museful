@@ -58,7 +58,7 @@ const NavBar = ({ loadItem }) => {
         </div>{' '}
         <NavbarBrand className='header link'>
           <Link className='link' to='/dashboard'>
-            <span> TMA: </span>The Museful App{' '}
+            <span> MUS3FU1: </span>l34rn l1k3 br347h1n6 41r{' '}
           </Link>{' '}
         </NavbarBrand>{' '}
       </Nav>{' '}
