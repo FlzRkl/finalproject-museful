@@ -4,6 +4,17 @@ $lGradLight: linear-gradient(#ffdd00, #fbb034);
 $lGradDark: radial-gradient(#0f2027, #203a43, #2c5364);
 $ColorDefault: linear-gradient(#0f2027, #203a43, #2c5364);
 $ColorLight: #c7c7c7;
+$ColorLists: linear-gradient(
+  60deg,
+  #f79533,
+  #f37055,
+  #ef4e7b,
+  #a166ab,
+  #5073b8,
+  #1098ad,
+  #07b39b,
+  #6fba82
+);
 //FONTS
 $fontColorDefault: #ffffff;
 //SIZING
@@ -22,6 +33,7 @@ $borderRadiusSH: 4px;
 $borderH: 0.2rem solid $fontColorDefault;
 $borderSH: 0.2rem solid $fontColorDefault;
 $borderF: 0.2rem solid #1086e8;
+$borderList: 0.2rem solid $ColorLists;
 $borderRadiusInput: 4px 0 0 4px;
 
 ////RESET
@@ -330,7 +342,7 @@ input[type='radio']:checked ~ .check::before {
 }
 
 .daily-learning {
-  border-color: $fontAlert;
+  border-color: #e73c7e;
   animation: border-flicker 4s linear infinite;
   //animation: glow 4s linear infinite;
 }
@@ -340,12 +352,16 @@ input[type='radio']:checked ~ .check::before {
 }
 
 .lists {
-  border-color: rgba(16, 134, 232, 0.73);
+  border-color: #07b39b;
+  //#26a69a
+  cursor: pointer;
+  left: calc(50% - 75px);
+  top: calc(50% - 25px);
   animation: border-flicker 4s linear infinite;
 }
 
 .logout {
-  border-color: orange;
+  border-color: #ee7752;
   animation: border-flicker 2s linear infinite;
 }
 
@@ -478,7 +494,8 @@ input[type='radio']:checked ~ .check::before {
   justify-content: center;
   font-weight: bolder;
   font-size: $fontSizeT;
-  position: fixed;
+  //position: fixed;
+  position: relative;
   // z-index: 1;
   width: 100%;
 
