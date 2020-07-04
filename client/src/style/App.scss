@@ -83,6 +83,7 @@ img {
   border-color: $fontAlert;
   border-radius: $borderRadius;
   animation: glow 8s linear infinite;
+  position: relative;
 }
 
 .btnA,
@@ -261,10 +262,11 @@ input[type='radio']:checked ~ .check::before {
   flex-flow: wrap-reverse;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  //min-height: 100vh;
   margin-right: 0.5rem;
   margin-left: 0.5rem;
   padding-right: 0.5rem;
+  position: relative;
 }
 
 ////TEXT
@@ -499,7 +501,7 @@ input[type='radio']:checked ~ .check::before {
   // z-index: 1;
   width: 100%;
 
-  bottom: 0;
+  bottom: 0.25rem;
 }
 
 .copyright {
