@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { connect, useSelector, useDispatch } from "react-redux";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect, useSelector } from 'react-redux';
 
-import { fetchWord } from "../../actions/searchAction";
-import SearchFilter from "./SearchFilter";
+import { fetchWord } from '../../actions/searchAction';
+import SearchFilter from './SearchFilter';
 
 export const SearchWord = ({ fetchWord }) => {
-  const [word, setWord] = useState("");
+  const [word, setWord] = useState('');
   const isLoading = useSelector((state) => state.search.isLoading);
   const isError = useSelector((state) => state.search.isError);
   const data = useSelector((state) => state.search.data);
   const filter = useSelector((state) => state.search.filter);
 
-  // const dispatch = useDispatch();
   console.log(filter);
 
   const handleChange = (e) => {
@@ -23,7 +22,7 @@ export const SearchWord = ({ fetchWord }) => {
     e.preventDefault();
     fetchWord(word, filter);
 
-    console.log("submit Searchhhhhhhhhhhhhhhhhhhhhhhhhhh");
+    console.log('submit Searchhhhhhhhhhhhhhhhhhhhhhhhhhh');
   };
   return (
     <div className='dashboard d-flexColumn'>
@@ -42,7 +41,7 @@ export const SearchWord = ({ fetchWord }) => {
           onClick={handleSearch}
           type='submit'
           className='inputSearch'
-          style={{ marginTop: "8px" }}
+          style={{ marginTop: '8px' }}
         >
           Search
         </button>
@@ -53,11 +52,11 @@ export const SearchWord = ({ fetchWord }) => {
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        <div className='searchResult'>
+        <div className='searchResults'>
           {data
             ? data.map((item) => (
                 <div key={item.word} id={item.word}>
-                  <button className='btnI'>{item.word}</button>
+                  <button className='searchResult'>{item.word}</button>
                 </div>
               ))
             : null}

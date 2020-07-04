@@ -1,16 +1,19 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from 'react';
 
 //ROUTER
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //COMPONENTS
-import NavBar from "./components/constants/NavBar";
-import LandingPage from "./components/landingPage/LandingPage";
-import Footer from "./components/constants/Footer";
-import Routes from "./components/routing/Routes";
+import NavBar from './components/constants/NavBar';
+// import LandingPage from './components/landingPage/LandingPage';
+import Footer from './components/constants/Footer';
+import Routes from './components/routing/Routes';
+// import moduleName from 'module';
 
 ///STYLING
-import "./style/App.scss";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './style/App.scss';
+
 //THEME
 // import { ThemeProvider } from "styled-components";
 // import { useDarkMode } from "./components/constants/Darkmode/useDarkMode";
@@ -18,10 +21,10 @@ import "./style/App.scss";
 // import { GlobalStyles } from "./style/global";
 
 //REDUX
-import { Provider } from "react-redux";
-import store from "./store";
-import { loadUser } from "./actions/auth";
-import setAuthToken from "./utils/setAuthToken";
+import { Provider } from 'react-redux';
+import store from './store';
+import { loadUser } from './actions/auth';
+import setAuthToken from './utils/setAuthToken';
 
 const App = () => {
   useEffect(() => {

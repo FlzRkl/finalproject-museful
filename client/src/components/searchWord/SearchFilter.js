@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import cx from "classnames";
+import React from 'react';
+import cx from 'classnames';
 
-import PropTypes from "prop-types";
-import { useSelector, useDispatch } from "react-redux";
-import { SET_SEARCH_FILTER } from "../../actions/actionTypes";
+import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { SET_SEARCH_FILTER } from '../../actions/actionTypes';
 
-import { SEARCH_FILTERS } from "./Search_Filters";
+import { SEARCH_FILTERS } from './Search_Filters';
 
 export const SearchFilter = () => {
   const activeFilter = useSelector((state) => state.search.filter);
@@ -17,7 +17,16 @@ export const SearchFilter = () => {
           const currentFilter = SEARCH_FILTERS[filterKey];
 
           return (
-            <li className='d-flex'>
+            <li
+              className='d-flex'
+              key={`item-filter-${currentFilter}`}
+              onClick={() =>
+                dispatch({
+                  type: SET_SEARCH_FILTER,
+                  payload: filterKey,
+                })
+              }
+            >
               <input
                 className=''
                 type='radio'
@@ -29,14 +38,10 @@ export const SearchFilter = () => {
                 {currentFilter}
               </label>
               <div
-                key={`item-filter-${currentFilter}`}
-                className='check'
-                onClick={() =>
-                  dispatch({
-                    type: SET_SEARCH_FILTER,
-                    payload: filterKey,
-                  })
-                }
+                className={cx(
+                  `item-filter-${currentFilter} check`,
+                  currentFilter === activeFilter && `active`
+                )}
               ></div>
             </li>
           );

@@ -6,29 +6,28 @@ import {
   SORT_ITEMS,
 } from './actionTypes';
 import axios from 'axios';
-import {
-  searchFilters
-} from "./searchFilters";
+import { searchFilters } from './searchFilters';
 import SearchFilter from '../components/searchWord/SearchFilter';
 
 export const fetchWord = (word, filter) => async (dispatch) => {
   const url = 'https://api.datamuse.com/words?';
-  let fQuery = ''
+  let fQuery = '';
+  let max = '&max=8';
   for (let item in searchFilters) {
-    if (item == filter) {
-      console.log(searchFilters[item])
-      fQuery = searchFilters[item]
+    if (item === filter) {
+      console.log(searchFilters[item]);
+      fQuery = searchFilters[item];
     }
     // console.log(fQuery)
   }
 
   if (word) {
     dispatch({
-      type: FETCH_INIT
+      type: FETCH_INIT,
     });
     try {
-      console.log(url + fQuery + word);
-      const result = await axios(url + fQuery + word);
+      console.log(url + fQuery + word + max);
+      const result = await axios(url + fQuery + word + max);
 
       console.log(result);
       dispatch({
@@ -51,7 +50,7 @@ export const setSearchFilter = (filter) => (dispatch) => {
   // console.log(filter);
   dispatch({
     type: SET_SEARCH_FILTER,
-    payload: filter
+    payload: filter,
   });
 };
 /////////////////////////
