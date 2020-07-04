@@ -1,7 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { logout } from '../../actions/auth';
 
 //STYLING
 import {
@@ -9,32 +11,36 @@ import {
   faClipboard,
   faListUl,
   faDoorOpen,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const iconSize = "1x";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+const iconSize = '1x';
 
 const Dashboard = () => {
-  if (window.matchMedia("(prefers-color-scheme)").media !== "not all") {
-    console.log("🎉 Dark mode is supported");
+  if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
+    console.log('🎉 Dark mode is supported');
   } else {
-    console.log("Dark mode not supported");
+    console.log('Dark mode not supported');
   }
 
-  console.log(window.matchMedia("(prefers-color-scheme:dark)"));
+  console.log(window.matchMedia('(prefers-color-scheme:dark)'));
 
   return (
     <div className='dashboard'>
       <Link className='subHeader link' to='/dashboard/daily-learning'>
-        <FontAwesomeIcon icon={faListUl} size={iconSize} />
+        <FontAwesomeIcon icon={faListUl} size={iconSize} className='faIcon' />
       </Link>
       <Link className='subHeader link' to='/dashboard/search-word'>
-        <FontAwesomeIcon icon={faSearch} size={iconSize} />
+        <FontAwesomeIcon icon={faSearch} size={iconSize} className='faIcon' />
       </Link>
       <Link className='subHeader link' to='/dashboard/lists'>
-        <FontAwesomeIcon icon={faClipboard} size={iconSize} />
+        <FontAwesomeIcon
+          icon={faClipboard}
+          size={iconSize}
+          className='faIcon'
+        />
       </Link>
-      <Link className='subHeader link' to='/dashboard/logout'>
-        <FontAwesomeIcon icon={faDoorOpen} size={iconSize} />
+      <Link className='subHeader link' to='/' onClick={logout}>
+        <FontAwesomeIcon icon={faDoorOpen} size={iconSize} className='faIcon' />
       </Link>
     </div>
   );

@@ -1,34 +1,34 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 //TOGGLE
 // import Toggle from "./Darkmode/Toggle";
 // import { useDarkMode } from "./Darkmode/useDarkMode";
 
 // STYLE
-import { faCog } from "@fortawesome/free-solid-svg-icons";
-import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, NavItem, NavbarBrand } from "react-bootstrap";
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Nav, NavItem, NavbarBrand } from 'react-bootstrap';
 
 //Functions
-import { loadItem } from "../../actions/listAction";
+import { loadItem } from '../../actions/listAction';
 
 //ICONSIZE
-let iconSize = "4x";
+let iconSize = '4x';
 
 const NavBar = ({ loadItem }) => {
   const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
   const history = useHistory();
 
-  const handleClick = (e) => {
-    //aboveItem is undefined??
-    console.log(aboveItem);
-    aboveItem ? loadItem(aboveItem) : history.push("/dashboard/lists");
-  };
+  // const handleClick = (e) => {
+  //   //aboveItem is undefined??
+  //   console.log(aboveItem);
+  //   aboveItem ? loadItem(aboveItem) : history.push("/dashboard/lists");
+  // };
 
   //TOGGLE HOOK
   // const [theme, toggleTheme] = useDarkMode();
