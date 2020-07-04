@@ -1,31 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { registerModal } from '../auth/registerModal';
+import { loginModal } from '../auth/loginModal';
 
-// STYLE
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+export const LandingPage = () => {
+  // const [modal, setModal] = useState(false);
+  // // const [toggle, setToggle] = useState(true);
 
-const LandingPage = () => {
+  // const toggleModal = () => {
+  //   setModal(!modal);
+  //   console.log(modal);
+  // };
+
   return (
-    <div className='bodyS'>
-      <h1> Welcome to the Mussseefull App </h1>
-      <Link className='' to='/dashboard'>
-        <p className='btnBack'>
-          <FontAwesomeIcon
-            icon={faAngleLeft}
-            transform={{ rotate: 270 }}
-            size='1x'
-          />
-        </p>
-      </Link>
+    <div className='dashboard d-flexColumn'>
+      <h1>Hi! Welcome to the Musefull App.</h1>
+      <h3>Are you interested how it works? Then please:</h3>
+      <registerModal />
+      <h3>You already have an account? Then please login:</h3>
+      <loginModal />
     </div>
   );
-};
-
-LandingPage.propTypes = {
-  prop: PropTypes,
 };
 
 const mapStateToProps = (state) => ({});
