@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import RegisterModalF from '../auth/register';
 import LoginModalF from '../auth/login';

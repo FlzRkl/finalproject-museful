@@ -3,11 +3,9 @@ import {
   FETCH_WORDS,
   SET_ALERT,
   SET_SEARCH_FILTER,
-  SORT_ITEMS,
 } from './actionTypes';
 import axios from 'axios';
 import { searchFilters } from './searchFilters';
-import SearchFilter from '../components/searchWord/SearchFilter';
 
 const datamuse = axios.create({
   baseURL: 'https://api.datamuse.com/words',
@@ -17,7 +15,7 @@ export const fetchWord = (word, filter) => async (dispatch) => {
   let fQuery = 'RHY';
   let max = '&max=8';
   for (let item in searchFilters) {
-    if (item == filter) {
+    if (item === filter) {
       console.log(searchFilters[item]);
       fQuery = searchFilters[item];
     }
