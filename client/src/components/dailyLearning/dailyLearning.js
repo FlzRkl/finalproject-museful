@@ -2,12 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchRandom } from '../../actions/searchAction';
 
 // STYLE
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const dailyLearning = () => {
+  const getRandom = () => {
+    fetchRandom();
+  };
+
   return (
     <div className='bodyS'>
       <h1> Daily Learning </h1>{' '}
@@ -20,7 +25,7 @@ export const dailyLearning = () => {
       <button
         type='submit'
         className='btnI'
-        onClick={() => {
+        onClick={(getRandom) => {
           prompt('What are you looking for?');
         }}>
         Search{' '}
@@ -33,8 +38,12 @@ dailyLearning.propTypes = {
   prop: PropTypes,
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  search: state.search,
+});
 
-const mapDispatchToProps = {};
+//const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(dailyLearning);
+export default connect(mapStateToProps, mapStateToProps, { fetchRandom })(
+  dailyLearning,
+);
