@@ -223,9 +223,11 @@ input[type='radio']:checked ~ label {
   // border-radius: $borderRadiusInput;
 }
 
-.inputSearch {
+.inputSearch,
+.inputSearch:active,
+.inputSearch:focus {
   // border-radius: 0px 8px 8px 0px;
-  border-radius: $borderRadius;
+  // border-radius: $borderRadius;
   font-family: monospace;
   font-weight: bolder;
   background: none;
@@ -234,7 +236,7 @@ input[type='radio']:checked ~ label {
   color: var(--fontColorDefault);
   padding: 0.5rem 1rem;
   margin: 0;
-
+  outline: none;
   transition: border 0.2s linear;
 }
 
@@ -477,7 +479,7 @@ ul.d-flex {
 
 ////COMPONENT
 .dashboard {
-  padding: 2rem;
+  padding: 0 2rem 2rem 2rem;
   display: flex;
   width: 100%;
   flex-direction: row;

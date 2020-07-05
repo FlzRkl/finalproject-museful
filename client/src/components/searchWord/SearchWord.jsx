@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect, useSelector } from 'react-redux';
 
@@ -13,6 +13,9 @@ export const SearchWord = ({ fetchWord }) => {
   const filter = useSelector((state) => state.search.filter);
 
   console.log(filter);
+  useEffect(() => {
+    document.getElementById('filter-Rhyme').checked = true;
+  }, []);
 
   const handleChange = (e) => {
     setWord(e.target.value);
@@ -25,7 +28,7 @@ export const SearchWord = ({ fetchWord }) => {
     console.log('submit Searchhhhhhhhhhhhhhhhhhhhhhhhhhh');
   };
   return (
-    <div className='dashboard d-flexColumn'>
+    <div className=' d-flexColumn'>
       <SearchFilter />
       <form id='formSearch' onSubmit={handleSearch}>
         <input
