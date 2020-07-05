@@ -1,9 +1,12 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
 ////VARIABLES
 //COLORS
 $lGradLight: linear-gradient(#ffdd00, #fbb034);
 $lGradDark: radial-gradient(#0f2027, #203a43, #2c5364);
 $ColorDefault: linear-gradient(#0f2027, #203a43, #2c5364);
 $ColorLight: #c7c7c7;
+$ColorDark: #0f2027;
 //FONTS
 $fontColorDefault: #ffffff;
 //SIZING
@@ -14,12 +17,11 @@ $fontSizeH2: 1.5rem;
 $fontSizeT: 1rem;
 //SHADOWS
 $textShadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
-$textShadow2: 0px 4px 3px rgba(0, 0, 0, 0.4),
-0px 8px 13px rgba(0, 0, 0, 0.1),
-0px 18px 23px rgba(0, 0, 0, 0.1);
+$textShadow2: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+  0px 18px 23px rgba(0, 0, 0, 0.1);
 //BORDERS
-$borderRadius: 4px;
-$borderRadiusSH: 4px;
+$borderRadius: 6px;
+$borderRadiusSH: 6px;
 $borderH: 0.2rem solid $fontColorDefault;
 $borderSH: 0.2rem solid $fontColorDefault;
 $borderRadiusInput: 4px 0 0 4px;
@@ -31,7 +33,7 @@ $borderRadiusInput: 4px 0 0 4px;
   box-sizing: border-box;
 }
 
-//// ELEMENTS
+//// GENERELS
 body {
   margin: 0;
   min-height: 100vh;
@@ -42,9 +44,12 @@ body {
   color: $fontColorDefault;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: flex-start;
 }
 
+h1 {
+  font-size: 2.2rem;
+}
 a {
   color: $fontColorDefault;
   text-decoration: none;
@@ -58,10 +63,25 @@ img {
   width: 100%;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
 .btnI,
 .btnI:hover {
   font-family: monospace;
-  font-size: $fontSizeH2;
+  font-size: $fontSizeT;
   font-weight: bolder;
   background: $ColorDefault;
   color: $fontColorDefault;
@@ -69,6 +89,25 @@ img {
   padding: 0.5rem 1rem;
   margin: 1rem;
   border-radius: $borderRadius;
+}
+
+.btnL,
+.btnL:hover {
+  font-family: monospace;
+  // font-size: $fontSizeH2;
+  // font-weight: bolder;
+  // background: $ColorDefault;
+  color: $fontColorDefault;
+  border: $borderSH;
+  padding: 0.3rem 0.7rem;
+  margin-left: 2.5em;
+  border-radius: $borderRadius;
+  width: fit-content;
+  height: 2.1rem;
+}
+.btnL:hover {
+  background-color: $fontColorDefault;
+  color: $ColorDark;
 }
 
 .btnA,
@@ -136,11 +175,11 @@ ul li .check::before {
   -webkit-transition: background 0.25s linear;
 }
 
-input[type='radio']:checked~.check {
+input[type='radio']:checked ~ .check {
   border: 1rem solid $fontAlert;
 }
 
-input[type='radio']:checked~.check::before {
+input[type='radio']:checked ~ .check::before {
   background: $fontAlert;
 }
 
@@ -199,7 +238,7 @@ input[type='radio']:checked~.check::before {
   font-size: $fontSizeH;
   // font-weight: bolder;
   // background: $ColorDefault;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.05em;
   border: $borderH;
   border-radius: $borderRadius;
   padding: 1rem 2rem;
@@ -362,6 +401,10 @@ ul.d-flex {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  > .head {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .dashboard .link {
@@ -373,6 +416,20 @@ ul.d-flex {
   margin: 2rem;
 }
 
+//LISTS
+#list-list {
+  position: relative;
+}
+#list-list span {
+  position: absolute;
+  top: -0.9em;
+  right: 0em;
+  z-index: 7;
+}
+// form {
+//   transition: visibility 2s;
+// }
+
 //FORMATS
 .d-flex {
   display: flex;
@@ -383,6 +440,10 @@ ul.d-flex {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.wrap {
+  flex-wrap: wrap;
 }
 
 ////EFFECTS

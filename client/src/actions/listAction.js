@@ -113,19 +113,25 @@ export const getListArr = (mainList) => (dispatch) => {
   }
 };
 
-// export const sortItem = (itemId) => (dispatch) => {
-//   if (itemId) {
-//     dispatch({
-//       type: OPEN_ITEM,
-//       payload: itemId,
-//     });
-//   } else {
-//     dispatch({
-//       type: SET_ALERT,
-//       payload: {
-//         msg: 'Please enter valid Id',
-//         type: 'warning',
-//       },
-//     });
-//   }
-// };
+export const deleteItem = (id) => async (dispatch) => {
+  if (id) {
+    try {
+      const res = await axios.delete(`/api/listItem/${id}`);
+      console.log(res);
+      dispatch(setAlert('Item deleted', 'success'));
+    } catch (err) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        dispatch({
+          type: SET_ALERT,
+          payload: {
+            msg: err.response.statusText,
+            status: err.response.status,
+          },
+        });
+      }
+    }
+    // loadItem(id);
+  }
+};
