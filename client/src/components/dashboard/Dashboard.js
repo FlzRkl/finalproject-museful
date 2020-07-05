@@ -18,20 +18,23 @@ const iconSize = '1x';
 const Dashboard = ({ logout }) => {
   return (
     <div className='dashboard'>
-      <Link className='subHeader link' to='/dashboard/daily-learning'>
+      <Link
+        className='subHeader link daily-learning'
+        to='/dashboard/daily-learning'
+      >
         <FontAwesomeIcon icon={faListUl} size={iconSize} className='faIcon' />
       </Link>
-      <Link className='subHeader link' to='/dashboard/search-word'>
+      <Link className='subHeader link search-word' to='/dashboard/search-word'>
         <FontAwesomeIcon icon={faSearch} size={iconSize} className='faIcon' />
       </Link>
-      <Link className='subHeader link' to='/dashboard/lists'>
+      <Link className='subHeader link listsIcon' to='/dashboard/lists'>
         <FontAwesomeIcon
           icon={faClipboard}
           size={iconSize}
           className='faIcon'
         />
       </Link>
-      <Link className='subHeader link' to='/' onClick={logout}>
+      <Link className='subHeader link logout' to='/' onClick={logout}>
         <FontAwesomeIcon icon={faDoorOpen} size={iconSize} className='faIcon' />
       </Link>
     </div>

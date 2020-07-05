@@ -51,7 +51,7 @@ const NavBar = ({ loadItem }) => {
                 icon={faGraduationCap}
                 // spin
                 size={iconSize}
-                // className='faIcon'
+                className='faIcon'
               />
             </Link>
           </NavItem>
@@ -82,11 +82,12 @@ const NavBar = ({ loadItem }) => {
             <Toggle theme={theme} toggleTheme={toggleTheme} />
           </NavItem> */}
         </div>
-        <NavbarBrand className='header link'>
-          <Link className='link' to='/dashboard'>
-            <span>Museful</span>
-            <br />
-            <h2>learn like breathing air</h2>
+        <NavbarBrand
+          className='header link 
+        mb-4'
+        >
+          <Link className='link ' to='/dashboard'>
+            <span>MUSEFUL</span>
           </Link>
         </NavbarBrand>
       </Nav>

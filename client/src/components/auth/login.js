@@ -71,7 +71,7 @@ const LoginModalF = ({ clearErrors, login }) => {
   return (
     <Fragment>
       <button className='btnI' onClick={toggle}>
-        <span>Login</span>
+        <span className='textPara'>Login</span>
       </button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle} className='modalI'>

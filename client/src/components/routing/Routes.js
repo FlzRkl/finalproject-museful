@@ -17,30 +17,32 @@ import PrivateRoute from './PrivateRoute';
 const Routes = () => {
   return (
     <Fragment>
-      <Switch>
-        <Route component={LandingPage} exact path='/' />
-        <PrivateRoute component={Dashboard} exact path='/dashboard' />
-        <PrivateRoute component={AboutUs} exact path='/about-us' />
-        <PrivateRoute
-          component={DailyLearning}
-          exact
-          path='/dashboard/daily-learning'
-        />
-        <PrivateRoute component={Progress} exact path='/dashboard/progress' />
-        <PrivateRoute component={Settings} exact path='/dashboard/settings' />
-        <PrivateRoute
-          component={searchWord}
-          exact
-          path='/dashboard/search-word'
-        />
-        <PrivateRoute
-          component={ListComponent}
-          exact
-          path='/dashboard/listComponent'
-        />
-        <PrivateRoute component={Lists} exact path='/dashboard/lists' />
-        <Route component={NotFound} />
-      </Switch>
+      <div className='dashboard'>
+        <Switch>
+          <Route component={LandingPage} exact path='/' />
+          <PrivateRoute component={Dashboard} exact path='/dashboard' />
+          <PrivateRoute component={AboutUs} exact path='/about-us' />
+          <PrivateRoute
+            component={DailyLearning}
+            exact
+            path='/dashboard/daily-learning'
+          />
+          <PrivateRoute component={Progress} exact path='/dashboard/progress' />
+          <PrivateRoute component={Settings} exact path='/dashboard/settings' />
+          <PrivateRoute
+            component={searchWord}
+            exact
+            path='/dashboard/search-word'
+          />
+          <PrivateRoute
+            component={ListComponent}
+            exact
+            path='/dashboard/listComponent'
+          />
+          <PrivateRoute component={Lists} exact path='/dashboard/lists' />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     </Fragment>
   );
 };
