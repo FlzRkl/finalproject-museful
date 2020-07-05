@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -7,9 +7,10 @@ import { useHistory } from 'react-router-dom';
 //TOGGLE
 // import Toggle from "./Darkmode/Toggle";
 // import { useDarkMode } from "./Darkmode/useDarkMode";
+import { applyTheme } from '../../style/theme/applyTheme';
 
 // STYLE
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Nav, NavItem, NavbarBrand } from 'react-bootstrap';
@@ -31,7 +32,14 @@ const NavBar = ({ loadItem }) => {
   // };
 
   //TOGGLE HOOK
-  // const [theme, toggleTheme] = useDarkMode();
+  const [currentTheme, setTheme] = useState('dark');
+
+  const toggleTheme = () => {
+    const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    applyTheme(nextTheme);
+    console.log(nextTheme);
+  };
 
   return (
     <>
@@ -42,22 +50,32 @@ const NavBar = ({ loadItem }) => {
               <FontAwesomeIcon
                 icon={faGraduationCap}
                 // spin
-                // color='green'
                 size={iconSize}
                 className='faIcon'
               />
             </Link>
           </NavItem>
-          <NavItem className='link'>
-            <Link className=' ' to='/dashboard/settings'>
+          <NavItem className='link' onClick={toggleTheme}>
+            {/* <Link className=' ' to='/dashboard/settings'> */}
+            {currentTheme === 'dark' ? (
               <FontAwesomeIcon
-                icon={faCog}
-                spin
-                // color='white'
+                icon={faSun}
+                pulse
                 size={iconSize}
-                className='faIcon'
+                // className='faIcon'
+                color='yellow'
               />
-            </Link>
+            ) : (
+              <FontAwesomeIcon
+                icon={faMoon}
+                // pulse
+                size={iconSize}
+                // className='faIcon'
+                color='#999'
+              />
+            )}
+
+            {/* </Link> */}
           </NavItem>
           {/* <NavItem className='link'>
             <Toggle theme={theme} toggleTheme={toggleTheme} />

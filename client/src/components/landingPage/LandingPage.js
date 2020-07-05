@@ -1,9 +1,9 @@
 import React, { Component, useState } from 'react';
 import { connect } from 'react-redux';
-import { registerModal } from '../auth/registerModal';
-import { loginModal } from '../auth/loginModal';
+import RegisterModalF from '../auth/register';
+import LoginModalF from '../auth/login';
 
-export const LandingPage = () => {
+const LandingPage = () => {
   // const [modal, setModal] = useState(false);
   // // const [toggle, setToggle] = useState(true);
 
@@ -15,10 +15,16 @@ export const LandingPage = () => {
   return (
     <div className='dashboard d-flexColumn'>
       <h1>Hi! Welcome to the Musefull App.</h1>
-      <h3>Are you interested how it works? Then please:</h3>
-      <registerModal />
-      <h3>You already have an account? Then please login:</h3>
-      <loginModal />
+      <div className='regContainer'>
+        <div className='regBox'>
+          <h3>Are you interested how it works? Then please:</h3>
+          <RegisterModalF />
+        </div>
+        <div className='regBox'>
+          <h3>You already have an account? Then please login:</h3>
+          <LoginModalF />
+        </div>
+      </div>
     </div>
   );
 };

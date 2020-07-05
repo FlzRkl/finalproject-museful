@@ -90,7 +90,7 @@ export class registerModal extends Component {
   render() {
     return (
       <Fragment>
-        <button className='btnI' onClick={this.toggle}>
+        <button className='regBtn' onClick={this.toggle}>
           Login
         </button>
         <Modal isOpen={this.props.isOpen} toggle={this.toggle}>

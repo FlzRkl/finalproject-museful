@@ -1,15 +1,17 @@
-import React from "react";
-import { func, string } from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import { func, string } from 'prop-types';
+import styled from 'styled-components';
 // import iconSize from "../constants/NavBar";
 
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-let iconSize = "4x";
+let iconSize = '4x';
 
 const Toggle = ({ theme, toggleTheme }) => {
-  const isLight = theme === "light";
+  const isLight = theme === 'light';
+  toggleTheme = () => {};
+
   return (
     <button onClick={toggleTheme} className='toggle'>
       <FontAwesomeIcon
