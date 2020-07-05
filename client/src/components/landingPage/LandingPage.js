@@ -14,7 +14,7 @@ const LandingPage = () => {
 
   return (
     <div className='dashboard d-flexColumn'>
-      <h1>Hi! Welcome to the Musefull App.</h1>
+      <h3>Hi! Welcome to the Musefull App.</h3>
       <div className='regContainer'>
         <div className='regBox'>
           <h3>Are you interested how it works? Then please:</h3>
