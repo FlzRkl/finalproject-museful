@@ -187,7 +187,7 @@ input[type='radio']:checked ~ .check::before {
   font-family: monospace;
   font-size: $fontSizeH2;
   font-weight: bolder;
-  background: $ColorDefault;
+  //background: $ColorDefault;
   color: $fontColorDefault;
   border: $borderSH;
   border-right: 0;
@@ -198,9 +198,12 @@ input[type='radio']:checked ~ .check::before {
 }
 
 #initial-word-form {
-  background: $ColorDefault;
+  //background: $ColorDefault;
   //background: linear-gradient(#333, #222);
   //color: #888;
+  color: $fontColorDefault;
+  border: 0;
+  border-right: 0;
 }
 
 #initial-word-form:focus {
@@ -210,8 +213,11 @@ input[type='radio']:checked ~ .check::before {
   border-color: #393;*/
   box-shadow: 0 0 5px rgba(0, 255, 0, 0.2), inset 0 0 5px rgba(0, 255, 0, 0.1),
     0 2px 0 #000;
-  color: #efe;
+  //color: #efe;
+  color: $fontColorDefault;
   outline: none;
+  border: 0;
+  border-right: 0;
 }
 
 @keyframes glow {

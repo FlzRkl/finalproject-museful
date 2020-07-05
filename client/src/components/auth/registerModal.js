@@ -21,8 +21,8 @@ export class registerModal extends Component {
       <div className='dashboard d-flexColumn'>
         <h1>Imagine, discover and create your own learning space!</h1>
         <h3>
-          Are you interested how your museful space works and looks like? Then,
-          please here you go.
+          Do you wanna know how a museful space works and looks like? Then, here
+          you go.
         </h3>
         <button className='btnA'>Register</button>
         <h3>You are already in? Welcome back again.</h3>
