@@ -22,8 +22,7 @@ export const dailyLearning = () => {
         className='btnI'
         onClick={() => {
           prompt('What are you looking for?');
-        }}
-      >
+        }}>
         Search{' '}
       </button>{' '}
     </div>
