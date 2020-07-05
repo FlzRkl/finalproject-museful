@@ -6,6 +6,10 @@ export const darkTheme = {
   '--animBFlicker': 'none',
   '--animTFlicker': 'none',
   '--borderH': '0.2rem solid var(--fontColorDefault)',
+  '--borderDaily': 'var(--fontColorDefault)',
+  '--borderSearch': 'var(--fontColorDefault)',
+  '--borderLists': 'var(--fontColorDefault)',
+  '--borderLogout': 'var(--fontColorDefault)',
 };
 
 export const lightTheme = {
@@ -16,4 +20,8 @@ export const lightTheme = {
   '--animBFlicker': 'border-flicker 2s linear infinite',
   '--animTFlicker': 'text-flicker 3s linear infinite',
   '--borderH': '0.2rem solid #1086e8',
+  '--borderDaily': '#e73c7e',
+  '--borderSearch': '#393',
+  '--borderLists': ' #07b39b',
+  '--borderLogout': '#ee7752',
 };

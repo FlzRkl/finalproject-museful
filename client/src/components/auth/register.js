@@ -85,7 +85,7 @@ const RegisterModalF = ({ clearErrors, register }) => {
   return (
     <Fragment>
       <button className='btnI' onClick={toggle}>
-        <span>Register</span>
+        <span className='textPara'>Register</span>
       </button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle} className='modalI'>
