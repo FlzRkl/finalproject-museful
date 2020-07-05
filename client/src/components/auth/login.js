@@ -1,6 +1,6 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { login } from '../../actions/auth';
@@ -27,6 +27,26 @@ const LoginModalF = ({ clearErrors, login }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState(null);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const error = useSelector((state) => state.error);
+
+  ////LIFECYCLES
+  useEffect(() => {
+    if (error) {
+      //Check for register error
+      if (error.id === 'REGISTER_FAIL') {
+        setMsg(error.msg.errors);
+      } else {
+        setMsg(null);
+      }
+    }
+    //If authenticated close modal
+    if (modal) {
+      if (isAuthenticated) {
+        toggle();
+      }
+    }
+  }, [error, isAuthenticated]);
 
   const handleEmailInput = (e) => {
     setEmail(e.target.value);
@@ -43,12 +63,15 @@ const LoginModalF = ({ clearErrors, login }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    //Attempt to login
+    login(email, password);
   };
 
   return (
     <Fragment>
-      <button className='regBtn' onClick={toggle}>
-        Login
+      <button className='btnI' onClick={toggle}>
+        <span>Login</span>
       </button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle} className='modalI'>
@@ -84,7 +107,12 @@ const LoginModalF = ({ clearErrors, login }) => {
                 className='mb-3'
                 onChange={handlePasswordInput}
               />
-              <Button color='dark' style={{ marginTop: '2rem' }} block>
+              <Button
+                // onClick={onSubmit}
+                color='dark'
+                style={{ marginTop: '2rem' }}
+                block
+              >
                 <Link to='/dashboard'>Login</Link>
               </Button>
             </FormGroup>

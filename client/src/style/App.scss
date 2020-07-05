@@ -2,16 +2,15 @@
 //COLORS
 $lGradLight: linear-gradient(#ffdd00, #fbb034);
 $lGradDark: radial-gradient(#0f2027, #203a43, #2c5364);
-$ColorDefault: linear-gradient(#0f2027, #203a43, #2c5364);
+// --ColorDefault: linear-gradient(#0f2027, #203a43, #2c5364);
 $ColorCard: #272727;
 //FONTS
 $font: 'monospace';
-$fontColorDefault: #ffffff;
 $fontAlert: rgb(223, 90, 90);
 $fontColorCard: #ffffff;
 //SIZING
 $fontSizeH: 2.5rem;
-$fontSizeH2: 1rem;
+$fontSizeH2: 1.7rem;
 $fontSizeT: 1rem;
 //SHADOWS
 $textShadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
@@ -20,9 +19,20 @@ $textShadow2: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
 //BORDERS
 $borderRadius: 8px;
 $borderRadiusSH: 4px;
-$borderH: 0.2rem solid $fontColorDefault;
-$borderSH: 0.2rem solid $fontColorDefault;
+$borderH: 0.2rem solid var(--fontColorDefault);
+$borderSH: 0.2rem solid var(--fontColorDefault);
 $borderRadiusInput: 4px 0 0 4px;
+
+:root {
+  --ColorDefault: #272d33;
+  --fontColorDefault: #ffffff;
+  --animGlow: none;
+  --animBFlicker: none;
+  --animTFlicker: none;
+  --borderH: 0.2rem solid var(--fontColorDefault);
+  --fontAlert: rgb(223, 90, 90);
+  --fontColorBtn: var(--fontColorDefault);
+}
 
 ////RESETS
 * {
@@ -35,22 +45,39 @@ $borderRadiusInput: 4px 0 0 4px;
   outline: none;
 }
 
-//// ELEMENTS
 #root {
+  min-height: 100vh;
+}
+
+//// ELEMENTS
+body {
   margin: 0;
   min-height: 100vh;
   min-width: 320px;
   font-family: monospace;
   font-size: $fontSizeT;
-  background: $ColorDefault;
-  color: $fontColorDefault;
+  background: var(--ColorDefault);
+  color: var(--fontColorDefault);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-a {
-  color: $fontColorDefault;
+.textTitle {
+  font-size: $fontSizeH;
+}
+
+.textSubtitle {
+  font-size: $fontSizeH2;
+}
+
+.textPara {
+  font-size: $fontSizeT;
+}
+
+a,
+a:hover {
+  color: var(--fontColorDefault);
   text-decoration: none;
 }
 
@@ -67,27 +94,28 @@ img {
 .btnI:focus {
   outline: none;
   font-family: monospace;
-  font-size: $fontSizeH2;
   font-weight: bolder;
   background: none;
-  color: $fontColorDefault;
-  border: $borderSH;
+  color: var(--fontColorBtn);
+  border: var(--borderH);
   padding: 0.5rem 1rem;
   margin: 1rem;
   border-radius: $borderRadius;
+  animation: var(--animTFlicker);
 }
 
 .btnA,
 .btnA:hover {
   font-family: monospace;
-  font-size: $fontSizeH2;
   font-weight: bolder;
-  // background: $ColorDefault;
-  color: $fontColorDefault;
-  border: $borderSH;
+  // background: var(--ColorDefault);
+  color: var(--fontColorDefault);
+  border: var(--borderH);
   padding: 0.5rem 1rem;
   margin: 1rem;
   border-radius: $borderRadius;
+  animation: var(--animBFlicker);
+  animation: var(--animTFlicker);
 }
 
 //CHECKBOX
@@ -100,7 +128,6 @@ ul li label {
   display: block;
   position: relative;
   font-weight: bolder;
-  font-size: $fontSizeH2;
   padding: 0.5rem 0.5rem 0.5rem 2.5rem;
   margin: 0 1.5rem 0 0;
   z-index: 9;
@@ -111,7 +138,7 @@ ul li label {
 ul li .check {
   // display: block;
   position: absolute;
-  border: $borderH;
+  border: var(--borderH);
   border-radius: $borderRadius;
   height: 1.5rem;
   width: 1.5rem;
@@ -141,27 +168,27 @@ ul li .check::before {
 }
 
 input[type='radio']:checked ~ .check {
-  border: 0.8rem solid $fontAlert;
+  border: 0.8rem solid var(--fontAlert);
 }
 
 input[type='radio']:checked ~ .check::before {
-  background: $fontAlert;
+  background: var(--fontAlert);
 }
 
 input[type='radio']:checked ~ label {
-  color: $fontAlert;
+  color: var(--fontAlert);
 }
 
 //////////////////////
 .toggle {
-  // background: $ColorDefault;
+  // background: var(--ColorDefault);
   border: none;
   overflow: hidden;
   outline: none;
 }
 
 .toggle2 {
-  background: $ColorDefault;
+  background: var(--ColorDefault);
   border: none;
   overflow: hidden;
   outline: none;
@@ -174,10 +201,9 @@ input[type='radio']:checked ~ label {
 .input:focus {
   outline: none;
   font-family: monospace;
-  font-size: $fontSizeH2;
   // font-weight: bolder;
   background: none;
-  color: $fontColorDefault;
+  color: var(--fontColorDefault);
   border: 0;
   border-right: 0;
   border-bottom: $borderSH;
@@ -190,12 +216,11 @@ input[type='radio']:checked ~ label {
   // border-radius: 0px 8px 8px 0px;
   border-radius: $borderRadius;
   font-family: monospace;
-  font-size: $fontSizeH2;
   font-weight: bolder;
   background: none;
   border: 0;
   border-bottom: $borderSH;
-  color: $fontColorDefault;
+  color: var(--fontColorDefault);
   padding: 0.5rem 1rem;
   margin: 0;
 
@@ -213,24 +238,19 @@ input[type='radio']:checked ~ label {
 
 ////TEXT
 .header {
-  font-size: $fontSizeH;
   font-weight: bolder;
-  border: $borderH;
+  border: var(--borderH);
   border-radius: $borderRadius;
   padding: 1rem 2rem;
   margin: 0 1rem;
+  animation: var(--animBFlicker);
 }
 
 .subHeader {
-  font-size: $fontSizeH;
   border: $borderSH;
   border-radius: $borderRadius;
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
-}
-
-.text {
-  font-size: $fontSizeT;
 }
 
 .neon {
@@ -268,11 +288,17 @@ input[type='radio']:checked ~ label {
 
 .link:hover {
   text-decoration: none;
-  color: $fontColorDefault;
+  color: var(--fontColorDefault);
 }
 .link span {
-  color: $fontAlert;
+  color: var(--fontAlert);
+  animation: var(--animTFlicker);
 }
+
+// span {
+//   // color: var(--fontAlert);
+//   animation: var(--animGlow);
+// }
 
 .settings {
   display: inline-flex;
@@ -300,13 +326,12 @@ input[type='radio']:checked ~ label {
 .regBox {
   width: 30vw;
   margin: 1rem;
-  font-size: $fontSizeT;
-  background: rgba(0, 0, 0, 0.4);
-  color: $fontColorDefault;
+  background: rgba(0, 0, 0, 0.15);
+  color: var(--fontColorDefault);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // border: $borderH;
+  // border: var(--borderH);
   border-radius: $borderRadius;
   text-align: center;
   padding: 2rem;
@@ -314,13 +339,13 @@ input[type='radio']:checked ~ label {
 
 .regBtn {
   background: black;
-  color: $fontColorDefault;
+  color: var(--fontColorDefault);
 }
 
 //LISTS
 .card {
   max-width: 60vw;
-  border: $borderH;
+  border: var(--borderH);
   border-radius: $borderRadius;
   padding: 1rem 2rem;
   margin: 1rem;
@@ -348,11 +373,10 @@ input[type='radio']:checked ~ label {
   display: inline-block;
   text-align: center;
   padding: 1rem;
-  // background: $ColorDefault;
+  // background: var(--ColorDefault);
   justify-content: center;
   font-weight: bolder;
-  font-size: $fontSizeT;
-  position: relative;
+  position: absolute;
   // z-index: 1;
   width: 100%;
   bottom: 0;
@@ -363,18 +387,17 @@ input[type='radio']:checked ~ label {
   display: inline-flex;
 }
 .aboutUs {
-  font-size: $fontSizeH;
   border: $borderSH;
   border-radius: $borderRadius;
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
-  font-size: $fontSizeH2;
   font-weight: bolder;
 }
 
 .faIcon {
-  color: $fontColorDefault;
+  color: var(--fontColorDefault);
   margin: auto;
+  animation: var(--animTFlicker);
 }
 
 .intro {
@@ -384,18 +407,16 @@ input[type='radio']:checked ~ label {
 }
 
 .intro h1 {
-  font-size: $fontSizeH;
   margin: 1rem;
 }
 
 .intro p {
-  font-size: $fontSizeT;
   line-height: 1.6;
 }
 
 //NOT FOUND
 .warning {
-  color: $fontAlert;
+  color: var(--fontAlert);
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -415,14 +436,13 @@ ul.d-flex {
 }
 
 .searchResult {
-  font-size: $fontSizeT;
   display: inline-block;
   background: none;
   padding: 0.5rem 1rem;
   margin: 0.5rem;
   font-weight: bolder;
-  color: $fontColorDefault;
-  border: $borderH;
+  color: var(--fontColorDefault);
+  border: var(--borderH);
   border-radius: $borderRadius;
 }
 
@@ -475,7 +495,6 @@ ul.d-flex {
 
 .underlay {
   position: absolute;
-  font-size: $fontSizeH;
   transition: font-size 0.5s ease-in-out;
 }
 
@@ -500,19 +519,115 @@ ul.d-flex {
 }
 
 ////KEYFRAMES
-//Neon
-@keyframes neon {
-  from {
-    text-shadow: 0 0 6px rgba(202, 228, 225, 0.92),
-      0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52),
-      0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78),
-      0 0 54px rgba(30, 132, 242, 0.92);
+
+//Glow
+@keyframes glow {
+  0% {
+    border-color: #393;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2), inset 0 0 5px rgba(0, 255, 0, 0.1),
+      0 2px 0 #000;
   }
-  to {
-    text-shadow: 0 0 6px rgba(202, 228, 225, 0.98),
-      0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58),
-      0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88),
-      0 0 60px rgba(30, 132, 242, 1);
+  100% {
+    border-color: #6f6;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6),
+      inset 0 0 10px rgba(0, 255, 0, 0.4), 0 2px 0 #000;
+  }
+}
+
+//Flicker
+@keyframes border-flicker {
+  0% {
+    opacity: 0.1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+  2% {
+    opacity: 1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+  4% {
+    opacity: 0.1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+
+  8% {
+    opacity: 1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+  70% {
+    opacity: 0.7;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+  100% {
+    opacity: 1;
+    -webkit-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    -moz-box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+    box-shadow: 0px 0px 78px 4px rgba(16, 134, 232, 0.73);
+  }
+}
+
+//Text-Flicker
+@keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+
+  2% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  8% {
+    opacity: 0.1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  9% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  12% {
+    opacity: 0.1;
+    text-shadow: 0px 0px rgba(242, 22, 22, 1);
+  }
+  20% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  25% {
+    opacity: 0.3;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  30% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+
+  70% {
+    opacity: 0.7;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+
+  72% {
+    opacity: 0.2;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+
+  77% {
+    opacity: 0.9;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
+  }
+  100% {
+    opacity: 0.9;
+    text-shadow: 0px 0px 29px rgba(242, 22, 22, 1);
   }
 }
 
@@ -595,13 +710,13 @@ ul.d-flex {
 // @media (prefers-color-scheme: dark) {
 //   body {
 //     background: black;
-//     color: $fontColorDefault;
+//     color: var(--fontColorDefault);
 //   }
 // }
 
 // @media (prefers-color-scheme: light) {
 //   body {
-//     background: $fontColorDefault;
+//     background: var(--fontColorDefault);
 //     color: black;
 //   }
 // }

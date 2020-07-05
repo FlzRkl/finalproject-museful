@@ -85,7 +85,7 @@ const RegisterModalF = ({ clearErrors, register }) => {
   return (
     <Fragment>
       <button className='btnI' onClick={toggle}>
-        Register
+        <span>Register</span>
       </button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle} className='modalI'>
@@ -131,7 +131,12 @@ const RegisterModalF = ({ clearErrors, register }) => {
                 className='mb-3'
                 onChange={handlePasswordInput}
               />
-              <Button color='dark' style={{ marginTop: '2rem' }} block>
+              <Button
+                // onClick={onSubmit}
+                color='dark'
+                style={{ marginTop: '2rem' }}
+                block
+              >
                 <Link to='/dashboard'>Register</Link>
               </Button>
             </FormGroup>

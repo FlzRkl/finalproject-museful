@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 import { applyTheme } from '../../style/theme/applyTheme';
 
 // STYLE
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon, faPlug } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Nav, NavItem, NavbarBrand } from 'react-bootstrap';
@@ -51,7 +51,7 @@ const NavBar = ({ loadItem }) => {
                 icon={faGraduationCap}
                 // spin
                 size={iconSize}
-                className='faIcon'
+                // className='faIcon'
               />
             </Link>
           </NavItem>
@@ -59,19 +59,20 @@ const NavBar = ({ loadItem }) => {
             {/* <Link className=' ' to='/dashboard/settings'> */}
             {currentTheme === 'dark' ? (
               <FontAwesomeIcon
-                icon={faSun}
-                pulse
+                icon={faPlug}
+                // pulse
                 size={iconSize}
-                // className='faIcon'
-                color='yellow'
+                className='faIcon'
+                // color='yellow'
               />
             ) : (
               <FontAwesomeIcon
-                icon={faMoon}
+                icon={faPlug}
                 // pulse
                 size={iconSize}
-                // className='faIcon'
-                color='#999'
+                className='faIcon'
+
+                // color='#999'
               />
             )}
 
@@ -83,48 +84,12 @@ const NavBar = ({ loadItem }) => {
         </div>
         <NavbarBrand className='header link'>
           <Link className='link' to='/dashboard'>
-            <span>TMA:</span>The Museful App
+            <span>Museful</span>
+            <br />
+            <h2>learn like breathing air</h2>
           </Link>
         </NavbarBrand>
       </Nav>
-      {/* <div className=''>
-        <svg
-          onClick={handleClick}
-          className='bi bi-arrow-left-circle-fill'
-          width='1.5em'
-          height='1.5em'
-          viewBox='0 0 18 18'
-          fill='currentColor'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <path
-            transform='translate(1, 1)'
-            stroke='white'
-            stroke-width='1'
-            stroke-linecap='round'
-            fillRule='evenodd'
-            d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.646 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L6.207 7.5H11a.5.5 0 0 1 0 1H6.207l2.147 2.146z'
-          />
-        </svg>
-        //Breadcrum
-        {/* <svg
-          className='bi bi-arrow-right-circle-fill'
-          width='1.5em'
-          height='1.5em'
-          viewBox='0 0 18 18'
-          fill='currentColor'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <path
-            transform='translate(1, 1)'
-            stroke='white'
-            stroke-width='1'
-            stroke-linecap='round'
-            fillRule='evenodd'
-            d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z'
-          />
-        </svg> 
-      </div> */}
     </>
   );
 };
