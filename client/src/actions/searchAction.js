@@ -15,6 +15,7 @@ const datamuse = axios.create({
 
 export const fetchWord = (word, filter) => async (dispatch) => {
   let fQuery = 'RHY';
+  let max = '&max=8';
   for (let item in searchFilters) {
     if (item == filter) {
       console.log(searchFilters[item]);
@@ -29,7 +30,7 @@ export const fetchWord = (word, filter) => async (dispatch) => {
     });
     try {
       // console.log(url + fQuery + word);
-      const result = await datamuse.get('?' + fQuery + word);
+      const result = await datamuse.get('?' + fQuery + word + max);
 
       console.log(result);
       dispatch({

@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 // STYLE
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const NotFound = () => {
   return (

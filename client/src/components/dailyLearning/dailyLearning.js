@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // STYLE
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const dailyLearning = () => {
   return (
@@ -21,7 +21,7 @@ export const dailyLearning = () => {
         type="submit"
         className="btnI"
         onClick={() => {
-          const name = prompt("What are you looking for?");
+          prompt('What are you looking for?');
         }}
       >
         Search{" "}

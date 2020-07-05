@@ -80,7 +80,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
           <input
             ref={inputEl}
             type='text'
-            className='form-control'
+            className='input'
             placeholder='Title'
             aria-label='Title'
             aria-describedby='input-title'
@@ -92,7 +92,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
           <div className='input-group-append'>
             <button
               onClick={submit}
-              className='input-group-text'
+              className='inputSearch'
               id='input-addon-add'
             >
               Add
