@@ -3,6 +3,7 @@ export const FETCH_INIT = 'FETCH_INIT';
 export const FETCH_WORDS = 'FETCH_WORDS';
 export const SET_SEARCH_FILTER = 'SET_SEARCH_FILTER';
 //export const FETCH_DATA = 'FETCH_DATA';
+export const FETCH_RANDOM = 'FETCH_RANDOM';
 
 //USAGE
 export const TOGGLE_WORDS = 'TOGGLE_WORDS';

@@ -5,6 +5,7 @@ import {
   FETCH_INIT,
   FETCH_WORDS,
   SET_SEARCH_FILTER,
+  FETCH_RANDOM,
 } from '../actions/actionTypes';
 import { SEARCH_FILTERS } from '../components/searchWord/Search_Filters';
 /* this initialState below will represent the state saved in the store and any change to it here will change also the state in the store  */
@@ -18,6 +19,7 @@ const initialState = {
   isError: false,
   filter: SEARCH_FILTERS.RHYM,
   data: [],
+  random: [],
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -33,6 +35,13 @@ export default function (state = initialState, action) {
         isLoading: false,
         isError: false,
         data: action.payload,
+      };
+    case FETCH_RANDOM:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        random: action.payload,
       };
     case SET_SEARCH_FILTER:
       return {
