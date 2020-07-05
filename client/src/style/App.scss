@@ -3,22 +3,22 @@
 $lGradLight: linear-gradient(#ffdd00, #fbb034);
 $lGradDark: radial-gradient(#0f2027, #203a43, #2c5364);
 $ColorDefault: linear-gradient(#0f2027, #203a43, #2c5364);
-$ColorCard: rgb(39, 39, 39);
+$ColorCard: #272727;
 //FONTS
 $font: 'monospace';
 $fontColorDefault: #ffffff;
 $fontAlert: rgb(223, 90, 90);
-$fontColorCard: rgb(255, 255, 255);
+$fontColorCard: #ffffff;
 //SIZING
 $fontSizeH: 2.5rem;
-$fontSizeH2: 1.5rem;
+$fontSizeH2: 1rem;
 $fontSizeT: 1rem;
 //SHADOWS
 $textShadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 $textShadow2: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
   0px 18px 23px rgba(0, 0, 0, 0.1);
 //BORDERS
-$borderRadius: 4px;
+$borderRadius: 8px;
 $borderRadiusSH: 4px;
 $borderH: 0.2rem solid $fontColorDefault;
 $borderSH: 0.2rem solid $fontColorDefault;
@@ -290,6 +290,33 @@ input[type='radio']:checked ~ label {
   padding: 2rem;
 }
 
+//REGISTER-LOGIN
+.regContainer {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.regBox {
+  width: 30vw;
+  margin: 1rem;
+  font-size: $fontSizeT;
+  background: rgba(0, 0, 0, 0.4);
+  color: $fontColorDefault;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // border: $borderH;
+  border-radius: $borderRadius;
+  text-align: center;
+  padding: 2rem;
+}
+
+.regBtn {
+  background: black;
+  color: $fontColorDefault;
+}
+
 //LISTS
 .card {
   max-width: 60vw;
@@ -473,6 +500,7 @@ ul.d-flex {
 }
 
 ////KEYFRAMES
+//Neon
 @keyframes neon {
   from {
     text-shadow: 0 0 6px rgba(202, 228, 225, 0.92),

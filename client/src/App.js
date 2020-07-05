@@ -32,9 +32,6 @@ const App = () => {
     store.dispatch(loadUser());
   }, []);
 
-  //TOGGLE HOOK
-  // const [theme, toggleTheme] = useDarkMode();
-  // console.log(theme);
   return (
     <Provider store={store}>
       <Router>
