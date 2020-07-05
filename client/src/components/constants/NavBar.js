@@ -22,8 +22,8 @@ import { loadItem } from '../../actions/listAction';
 let iconSize = '4x';
 
 const NavBar = ({ loadItem }) => {
-  const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
-  const history = useHistory();
+  // const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
+  // const history = useHistory();
 
   // const handleClick = (e) => {
   //   //aboveItem is undefined??
@@ -102,8 +102,6 @@ NavBar.propTypes = {
 const mapStateToProps = (state) => ({
   list: state.list,
 });
-
-const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, {
   loadItem,

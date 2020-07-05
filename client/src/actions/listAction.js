@@ -4,14 +4,11 @@ import {
   LAST_ITEM,
   LOAD_ITEM,
   FILTERED_LIST,
-  SORT_ITEMS,
   SET_ITEM_FILTER,
   SET_ALERT,
 } from './actionTypes';
 
-import {
-  setAlert
-} from './alert';
+import { setAlert } from './alert';
 
 export const submitItem = (inputItem, id) => async (dispatch) => {
   const regex = new RegExp('^\\S.*');
@@ -34,7 +31,7 @@ export const submitItem = (inputItem, id) => async (dispatch) => {
         });
       }
     }
-    loadItem(id);
+    // loadItem(id);
   }
 };
 
@@ -80,7 +77,7 @@ export const setItemFilter = (filter) => (dispatch) => {
   // console.log(filter);
   dispatch({
     type: SET_ITEM_FILTER,
-    payload: filter
+    payload: filter,
   });
 };
 
@@ -91,11 +88,12 @@ export const getListArr = (mainList) => (dispatch) => {
   const getKeys = [];
   for (let item in mainList) {
     let x = mainList[item];
-    let y = Array.isArray(x) ?
-      x.length > 0 ?
-      ((item = item[0].toUpperCase() + item.slice(1)), getKeys.push(item)) :
-      null :
-      null;
+    let y = Array.isArray(x)
+      ? x.length > 0
+        ? ((item = item[0].toUpperCase() + item.slice(1)), getKeys.push(item))
+        : null
+      : null;
+    console.log(y);
   }
   // console.log(getKeys, getValues, mainList);
   const getLists = [getKeys, getValues];
@@ -115,19 +113,25 @@ export const getListArr = (mainList) => (dispatch) => {
   }
 };
 
-// export const sortItem = (itemId) => (dispatch) => {
-//   if (itemId) {
-//     dispatch({
-//       type: OPEN_ITEM,
-//       payload: itemId,
-//     });
-//   } else {
-//     dispatch({
-//       type: SET_ALERT,
-//       payload: {
-//         msg: 'Please enter valid Id',
-//         type: 'warning',
-//       },
-//     });
-//   }
-// };
+export const deleteItem = (id) => async (dispatch) => {
+  if (id) {
+    try {
+      const res = await axios.delete(`/api/listItem/${id}`);
+      console.log(res);
+      dispatch(setAlert('Item deleted', 'success'));
+    } catch (err) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        dispatch({
+          type: SET_ALERT,
+          payload: {
+            msg: err.response.statusText,
+            status: err.response.status,
+          },
+        });
+      }
+    }
+    // loadItem(id);
+  }
+};

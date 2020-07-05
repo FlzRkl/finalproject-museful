@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './list.scss';
 import PropTypes from 'prop-types';
 import ListItems from './ListItems';
@@ -6,12 +6,11 @@ import { ItemFilter } from './ItemFilter';
 import { submitItem } from '../../actions/listAction';
 import { loadItem, getListArr } from '../../actions/listAction';
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { ABOVE_ITEM } from '../../actions/actionTypes';
 
 export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
   const inputEl = useRef(null);
   const [title, setTitle] = useState('');
-  const [desc, setDesc] = useState([]);
+  const [desc, setDesc] = useState('');
   const mainList = useSelector((state) => state.list.mainList);
   const filteredList = useSelector((state) => state.list.filteredList);
   const filter = useSelector((state) => state.list.filter);
@@ -27,7 +26,6 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
 
   const handleChangeDesc = (e) => {
     setDesc(e.target.value);
-    console.log(desc);
   };
 
   const handleClick = (e) => {
@@ -46,7 +44,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
 
   const submit = (e) => {
     e.preventDefault();
-    submitItem(submitObject, currentId);
+    submitItem(submitObject);
     setTitle('');
     setDesc('');
     loadItem(currentId);
@@ -55,6 +53,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
   useEffect(() => {
     inputEl.current.focus();
     getListArr(mainList);
+    document.getElementById('filter-list').checked = true;
   }, [mainList]);
 
   useEffect(() => {
@@ -65,7 +64,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
   return (
     <>
       <h1 className='mb-3'>{mainList.title}</h1>
-      <h3 className='mb-3'>{mainList.desc}</h3>
+      <div className='mb-2'>{mainList.desc}</div>
       <ItemFilter />
       <form
         onSubmit={submit}

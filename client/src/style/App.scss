@@ -1,3 +1,5 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
 ////VARIABLES
 //COLORS
 $lGradLight: linear-gradient(#ffdd00, #fbb034);
@@ -99,6 +101,21 @@ img {
   width: 100%;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
 .btnI,
 .btnI:hover,
 .btnI:focus {
@@ -112,6 +129,25 @@ img {
   margin: 1rem;
   border-radius: $borderRadius;
   animation: var(--animTFlicker);
+}
+
+.btnL,
+.btnL:hover {
+  font-family: monospace;
+  // font-size: $fontSizeH2;
+  // font-weight: bolder;
+  // background: $ColorDefault;
+  color: $fontColorDefault;
+  border: $borderSH;
+  padding: 0.3rem 0.7rem;
+  margin-left: 2.5em;
+  border-radius: $borderRadius;
+  width: fit-content;
+  height: 2.1rem;
+}
+.btnL:hover {
+  background-color: $fontColorDefault;
+  color: $ColorDark;
 }
 
 .btnA,
@@ -486,6 +522,10 @@ ul.d-flex {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  > .head {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .dashboard .link {
@@ -519,6 +559,19 @@ ul.d-flex {
   border-color: var(--borderLogout);
   // animation: border-flicker 2s linear infinite;
 }
+//LISTS
+#list-list {
+  position: relative;
+}
+#list-list span {
+  position: absolute;
+  top: -0.9em;
+  right: 0em;
+  z-index: 7;
+}
+// form {
+//   transition: visibility 2s;
+// }
 
 //FORMATS
 .d-flex {
@@ -534,6 +587,9 @@ ul.d-flex {
 
 .textCenter {
   text-align: center;
+}
+.wrap {
+  flex-wrap: wrap;
 }
 
 ////EFFECTS

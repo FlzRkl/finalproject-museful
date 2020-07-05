@@ -12,11 +12,6 @@ export const SearchWord = ({ fetchWord }) => {
   const data = useSelector((state) => state.search.data);
   const filter = useSelector((state) => state.search.filter);
 
-  console.log(filter);
-  useEffect(() => {
-    document.getElementById('filter-Rhyme').checked = true;
-  }, []);
-
   const handleChange = (e) => {
     setWord(e.target.value);
   };
@@ -24,11 +19,14 @@ export const SearchWord = ({ fetchWord }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     fetchWord(word, filter);
-
-    console.log('submit Searchhhhhhhhhhhhhhhhhhhhhhhhhhh');
   };
+
+  useEffect(() => {
+    document.getElementById('filter-Rhyme').checked = true;
+  }, []);
+
   return (
-    <div className=' d-flexColumn'>
+    <div className='d-flexColumn'>
       <SearchFilter />
       <form id='formSearch' onSubmit={handleSearch}>
         <input

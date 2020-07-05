@@ -1,36 +1,28 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, connect, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Cards from './Cards';
 import { loadItem } from '../../actions/listAction';
-import { LAST_ITEM } from '../../actions/actionTypes';
+// import { LAST_ITEM } from '../../actions/actionTypes';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { submitItem } from '../../actions/listAction';
 
-const Lists = ({ loadItem, submitItem }) => {
-  const userLists = useSelector((state) => state.auth.user.list);
-  const dispatch = useDispatch();
+const Lists = ({ submitItem }) => {
+  const userLists = useSelector((state) =>
+    state.auth.isAuthenticated ? state.auth.user.list : null
+  );
 
-  const handleClick = (e) => {
-    const id = e.target.closest('li').id;
-    loadItem(id);
-    // console.log(id);
-    dispatch({
-      type: LAST_ITEM,
-      payload: id,
-    });
-  };
-
-  const [style, setStyle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const formStyle = () => {
-    setStyle(!style);
+    setToggle(!toggle);
   };
 
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState([]);
-  const user = useSelector((state) => state.auth.user._id);
+  const user = useSelector((state) =>
+    state.auth.isAuthenticated ? state.auth.user._id : null
+  );
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -52,7 +44,6 @@ const Lists = ({ loadItem, submitItem }) => {
     submitItem(submitObject);
     setTitle('');
     setDesc('');
-    loadItem();
   };
 
   const handleAdd = () => {
@@ -60,85 +51,82 @@ const Lists = ({ loadItem, submitItem }) => {
   };
   return (
     <>
-      <h1 className='mb-4'>List Storage</h1>
-      <div className='btn' onClick={formStyle}>
-        {style ? (
-          <FontAwesomeIcon
-            icon={faPlus}
-            color='white'
-            size={'2x'}
-            className='iconAdd'
-          />
-        ) : (
-          <FontAwesomeIcon
-            icon={faMinus}
-            color='white'
-            size={'2x'}
-            className='iconAdd'
-          />
-        )}
-      </div>
-      <form
-        onSubmit={submit}
-        className={
-          style == true
-            ? 'd-none form col-xs-12 col-sm-10 col-md-8 col-lg-6'
-            : 'd-block form col-xs-12 col-sm-10 col-md-8 col-lg-6'
-        }
-      >
-        <div className='input-group mb-2'>
-          <input
-            type='text'
-            className='form-control'
-            placeholder='Title'
-            aria-label='Title'
-            aria-describedby='input-title'
-            value={title}
-            name='inputList0'
-            id='inputList0'
-            onChange={handleChangeTitle}
-          />
-        </div>
-        <div className='row'>
-          <div className='input-group mb-3'>
-            <textarea
-              className='form-control'
-              placeholder='Add Describtion'
-              aria-label='Desc'
-              value={desc}
-              onChange={handleChangeDesc}
-            ></textarea>
+      <div className='head'>
+        <div className='row my-4'>
+          <h3 className='display'>List Storage</h3>
+          <div className='btnL' onClick={formStyle}>
+            {toggle ? (
+              <FontAwesomeIcon icon={faPlus} size={'1x'} className='iconAdd' />
+            ) : (
+              <FontAwesomeIcon icon={faMinus} size={'1x'} className='iconAdd' />
+            )}
           </div>
         </div>
-        <button
-          onClick={submit}
-          className='input-group-text'
-          id='input-addon-add'
+        <form
+          onSubmit={submit}
+          className={
+            toggle === true
+              ? 'invisible form col-xs-12 col-sm-10 col-md-8 col-lg-6'
+              : 'd-block form col-xs-12 col-sm-10 col-md-8 col-lg-6'
+          }
         >
-          Add List
-        </button>
-      </form>
-
-      <ul className='list' id='list-list'>
-        {userLists.map((item) => (
-          <li
-            key={item.id}
-            id={item.id}
-            onClick={handleClick}
-            className='col-xs-12 col-sm-6 col-md-6 col-lg-4'
+          <div className='input-group mb-2'>
+            <input
+              type='text'
+              className='form-control'
+              placeholder='Title'
+              aria-label='Title'
+              aria-describedby='input-title'
+              value={title}
+              name='inputList0'
+              id='inputList0'
+              onChange={handleChangeTitle}
+            />
+          </div>
+          <div className='row'>
+            <div className='input-group mb-3'>
+              <textarea
+                className='form-control'
+                placeholder='Add Describtion'
+                aria-label='Desc'
+                value={desc}
+                onChange={handleChangeDesc}
+              ></textarea>
+            </div>
+          </div>
+          <button
+            onClick={submit}
+            className='input-group-text'
+            id='input-addon-add'
           >
-            <Link to='/dashboard/listComponent'>
-              <Cards item={item} />
-            </Link>
-          </li>
-        ))}{' '}
+            Add List
+          </button>
+        </form>
+      </div>
+
+      <ul className='d-flex wrap' id='list-list'>
+        {userLists
+          ? userLists.map((item) => (
+              <>
+                <li
+                  key={item.id}
+                  id={item.id}
+                  className='col-xs-12 col-sm-6 col-md-6 col-lg-4'
+                >
+                  <Cards item={item} />
+                </li>
+              </>
+            ))
+          : null}{' '}
       </ul>
     </>
   );
 };
 
-Lists.propTypes = {};
+Lists.propTypes = {
+  userLists: PropTypes.array,
+};
 
 const mapStateToProps = (state) => {};
 
-export default connect(mapStateToProps, { submitItem, loadItem })(Lists);
+export default connect(mapStateToProps, { submitItem })(Lists);
