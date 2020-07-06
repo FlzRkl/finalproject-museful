@@ -1,23 +1,23 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { check, validationResult } = require("express-validator");
-const auth = require("../../middleware/auth");
-const checkObjectId = require("../../middleware/checkObjectId");
+const { check, validationResult } = require('express-validator');
+const auth = require('../../middleware/auth');
+const checkObjectId = require('../../middleware/checkObjectId');
 
-const Item = require("../../models/Item");
-const User = require("../../models/User");
+const Item = require('../../models/Item');
+const User = require('../../models/User');
 
 //@route  GET api/listItem/:id
 //@desc  Get listITems
 //@access Public
 
-router.get("/:id", [auth, checkObjectId("id")], async (req, res) => {
+router.get('/:id', [auth, checkObjectId('id')], async (req, res) => {
   let id = req.params.id;
   if (id) {
     let item = await Item.findById(id);
     if (!item) {
       return res.status(400).json({
-        errors: [{ msg: "Item not found!" }],
+        errors: [{ msg: 'Item not found!' }],
       });
     }
     return res.status(200).json({
@@ -47,12 +47,12 @@ router.get("/:id", [auth, checkObjectId("id")], async (req, res) => {
 // @desc     Post an Item
 // @access   Private
 router.post(
-  "/submit",
+  '/submit',
   [
     auth,
-    check("title", "Title is required").not().isEmpty(),
-    check("tag", "Tag is required").not().isEmpty(),
-    check("user", "UserId is required").not().isEmpty(),
+    check('title', 'Title is required').not().isEmpty(),
+    check('tag', 'Tag is required').not().isEmpty(),
+    check('user', 'UserId is required').not().isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -138,14 +138,14 @@ router.post(
 // @route    Update api/listITem/:id
 // @desc     Update an Item
 // @access   Private
-router.put("/", [auth], async (req, res) => {
+router.put('/', [auth], async (req, res) => {
   try {
     let { id, title, desc } = req.body;
     const item = await Item.findById(id);
 
     // Check user
     if (item.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "User not authorized" });
+      return res.status(401).json({ msg: 'User not authorized' });
     }
 
     await Item.findByIdAndUpdate(
@@ -170,24 +170,24 @@ router.put("/", [auth], async (req, res) => {
 
     //await item.remove();
 
-    res.json({ msg: "ListItem updated" });
+    res.json({ msg: 'ListItem updated' });
   } catch (err) {
     console.error(err.message);
 
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 });
 
 // @route    DELETE api/listITem/:id
 // @desc     Delete an Item
 // @access   Private
-router.delete("/:id", [auth, checkObjectId("id")], async (req, res) => {
+router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
 
     // Check user
     if (item.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "User not authorized" });
+      return res.status(401).json({ msg: 'User not authorized' });
     }
 
     if (item.aboveItemId) {
@@ -203,12 +203,18 @@ router.delete("/:id", [auth, checkObjectId("id")], async (req, res) => {
 
     await item.remove();
 
-    res.json({ msg: "ListItem removed" });
+    res.json({ msg: 'ListItem removed' });
   } catch (err) {
     console.error(err.message);
 
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 });
+
+// const deleteFunction = async (id) => {
+//   Item.findByIdAndDelete(id,(error,data)=>{
+//     if(data.video.length > 0)
+//   })
+// };
 
 module.exports = router;
