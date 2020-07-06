@@ -25,7 +25,7 @@ export const dailyLearning = () => {
       <button
         type='submit'
         className='btnI'
-        onClick={(getRandom) => {
+        onClick={() => {
           prompt('What are you looking for?');
         }}>
         Search{' '}

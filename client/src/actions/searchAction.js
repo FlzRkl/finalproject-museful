@@ -12,35 +12,41 @@ const datamuse = axios.create({
   baseURL: 'https://api.datamuse.com/words',
 });
 
-const API_KEY = '5eg38ggw8ywoh2shwal79bn5qa2dfpaqfeen7nz5n3bnjs8ef';
+export const fetchRandom = (getRandomWord) => async (dispatch) => {
+  const API_KEY = '5eg38ggw8ywoh2shwal79bn5qa2dfpaqfeen7nz5n3bnjs8ef';
 
-const URL =
-  'https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=5&api_key=';
+  const URL =
+    'https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=5&api_key=';
 
-export const fetchRandom = () => async (dispatch) => {
-  try {
-    const wordnik = axios.create({
-      baseURL: URL + API_KEY,
-      headers: {
-        'cache-control': 'no-cache',
-        'content-type': 'application/json; charset=utf-8',
-      },
-    });
-    const result = await wordnik.get();
-
-    console.log(result);
+  if (getRandomWord) {
     dispatch({
-      type: FETCH_RANDOM,
-      payload: result.data,
+      type: FETCH_INIT,
     });
-  } catch (error) {
-    dispatch({
-      type: SET_ALERT,
-      payload: {
-        msg: 'Fetching Words Unsuccessful',
-        type: 'warning',
-      },
-    });
+    try {
+      const wordnik = axios.create({
+        baseURL: URL + API_KEY,
+        headers: {
+          'cache-control': 'no-cache',
+          'content-type': 'application/json; charset=utf-8',
+        },
+      });
+      const result = await wordnik.get('?' + URL + API_KEY);
+
+      console.log(result);
+
+      dispatch({
+        type: FETCH_RANDOM,
+        payload: result.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: SET_ALERT,
+        payload: {
+          msg: 'Fetching Words Unsuccessful',
+          type: 'warning',
+        },
+      });
+    }
   }
 };
 

@@ -68,7 +68,7 @@ const aboutUs = () => {
           This is our final project after 8 month of heavy practical web
           development learning at the DCI in Hamburg. We are Filiz, Lana,
           Harris, Sascha and Stefan and would like to hear from you. You can
-          find our contacts in the Links above.
+          find our contacts in the links above.
         </p>
       </div>
     </div>
