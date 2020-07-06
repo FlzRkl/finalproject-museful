@@ -39,7 +39,6 @@ function Cards({ item, deleteItem, loadItem }) {
           height='2em'
           viewBox='0 0 16 16'
           className='bi bi-x'
-          fill='black'
           xmlns='http://www.w3.org/2000/svg'
         >
           <path
@@ -53,13 +52,13 @@ function Cards({ item, deleteItem, loadItem }) {
         </svg>
       </span>
       <Link to='/dashboard/listComponent'>
-        <div className='card border-dark mb-3' onClick={handleClick}>
-          <div className='card-body text-dark'>
+        <div className='card border-light mb-3' onClick={handleClick}>
+          <div className='card-body text-light'>
             <h5 className='card-title'>{item.title}</h5>
             <p className='card-text'>{item.desc}</p>
           </div>
 
-          <div className='card-footer text-dark border-success'>{date}</div>
+          <div className='card-footer text-light border-success'>{date}</div>
         </div>
       </Link>
     </div>

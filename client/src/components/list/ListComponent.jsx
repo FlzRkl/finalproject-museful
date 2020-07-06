@@ -71,11 +71,11 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
         className='form col-xs-12 col-sm-10 col-md-8 col-lg-6'
       >
         <div className='input-group mb-2'>
-          <div className='input-group-prepend'>
+          {/* <div className='input-group-prepend'>
             <span className='input-group-text' id='input-addon-filter'>
               @@
             </span>
-          </div>
+          </div> */}
           <input
             ref={inputEl}
             type='text'
@@ -102,7 +102,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
           <div className='input-group mb-3'>
             <textarea
               className='form-control'
-              placeholder='Add Describtion'
+              placeholder='Add Description'
               aria-label='Desc'
               value={desc}
               onChange={handleChangeDesc}
@@ -112,7 +112,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
       </form>
       <hr />
       <div className='col-lg-8'>
-        <ul className='list-group list-group-flush bg-light text-dark text-center'>
+        <ul className='list-group list-group-flush bg-transperent text-light text-center'>
           {data
             ? data.map((item, index) => (
                 <>
