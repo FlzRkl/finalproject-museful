@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect, useSelector } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 
 import { logout } from '../../actions/auth';
 
@@ -16,6 +16,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const iconSize = '1x';
 
 const Dashboard = ({ logout }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   return (
     <div className='dashboard'>
       <Link
@@ -37,6 +39,7 @@ const Dashboard = ({ logout }) => {
       <Link className='subHeader link logout' to='/' onClick={logout}>
         <FontAwesomeIcon icon={faDoorOpen} size={iconSize} className='faIcon' />
       </Link>
+      {isAuthenticated ? null : <Redirect to='/' />}
     </div>
   );
 };
