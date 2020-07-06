@@ -424,6 +424,31 @@ input[type='radio']:checked ~ label {
   padding-top: 0.5rem;
 }
 
+$body-bg: #ccc;
+.input-group {
+  width: inherit;
+}
+
+.list-group-item,
+.list-group-item .list-group-item {
+  border-bottom: 1px solid rgb(206, 171, 67);
+  color: #b9bbbe;
+  background-color: #282c34;
+
+  &:hover {
+    background-color: #282c34;
+  }
+}
+
+.list-group-item:last-child {
+  border-bottom-width: 3 !important;
+}
+
+.list-group-item ul,
+.list-group-item li {
+  background-color: #282c34;
+}
+
 //FOOTER
 .footer {
   display: inline-block;
@@ -526,6 +551,7 @@ ul.d-flex {
   > .head {
     justify-content: center;
     align-items: center;
+    width: 70%;
   }
 }
 
@@ -566,9 +592,14 @@ ul.d-flex {
 }
 #list-list span {
   position: absolute;
-  top: -0.9em;
-  right: 0em;
+  top: 1.7em;
+  right: 3em;
   z-index: 7;
+  color: white;
+}
+
+.delete svg {
+  fill: var(--fontColorDefault);
 }
 // form {
 //   transition: visibility 2s;

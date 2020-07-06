@@ -66,7 +66,7 @@ const Lists = ({ submitItem }) => {
           onSubmit={submit}
           className={
             toggle === true
-              ? 'invisible form col-xs-12 col-sm-10 col-md-8 col-lg-6'
+              ? 'd-none form col-xs-12 col-sm-10 col-md-8 col-lg-6'
               : 'd-block form col-xs-12 col-sm-10 col-md-8 col-lg-6'
           }
         >
