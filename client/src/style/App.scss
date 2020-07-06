@@ -137,7 +137,7 @@ img {
   // font-size: $fontSizeH2;
   // font-weight: bolder;
   // background: $ColorDefault;
-  color: $fontColorDefault;
+  color: var(--fontColorDefault);
   border: $borderSH;
   padding: 0.3rem 0.7rem;
   margin-left: 2.5em;
@@ -145,9 +145,10 @@ img {
   width: fit-content;
   height: 2.1rem;
 }
+
 .btnL:hover {
-  background-color: $fontColorDefault;
-  color: $ColorDark;
+  background-color: var(--fontColorDefault);
+  color: var(--ColorDark);
 }
 
 .btnA,
@@ -316,7 +317,7 @@ input[type='radio']:checked ~ label {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0;
+  // margin: 1rem 0;
   // position: fixed;
   z-index: 1;
   width: 100%;

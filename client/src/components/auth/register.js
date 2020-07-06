@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import { register } from '../../actions/auth';
 import { clearErrors } from '../../actions/errorAction';
@@ -87,62 +87,66 @@ const RegisterModalF = ({ clearErrors, register }) => {
       <button className='btnI' onClick={toggle}>
         <span className='textPara'>Register</span>
       </button>
-      <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle} className='modalI'>
-          Register
-        </ModalHeader>
-        <ModalBody>
-          {msg
-            ? msg.map((error) => (
-                <Alert key={uuid()} color='danger'>
-                  {error.msg}
-                </Alert>
-              ))
-            : null}
-          <Form onSubmit={onSubmit}>
-            <FormGroup>
-              <Label for='name'>Name</Label>
-              <Input
-                type='name'
-                name='name'
-                id='name'
-                placeholder='Name'
-                value={name}
-                onChange={handleNameInput}
-                className='mb-3'
-              />
-              <Label for='email'>Email</Label>
-              <Input
-                type='email'
-                name='email'
-                id='email'
-                placeholder='Email'
-                value={email}
-                onChange={handleEmailInput}
-                className='mb-3'
-              />
-              <Label for='password'>Password</Label>
-              <Input
-                type='password'
-                name='password'
-                id='password'
-                placeholder='Password'
-                value={password}
-                className='mb-3'
-                onChange={handlePasswordInput}
-              />
-              <Button
-                // onClick={onSubmit}
-                color='dark'
-                style={{ marginTop: '2rem' }}
-                block
-              >
-                <Link to='/dashboard'>Register</Link>
-              </Button>
-            </FormGroup>
-          </Form>
-        </ModalBody>
-      </Modal>
+      {isAuthenticated ? (
+        <Redirect to='/dashboard' />
+      ) : (
+        <Modal isOpen={modal} toggle={toggle}>
+          <ModalHeader toggle={toggle} className='modalI'>
+            Register
+          </ModalHeader>
+          <ModalBody>
+            {msg
+              ? msg.map((error) => (
+                  <Alert key={uuid()} color='danger'>
+                    {error.msg}
+                  </Alert>
+                ))
+              : null}
+            <Form onSubmit={onSubmit}>
+              <FormGroup>
+                <Label for='name'>Name</Label>
+                <Input
+                  type='name'
+                  name='name'
+                  id='name'
+                  placeholder='Name'
+                  value={name}
+                  onChange={handleNameInput}
+                  className='mb-3'
+                />
+                <Label for='email'>Email</Label>
+                <Input
+                  type='email'
+                  name='email'
+                  id='email'
+                  placeholder='Email'
+                  value={email}
+                  onChange={handleEmailInput}
+                  className='mb-3'
+                />
+                <Label for='password'>Password</Label>
+                <Input
+                  type='password'
+                  name='password'
+                  id='password'
+                  placeholder='Password'
+                  value={password}
+                  className='mb-3'
+                  onChange={handlePasswordInput}
+                />
+                <Button
+                  // onClick={onSubmit}
+                  color='dark'
+                  style={{ marginTop: '2rem' }}
+                  block
+                >
+                  <Link to='/dashboard'>Register</Link>
+                </Button>
+              </FormGroup>
+            </Form>
+          </ModalBody>
+        </Modal>
+      )}
     </Fragment>
   );
 };
