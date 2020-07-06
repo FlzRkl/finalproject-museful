@@ -67,7 +67,7 @@ export const SearchWord = ({ fetchWord }) => {
 };
 
 SearchWord.propTypes = {
-  prop: PropTypes,
+  prop: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
