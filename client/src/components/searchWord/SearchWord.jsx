@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
 import { fetchWord } from '../../actions/searchAction';
 import SearchFilter from './SearchFilter';
@@ -12,9 +12,6 @@ export const SearchWord = ({ fetchWord }) => {
   const data = useSelector((state) => state.search.data);
   const filter = useSelector((state) => state.search.filter);
 
-  // const dispatch = useDispatch();
-  console.log(filter);
-
   const handleChange = (e) => {
     setWord(e.target.value);
   };
@@ -22,11 +19,14 @@ export const SearchWord = ({ fetchWord }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     fetchWord(word, filter);
-
-    console.log('submit Searchhhhhhhhhhhhhhhhhhhhhhhhhhh');
   };
+
+  useEffect(() => {
+    document.getElementById('filter-Rhyme').checked = true;
+  }, []);
+
   return (
-    <div className='dashboard d-flexColumn'>
+    <div className='d-flexColumn'>
       <SearchFilter />
       <form id='formSearch' onSubmit={handleSearch}>
         <input
@@ -36,6 +36,7 @@ export const SearchWord = ({ fetchWord }) => {
           value={word}
           onChange={handleChange}
           className='input'
+          autocomplete='off'
         />
         <button
           onClick={handleSearch}
@@ -51,11 +52,11 @@ export const SearchWord = ({ fetchWord }) => {
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        <div className='searchResult'>
+        <div className='searchResults'>
           {data
             ? data.map((item) => (
                 <div key={item.word} id={item.word}>
-                  <button className='btnI'>{item.word}</button>
+                  <button className='searchResult'>{item.word}</button>
                 </div>
               ))
             : null}

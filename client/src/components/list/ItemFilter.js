@@ -20,7 +20,7 @@ export const ItemFilter = () => {
               key={`item-filter-${currentFilter}`}
               className={cx(
                 `item-filter-${currentFilter} form-check form-check-inline`,
-                currentFilter === activeFilter && `active`
+                currentFilter === activeFilter && `check`
               )}
               onClick={() =>
                 dispatch({

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
+import { returnErrors } from './errorAction';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -22,6 +23,7 @@ export const loadUser = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
+    dispatch(returnErrors(err.response.data, err.response.status));
     dispatch({
       type: AUTH_ERROR,
     });
@@ -35,7 +37,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
       'Content-Type': 'application/json',
     },
   };
-
+  //Request Body
   const body = JSON.stringify({ name, email, password });
 
   try {
@@ -47,11 +49,14 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     });
     dispatch(loadUser());
   } catch (err) {
-    const errors = err.response.data.errors;
+    dispatch(
+      returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL')
+    );
+    // const errors = err.response.data.errors;
 
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    // }
 
     dispatch({
       type: REGISTER_FAIL,
