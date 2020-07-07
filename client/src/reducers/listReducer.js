@@ -4,6 +4,7 @@ import {
   LOAD_ITEM,
   FILTERED_LIST,
   SET_ITEM_FILTER,
+  DELETE_ITEM,
 } from '../actions/actionTypes';
 import { ITEM_FILTERS } from '../components/list/Item_Filters';
 
@@ -21,11 +22,13 @@ export default function (state = initialState, action) {
   switch (type) {
     case SUBMIT_ITEM:
       console.log('gatcha');
+      let updatedMainList = { ...state.mainList };
+
+      updatedMainList[payload.data.tag].push(payload.data);
+
       return {
         ...state,
-        mainList: {
-          title: payload,
-        },
+        mainList: updatedMainList,
         loading: false,
       };
     case LOAD_ITEM:
@@ -48,6 +51,22 @@ export default function (state = initialState, action) {
       return {
         ...state,
         filter: payload,
+      };
+    case DELETE_ITEM:
+      let deletedMainList = { ...state.mainList };
+
+      deletedMainList[payload.data.tag] = deletedMainList[
+        payload.data.tag
+      ].filter((item) => {
+        if (item.id === payload.data.id) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+      return {
+        ...state,
+        mainList: deletedMainList,
       };
     default:
       return state;

@@ -10,6 +10,8 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_PROFILE,
+  UPDATE_ITEM_USER,
+  DELETE_ITEM_USER,
   // ACCOUNT_DELETED,
 } from './actionTypes';
 
@@ -94,6 +96,20 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_FAIL,
     });
   }
+};
+
+export const addItemUser = (data) => (dispatch) => {
+  dispatch({
+    type: UPDATE_ITEM_USER,
+    payload: data,
+  });
+};
+
+export const deleteItemUser = (data) => (dispatch) => {
+  dispatch({
+    type: DELETE_ITEM_USER,
+    payload: data,
+  });
 };
 
 // Logout / Clear Profile

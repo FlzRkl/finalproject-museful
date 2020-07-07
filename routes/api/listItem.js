@@ -92,7 +92,7 @@ router.post(
 
     //Save to db, save _id to save_item
     let saved_item = await item.save();
-    console.log(saved_item);
+    console.log('saved data: ---\n' + saved_item);
     if (aboveItemId) {
       let key = saved_item.tag;
       let obj = {};
@@ -132,9 +132,7 @@ router.post(
     }
 
     //return _item id
-    res.status(200).json({
-      saved_item,
-    });
+    res.status(200).json(saved_item);
   }
 );
 
@@ -152,7 +150,7 @@ router.put('/', [auth], async (req, res) => {
       return res.status(401).json({ msg: 'User not authorized' });
     }
 
-    await Item.findByIdAndUpdate(
+    let updated_item = await Item.findByIdAndUpdate(
       id,
       { title: title, desc: desc, tag: tag, date: date },
       { new: true }
@@ -203,7 +201,7 @@ router.put('/', [auth], async (req, res) => {
       console.log(userList);
     }
 
-    res.json({ msg: 'ListItem updated' });
+    res.json(updated_item);
   } catch (err) {
     console.error(err.message);
 
@@ -213,7 +211,7 @@ router.put('/', [auth], async (req, res) => {
 
 const deleteF = async (id) => {
   Item.findByIdAndDelete(id, (error, data) => {
-    console.log('data: ---\n' + data);
+    console.log('deleted data: ---\n' + data);
     if (error) {
       return error;
     }
@@ -237,7 +235,7 @@ const deleteF = async (id) => {
 router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
-
+    let deleted_item = item;
     // Check user
     if (item.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'User not authorized' });
@@ -267,8 +265,8 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
       );
     }
     // await item.remove();
-
-    res.json({ msg: 'ListItem removed' });
+    // console.log('return item: \n' + deleted_item);
+    res.json(deleted_item);
   } catch (err) {
     console.log(err.message);
 

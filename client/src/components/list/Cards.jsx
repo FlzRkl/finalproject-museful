@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Cards({ item, deleteItem, loadItem }) {
   let date = item.date;
-  let dateNow = Date.now();
+  // let dateNow = Date.now();
   // let date = (date) => {
   //   date = item.date - dateNow;
   //   x.toDateString();
@@ -65,6 +65,6 @@ function Cards({ item, deleteItem, loadItem }) {
   );
 }
 
-const mapStateToProps = (state) => {};
+const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps, { deleteItem, loadItem })(Cards);
