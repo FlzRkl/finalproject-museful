@@ -7,6 +7,7 @@ import {
 } from './actionTypes';
 import axios from 'axios';
 import { searchFilters } from './searchFilters';
+import { dailyLearning } from '../components/dailyLearning/dailyLearning';
 
 const datamuse = axios.create({
   baseURL: 'https://api.datamuse.com/words',
@@ -21,9 +22,18 @@ const wordnik = axios.create({
   baseURL: URL + API_KEY,
 });
 
-export const fetchRandom = () => async (dispatch) => {
+export const fetchRandom = (random) => async (dispatch) => {
+  for(let item in dailyLearning){
+    if(item === random){
+    console.log(dailyLearning[item])
+    }
+  }
+  if (random) {
+    dispatch({
+      type: FETCH_INIT
+    })
   try {
-    const result = await wordnik.get();
+    const result = await wordnik.get('?',random);
     console.log(result);
     dispatch({
       type: FETCH_RANDOM,
@@ -31,7 +41,6 @@ export const fetchRandom = () => async (dispatch) => {
     });
   } catch (error) {
     console.log(error);
-
     dispatch({
       type: SET_ALERT,
       payload: {
