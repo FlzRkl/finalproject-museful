@@ -17,7 +17,7 @@ import { SEARCH_FILTERS } from '../components/searchWord/Search_Filters';
 const initialState = {
   isLoading: false,
   isError: false,
-  filter: 'RHYM',
+  filter: SEARCH_FILTERS.RYM,
   data: [],
   random: [],
 };
