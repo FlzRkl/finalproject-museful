@@ -101,7 +101,7 @@ router.post(
         title: saved_item.title,
         tag: saved_item.tag,
         desc: saved_item.desc,
-        date: savet_item.date,
+        date: saved_item.date,
       };
       await Item.findByIdAndUpdate(
         aboveItemId,
@@ -211,6 +211,26 @@ router.put('/', [auth], async (req, res) => {
   }
 });
 
+const deleteF = async (id) => {
+  Item.findByIdAndDelete(id, (error, data) => {
+    console.log('data: ---\n' + data);
+    if (error) {
+      return error;
+    }
+    if (data) {
+      for (key in data) {
+        let item = data[key];
+        if (Array.isArray(item) && item.length > 0) {
+          item.forEach((element) => {
+            console.log('element: ---\n' + element.id);
+            deleteF(element.id);
+          });
+        }
+      }
+    }
+  });
+};
+
 // @route    DELETE api/listITem/:id
 // @desc     Delete an Item
 // @access   Private
@@ -223,10 +243,11 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
       return res.status(401).json({ msg: 'User not authorized' });
     }
 
+    const aItem = item.aboveItemId;
+    const tag = item.tag;
+    const iId = item._id;
+
     if (item.aboveItemId) {
-      const aItem = item.aboveItemId;
-      const tag = item.tag;
-      const iId = item._id;
       let aboveList = await Item.findByIdAndUpdate(
         aItem,
         { $pull: { [tag]: { id: iId } } },
@@ -234,14 +255,44 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
       );
     }
 
-    await item.remove();
+    deleteF(item.id);
+
+    if (!item.aboveItemId) {
+      await User.findByIdAndUpdate(
+        item.user,
+        {
+          $pull: { list: { id: iId } },
+        },
+        { new: true }
+      );
+    }
+    // await item.remove();
 
     res.json({ msg: 'ListItem removed' });
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
 
     res.status(500).send('Server Error');
   }
 });
+
+// const getValues = Object.values(mainList)
+// .filter((item) => Array.isArray(item))
+// .filter((item) => item.length > 0);
+
+// const deleteF = async (id) => {
+//   Item.findByIdAndDelete(id,(error,data)=>{
+//       if(error){
+//           return error
+//       }
+//       for (item in data) {
+//           if(item.length > 0){
+//               item.forEach(element => {
+//                   deleteF(element.id)
+//               });
+//           }
+//       }
+//   })
+// }
 
 module.exports = router;

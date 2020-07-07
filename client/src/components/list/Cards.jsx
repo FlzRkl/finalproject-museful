@@ -58,7 +58,7 @@ function Cards({ item, deleteItem, loadItem }) {
             <p className='card-text'>{item.desc}</p>
           </div>
 
-          <div className='card-footer text-light border-success'>{date}</div>
+          <div className='cardFooter text-light'>{date}</div>
         </div>
       </Link>
     </div>
