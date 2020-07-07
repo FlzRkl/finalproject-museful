@@ -1,31 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-// STYLE
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import RegisterModalF from '../auth/register';
+import LoginModalF from '../auth/login';
 
 const LandingPage = () => {
+  // const [modal, setModal] = useState(false);
+  // // const [toggle, setToggle] = useState(true);
+
+  // const toggleModal = () => {
+  //   setModal(!modal);
+  //   console.log(modal);
+  // };
+
   return (
-    <div className='bodyS'>
-      <h1> Welcome to the Mussseefull App </h1>
-      <Link className='' to='/dashboard'>
-        <p className='btnBack'>
-          <FontAwesomeIcon
-            icon={faAngleLeft}
-            transform={{ rotate: 270 }}
-            size='1x'
-          />
-        </p>
-      </Link>
+    <div className='d-flexColumn textCenter'>
+      <h3 className='textTitle mb-3'>
+        Imagine, discover and create your own learning space!
+      </h3>
+      <div className='regContainer '>
+        <div className='regBox'>
+          <h3 className='textSubtitle'>Are you interested how it works?</h3>
+          <RegisterModalF />
+        </div>
+        <div className='regBox'>
+          <h3 className='textSubtitle'>You already have an account?</h3>
+          <LoginModalF />
+        </div>
+      </div>
     </div>
   );
-};
-
-LandingPage.propTypes = {
-  prop: PropTypes,
 };
 
 const mapStateToProps = (state) => ({});

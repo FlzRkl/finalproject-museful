@@ -101,6 +101,7 @@ router.post(
         title: saved_item.title,
         tag: saved_item.tag,
         desc: saved_item.desc,
+        date: savet_item.date,
       };
       await Item.findByIdAndUpdate(
         aboveItemId,
@@ -117,6 +118,8 @@ router.post(
           id: saved_item._id,
           title: saved_item.title,
           tag: saved_item.tag,
+          desc: saved_item.desc,
+          date: saved_item.date,
         },
       };
       await User.findByIdAndUpdate(
@@ -140,9 +143,10 @@ router.post(
 // @access   Private
 router.put('/', [auth], async (req, res) => {
   try {
-    let { id, title, desc } = req.body;
+    let { id, title, desc, tag } = req.body;
+    let date = Date.now();
     const item = await Item.findById(id);
-
+    console.log(item);
     // Check user
     if (item.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'User not authorized' });
@@ -150,7 +154,7 @@ router.put('/', [auth], async (req, res) => {
 
     await Item.findByIdAndUpdate(
       id,
-      { title: title, desc: desc },
+      { title: title, desc: desc, tag: tag, date: date },
       { new: true }
     );
 
@@ -160,15 +164,44 @@ router.put('/', [auth], async (req, res) => {
       const filt_field_id = `${tag}.id`;
       const filt_field_title = `${tag}.$.title`;
       const filt_field_desc = `${tag}.$.desc`;
+      const filt_field_date = `${tag}.$.date`;
       const iId = item._id;
+
       let aboveList = await Item.findOneAndUpdate(
         { _id: aItem, [filt_field_id]: iId },
-        { $set: { [filt_field_title]: title, [filt_field_desc]: desc } },
+        {
+          $set: {
+            [filt_field_title]: title,
+            [filt_field_desc]: desc,
+            [filt_field_date]: date,
+          },
+        },
         { new: true }
       );
     }
 
-    //await item.remove();
+    if (!item.aboveItemId) {
+      const userId = req.user.id;
+      const user = User.findById(userId);
+      console.log(user);
+      const iId = item._id;
+      const filt_field_id = `${tag}.id`;
+      const filt_field_title = `${tag}.$.title`;
+      const filt_field_desc = `${tag}.$.desc`;
+      const filt_field_date = `${tag}.$.date`;
+      let userList = await User.findOneAndUpdate(
+        { _id: userId, [filt_field_id]: iId },
+        {
+          $set: {
+            [filt_field_title]: title,
+            [filt_field_desc]: desc,
+            [filt_field_date]: date,
+          },
+        },
+        { new: true }
+      );
+      console.log(userList);
+    }
 
     res.json({ msg: 'ListItem updated' });
   } catch (err) {
