@@ -4,9 +4,10 @@ which part of our state should be changed */
 import {
   FETCH_INIT,
   FETCH_WORDS,
+  FETCH_RANDOM,
   SET_SEARCH_FILTER,
-} from '../actions/actionTypes';
-import { SEARCH_FILTERS } from '../components/searchWord/Search_Filters';
+} from "../actions/actionTypes";
+import { SEARCH_FILTERS } from "../components/searchWord/Search_Filters";
 /* this initialState below will represent the state saved in the store and any change to it here will change also the state in the store  */
 /* How is that :
   - The postReducer will change the initialState here
@@ -18,6 +19,7 @@ const initialState = {
   isError: false,
   filter: 'RHYM',
   data: [],
+  random: [],
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -33,6 +35,13 @@ export default function (state = initialState, action) {
         isLoading: false,
         isError: false,
         data: action.payload,
+      };
+    case FETCH_RANDOM:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        random: action.payload,
       };
     case SET_SEARCH_FILTER:
       return {
