@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -8,10 +8,11 @@ import { fetchRandom } from '../../actions/searchAction';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const dailyLearning = ({ fetchRandom }) => {
-  /*const [random, setRandom] = useState('');
-  const data = useSelector((state) => state.random.data);
-*/
+export const DailyLearning = ({ fetchRandom }) => {
+  const random = useSelector((state) => state.search.random);
+
+  const isLoading = useSelector((state) => state.random.isLoading);
+
   const getRandom = (e) => {
     e.preventDefault();
     fetchRandom();
@@ -28,16 +29,28 @@ export const dailyLearning = ({ fetchRandom }) => {
       <button type='submit' className='btnI' onClick={getRandom}>
         Search
       </button>
+      {isLoading ? (
+        <div>Loading ...</div>
+      ) : (
+        <div className='searchResults'>
+          {random
+            ? random.map(() => (
+                <button className='searchResult'>{random}</button>
+              ))
+            : null}
+        </div>
+      )}
+      ;
     </div>
   );
 };
 
-dailyLearning.propTypes = {
+DailyLearning.propTypes = {
   prop: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
-  random: state.random,
+  //random: state.random,
 });
 
-export default connect(mapStateToProps, { fetchRandom })(dailyLearning);
+export default connect(mapStateToProps, { fetchRandom })(DailyLearning);

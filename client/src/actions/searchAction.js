@@ -23,17 +23,8 @@ const wordnik = axios.create({
 });
 
 export const fetchRandom = (random) => async (dispatch) => {
-  for(let item in dailyLearning){
-    if(item === random){
-    console.log(dailyLearning[item])
-    }
-  }
-  if (random) {
-    dispatch({
-      type: FETCH_INIT
-    })
   try {
-    const result = await wordnik.get('?',random);
+    const result = await wordnik.get('?', random);
     console.log(result);
     dispatch({
       type: FETCH_RANDOM,
