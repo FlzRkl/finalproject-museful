@@ -48,6 +48,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
     setTitle('');
     setDesc('');
     loadItem(currentId);
+    console.log(submitObject);
   };
 
   useEffect(() => {
@@ -63,14 +64,17 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
 
   return (
     <>
-      <h1 className='mb-3'>{mainList.title}</h1>
-      <div className='mb-2'>{mainList.desc}</div>
+      <div className='head'>
+        <h1 className='mb-3'>{mainList.title}</h1>
+        <div className='mb-2'>{mainList.desc}</div>
+      </div>
+
       <ItemFilter />
       <form
         onSubmit={submit}
         className='form col-xs-12 col-sm-10 col-md-8 col-lg-6'
       >
-        <div className='input-group mb-2'>
+        <div className='formSearch mb-2'>
           {/* <div className='input-group-prepend'>
             <span className='input-group-text' id='input-addon-filter'>
               @@
@@ -88,26 +92,18 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
             id='inputList0'
             onChange={handleChangeTitle}
           />
-          <div className='input-group-append'>
-            <button
-              onClick={submit}
-              className='inputSearch'
-              id='input-addon-add'
-            >
-              Add
-            </button>
-          </div>
+          <button onClick={submit} className='inputSearch' id='input-addon-add'>
+            Add
+          </button>
         </div>
-        <div className='row'>
-          <div className='input-group mb-3'>
-            <textarea
-              className='form-control'
-              placeholder='Add Description'
-              aria-label='Desc'
-              value={desc}
-              onChange={handleChangeDesc}
-            ></textarea>
-          </div>
+        <div className='input-group mb-3'>
+          <textarea
+            className='form-control'
+            placeholder='Add Description'
+            aria-label='Desc'
+            value={desc}
+            onChange={handleChangeDesc}
+          ></textarea>
         </div>
       </form>
       <hr />

@@ -73,7 +73,7 @@ const Lists = ({ submitItem }) => {
           <div className='input-group mb-2'>
             <input
               type='text'
-              className='form-control'
+              className='form-control mb-2'
               placeholder='Title'
               aria-label='Title'
               aria-describedby='input-title'
@@ -82,8 +82,7 @@ const Lists = ({ submitItem }) => {
               id='inputList0'
               onChange={handleChangeTitle}
             />
-          </div>
-          <div className='row'>
+
             <div className='input-group mb-3'>
               <textarea
                 className='form-control'
