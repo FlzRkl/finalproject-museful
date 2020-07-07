@@ -4,32 +4,25 @@ import {
   FETCH_RANDOM,
   SET_ALERT,
   SET_SEARCH_FILTER,
-} from './actionTypes';
-import axios from 'axios';
-import { searchFilters } from './searchFilters';
+} from "./actionTypes";
+import axios from "axios";
+import { searchFilters } from "./searchFilters";
 
 const datamuse = axios.create({
-  baseURL: 'https://api.datamuse.com/words',
+  baseURL: "https://api.datamuse.com/words",
 });
 
-const API_KEY = '5eg38ggw8ywoh2shwal79bn5qa2dfpaqfeen7nz5n3bnjs8ef';
+const API_KEY = "5eg38ggw8ywoh2shwal79bn5qa2dfpaqfeen7nz5n3bnjs8ef";
 
 const URL =
-  'https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=5&api_key=';
+  "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=5&api_key=";
 
 const wordnik = axios.create({
   baseURL: URL + API_KEY,
-  // headers: {
-  //   'cache-control': 'no-cache',
-  //   'content-type': 'application/json; charset=utf-8',
-  // },
 });
 
 export const fetchRandom = () => async (dispatch) => {
   try {
-    // const proxyURL = "https://cors.io/?";
-
-    // console.log(url + fQuery + word);
     const result = await wordnik.get();
 
     console.log(result);
@@ -43,21 +36,20 @@ export const fetchRandom = () => async (dispatch) => {
     dispatch({
       type: SET_ALERT,
       payload: {
-        msg: 'Fetching Words Unsuccessful',
-        type: 'warning',
+        msg: "Fetching Words Unsuccessful",
+        type: "warning",
       },
     });
   }
 };
 
 export const fetchWord = (word, filter) => async (dispatch) => {
-  let fQuery = 'RHY';
+  let fQuery = "RHY";
   for (let item in searchFilters) {
     if (item === filter) {
       console.log(searchFilters[item]);
       fQuery = searchFilters[item];
     }
-    // console.log(fQuery)
   }
 
   if (word) {
@@ -65,8 +57,7 @@ export const fetchWord = (word, filter) => async (dispatch) => {
       type: FETCH_INIT,
     });
     try {
-      // console.log(url + fQuery + word);
-      const result = await datamuse.get('?' + fQuery + word);
+      const result = await datamuse.get("?" + fQuery + word);
 
       console.log(result);
       dispatch({
@@ -77,8 +68,8 @@ export const fetchWord = (word, filter) => async (dispatch) => {
       dispatch({
         type: SET_ALERT,
         payload: {
-          msg: 'Fetching Words Unsuccessful',
-          type: 'warning',
+          msg: "Fetching Words Unsuccessful",
+          type: "warning",
         },
       });
     }
@@ -86,7 +77,6 @@ export const fetchWord = (word, filter) => async (dispatch) => {
 };
 
 export const setSearchFilter = (filter) => (dispatch) => {
-  // console.log(filter);
   dispatch({
     type: SET_SEARCH_FILTER,
     payload: filter,
