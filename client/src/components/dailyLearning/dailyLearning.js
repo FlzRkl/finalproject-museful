@@ -9,20 +9,13 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const dailyLearning = ({ fetchRandom }) => {
-  const [random, setRandom] = useState('');
+  /*const [random, setRandom] = useState('');
   const data = useSelector((state) => state.random.data);
-
-  const handleChange = (e) => {
-    setRandom(e.target.value);
-  };
-  const handleSearch = (e) => {
+*/
+  const getRandom = (e) => {
     e.preventDefault();
-    fetchRandom(random);
+    fetchRandom();
   };
-
-  useEffect(() => {
-    document.getElementById('btnI').clicked = true;
-  }, []);
 
   return (
     <div className='d-flexColumn'>
@@ -32,23 +25,9 @@ export const dailyLearning = ({ fetchRandom }) => {
           <FontAwesomeIcon icon={faAngleLeft} size='1x' />
         </p>{' '}
       </Link>
-      <button type='submit' className='btnI' onClick={handleSearch}>
+      <button type='submit' className='btnI' onClick={getRandom}>
         Search
       </button>
-      <div className='searchResults'>
-        {data
-          ? data.map((item) => (
-              <div key={item.random} id={item.random}>
-                <button
-                  className='searchResult'
-                  value={random}
-                  onChange={handleChange}>
-                  {item.random}
-                </button>
-              </div>
-            ))
-          : null}
-      </div>
     </div>
   );
 };
