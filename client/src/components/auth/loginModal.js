@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { register } from '../../actions/auth';
+import { login } from '../../actions/auth';
 import { clearErrors } from '../../actions/errorAction';
 
 //DEV
@@ -22,10 +22,9 @@ import {
   Label,
 } from 'reactstrap';
 
-export class registerModal extends Component {
+export class loginModal extends Component {
   state = {
     modal: false,
-    name: '',
     email: '',
     password: '',
     //PASSWORD 2 = CONFIRMATION?
@@ -35,7 +34,7 @@ export class registerModal extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
   };
 
@@ -44,7 +43,7 @@ export class registerModal extends Component {
 
     if (error !== prevProps.error) {
       //Check for register error
-      if (error.id === 'REGISTER_FAIL') {
+      if (error.id === 'LOGIN_FAIL') {
         this.setState({ msg: error.msg.errors });
       } else {
         this.setState({ msg: null });
@@ -73,29 +72,17 @@ export class registerModal extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-
-    const { name, email, password } = this.state;
-
-    //Create User Object
-    const newUser = {
-      name,
-      email,
-      password,
-    };
-
-    //Attempt to register
-    this.props.register(newUser);
   };
 
   render() {
     return (
       <Fragment>
-        <button className='regBtn' onClick={this.toggle}>
+        <button className='btnI' onClick={this.toggle}>
           Login
         </button>
-        <Modal isOpen={this.props.isOpen} toggle={this.toggle}>
+        <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle} className='modalI'>
-            Please fill out the fields below.
+            Login
           </ModalHeader>
           <ModalBody>
             {this.state.msg
@@ -153,6 +140,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, { register, clearErrors })(
-  registerModal
-);
+export default connect(mapStateToProps, { login, clearErrors })(loginModal);
