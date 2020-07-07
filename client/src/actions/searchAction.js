@@ -22,6 +22,10 @@ const wordnik = axios.create({
 });
 
 export const fetchRandom = () => async (dispatch) => {
+  dispatch({
+    type: FETCH_INIT,
+  });
+
   try {
     const result = await wordnik.get();
 
@@ -56,6 +60,7 @@ export const fetchWord = (word, filter) => async (dispatch) => {
     dispatch({
       type: FETCH_INIT,
     });
+
     try {
       const result = await datamuse.get("?" + fQuery + word);
 

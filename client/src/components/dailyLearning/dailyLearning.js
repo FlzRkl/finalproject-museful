@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchRandom } from "../../actions/searchAction";
 
@@ -8,10 +8,19 @@ import { fetchRandom } from "../../actions/searchAction";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const dailyLearning = ({ fetchRandom }) => {
-  const getRandom = () => {
+export const DailyLearning = ({ fetchRandom }) => {
+  const isLoading = useSelector((state) => state.search.isLoading);
+  const fiveWord = useSelector((state) => state.search.random);
+  const [random, setRandom] = useState([]);
+  console.log(random, fiveWord);
+  const getRandom = (e) => {
+    e.preventDefault();
     fetchRandom();
   };
+
+  useEffect(() => {
+    setRandom(fiveWord);
+  }, [fiveWord]);
 
   return (
     <div className="bodyS">
@@ -23,18 +32,33 @@ export const dailyLearning = ({ fetchRandom }) => {
       </Link>
       {/* <input type='text' value='Give it a try!' /> */}{" "}
       <button type="submit" className="btnI" onClick={getRandom}>
-        Search{" "}
+        Get 5 Random Words{" "}
       </button>{" "}
+      {isLoading ? (
+        <div>Loading ...</div>
+      ) : (
+        <div className="searchResult">
+          {random
+            ? random.map((item) => (
+                <div>
+                  <button className="btnI">{item.word}</button>
+                </div>
+              ))
+            : null}
+        </div>
+      )}
     </div>
   );
 };
 
-dailyLearning.propTypes = {
+DailyLearning.propTypes = {
   prop: PropTypes,
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  fiveWord: state.search.random,
+});
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, { fetchRandom })(dailyLearning);
+export default connect(mapStateToProps, { fetchRandom })(DailyLearning);
