@@ -11,8 +11,8 @@ export const ItemFilter = () => {
   const activeFilter = useSelector((state) => state.list.filter);
   const dispatch = useDispatch();
   return (
-    <div>
-      <ul className='item-filters form-check form-check-inline mb-3'>
+    <div className='headFilter'>
+      <ul className='item-filters col-10 form-check mb-3'>
         {Object.keys(ITEM_FILTERS).map((filterKey) => {
           const currentFilter = ITEM_FILTERS[filterKey];
           return (
