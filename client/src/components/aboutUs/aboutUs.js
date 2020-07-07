@@ -14,13 +14,14 @@ const aboutUs = () => {
         <p>
           Our mission is to help anyone to learn anything they want in a museful
           and playful way. Let's start to creat a learning and memorizing space
-          which will grow to a user self curated learning management system –
-          welcome to your museful space. Improve your skills with words and
-          terms by getting your <span>Daily Learnings</span> – just for fun.
-          Enjoy your journey by searching for rhyming words or your are curiosed
-          about the meaning of a word, you have the choice to search and filter.
-          If your are seeking for a space to collect and store content you have
-          searched for, so museful is the right place for you.{' '}
+          which will grow to a user self generated and curated learning
+          management system – welcome to your museful space. Improve your skills
+          with words and terms by getting your <span>Daily Learnings</span> –
+          just for fun. Enjoy your journey by searching for rhyming words or
+          your are curiosed about the meaning of a word, you have the choice to
+          search and filter. If your are seeking for a space to collect and
+          store content you have searched for, so museful is the right place for
+          you.{' '}
         </p>
       </div>
 
