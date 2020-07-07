@@ -1,23 +1,23 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require('express-validator');
-const auth = require('../../middleware/auth');
-const checkObjectId = require('../../middleware/checkObjectId');
+const { check, validationResult } = require("express-validator");
+const auth = require("../../middleware/auth");
+const checkObjectId = require("../../middleware/checkObjectId");
 
-const Item = require('../../models/Item');
-const User = require('../../models/User');
+const Item = require("../../models/Item");
+const User = require("../../models/User");
 
 //@route  GET api/listItem/:id
 //@desc  Get listITems
 //@access Public
 
-router.get('/:id', [auth, checkObjectId('id')], async (req, res) => {
+router.get("/:id", [auth, checkObjectId("id")], async (req, res) => {
   let id = req.params.id;
   if (id) {
     let item = await Item.findById(id);
     if (!item) {
       return res.status(400).json({
-        errors: [{ msg: 'Item not found!' }],
+        errors: [{ msg: "Item not found!" }],
       });
     }
     return res.status(200).json({
@@ -47,12 +47,12 @@ router.get('/:id', [auth, checkObjectId('id')], async (req, res) => {
 // @desc     Post an Item
 // @access   Private
 router.post(
-  '/submit',
+  "/submit",
   [
     auth,
-    check('title', 'Title is required').not().isEmpty(),
-    check('tag', 'Tag is required').not().isEmpty(),
-    check('user', 'UserId is required').not().isEmpty(),
+    check("title", "Title is required").not().isEmpty(),
+    check("tag", "Tag is required").not().isEmpty(),
+    check("user", "UserId is required").not().isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -92,7 +92,7 @@ router.post(
 
     //Save to db, save _id to save_item
     let saved_item = await item.save();
-    console.log(saved_item);
+    console.log("saved data: ---\n" + saved_item);
     if (aboveItemId) {
       let key = saved_item.tag;
       let obj = {};
@@ -101,7 +101,7 @@ router.post(
         title: saved_item.title,
         tag: saved_item.tag,
         desc: saved_item.desc,
-        date: savet_item.date,
+        date: saved_item.date,
       };
       await Item.findByIdAndUpdate(
         aboveItemId,
@@ -132,16 +132,14 @@ router.post(
     }
 
     //return _item id
-    res.status(200).json({
-      saved_item,
-    });
+    res.status(200).json(saved_item);
   }
 );
 
 // @route    Update api/listITem/:id
 // @desc     Update an Item
 // @access   Private
-router.put('/', [auth], async (req, res) => {
+router.put("/", [auth], async (req, res) => {
   try {
     let { id, title, desc, tag } = req.body;
     let date = Date.now();
@@ -149,10 +147,10 @@ router.put('/', [auth], async (req, res) => {
     console.log(item);
     // Check user
     if (item.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: 'User not authorized' });
+      return res.status(401).json({ msg: "User not authorized" });
     }
 
-    await Item.findByIdAndUpdate(
+    let updated_item = await Item.findByIdAndUpdate(
       id,
       { title: title, desc: desc, tag: tag, date: date },
       { new: true }
@@ -203,30 +201,51 @@ router.put('/', [auth], async (req, res) => {
       console.log(userList);
     }
 
-    res.json({ msg: 'ListItem updated' });
+    res.json(updated_item);
   } catch (err) {
     console.error(err.message);
 
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
+
+const deleteF = async (id) => {
+  Item.findByIdAndDelete(id, (error, data) => {
+    console.log("deleted data: ---\n" + data);
+    if (error) {
+      return error;
+    }
+    if (data) {
+      for (key in data) {
+        let item = data[key];
+        if (Array.isArray(item) && item.length > 0) {
+          item.forEach((element) => {
+            console.log("element: ---\n" + element.id);
+            deleteF(element.id);
+          });
+        }
+      }
+    }
+  });
+};
 
 // @route    DELETE api/listITem/:id
 // @desc     Delete an Item
 // @access   Private
-router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
+router.delete("/:id", [auth, checkObjectId("id")], async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
-
+    let deleted_item = item;
     // Check user
     if (item.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: 'User not authorized' });
+      return res.status(401).json({ msg: "User not authorized" });
     }
 
+    const aItem = item.aboveItemId;
+    const tag = item.tag;
+    const iId = item._id;
+
     if (item.aboveItemId) {
-      const aItem = item.aboveItemId;
-      const tag = item.tag;
-      const iId = item._id;
       let aboveList = await Item.findByIdAndUpdate(
         aItem,
         { $pull: { [tag]: { id: iId } } },
@@ -234,13 +253,24 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
       );
     }
 
-    await item.remove();
+    deleteF(item.id);
 
-    res.json({ msg: 'ListItem removed' });
+    if (!item.aboveItemId) {
+      await User.findByIdAndUpdate(
+        item.user,
+        {
+          $pull: { list: { id: iId } },
+        },
+        { new: true }
+      );
+    }
+    // await item.remove();
+    // console.log('return item: \n' + deleted_item);
+    res.json(deleted_item);
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
 
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 

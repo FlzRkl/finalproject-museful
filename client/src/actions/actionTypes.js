@@ -2,7 +2,6 @@
 export const FETCH_INIT = 'FETCH_INIT';
 export const FETCH_WORDS = 'FETCH_WORDS';
 export const SET_SEARCH_FILTER = 'SET_SEARCH_FILTER';
-//export const FETCH_DATA = 'FETCH_DATA';
 export const FETCH_RANDOM = 'FETCH_RANDOM';
 
 //USAGE
@@ -33,6 +32,8 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
+export const UPDATE_ITEM_USER = 'UPDATE_ITEM_USER';
+export const DELETE_ITEM_USER = 'DELETE_ITEM_USER';
 
 //LIST
 export const SUBMIT_ITEM = 'SUBMIT_ITEM';
@@ -41,3 +42,4 @@ export const LOAD_ITEM = 'LOAD_ITEM';
 export const SORT_ITEMS = 'SORT_ITEMS';
 export const SET_ITEM_FILTER = 'SET_ITEM_FILTER';
 export const FILTERED_LIST = 'FILTERED_LIST';
+export const DELETE_ITEM = 'DELETE_ITEM';

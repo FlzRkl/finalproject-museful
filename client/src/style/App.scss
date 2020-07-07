@@ -22,6 +22,7 @@ $textShadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 $textShadow2: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
   0px 18px 23px rgba(0, 0, 0, 0.1);
 //BORDERS
+$borderColorList: #26a69a;
 $borderRadius: 8px;
 $borderRadiusSH: 4px;
 $borderH: 0.2rem solid var(--fontColorDefault);
@@ -149,7 +150,7 @@ img {
 
 .btnL:hover {
   background-color: var(--fontColorDefault);
-  color: var(--ColorDark);
+  color: var(--ColorDefault);
 }
 
 .btnA,
@@ -255,6 +256,8 @@ input[type='radio']:checked ~ label {
   color: var(--fontColorDefault);
   border: 0;
   border-right: 0;
+  border-radius: 0 $borderRadiusSH 0 0;
+
   border-bottom: $borderSH;
   padding: 0.5rem 1rem;
   margin: 2rem 0rem;
@@ -271,6 +274,7 @@ input[type='radio']:checked ~ label {
   background: none;
   border: 0;
   border-bottom: $borderSH;
+  border-radius: $borderRadiusSH $borderRadiusSH $borderRadiusSH 0;
   color: var(--fontColorDefault);
   padding: 0.5rem 1rem;
   margin: 0;
@@ -279,7 +283,8 @@ input[type='radio']:checked ~ label {
 }
 
 .inputSearch:hover {
-  border: $borderSH;
+  background-color: var(--fontColorDefault);
+  color: var(--ColorDefault);
 }
 
 // MODAL
@@ -421,8 +426,33 @@ input[type='radio']:checked ~ label {
 }
 
 .cardFooter {
-  border-top: 2px solid $fontColorCard;
+  border-top: 2px solid $borderColorList;
   padding-top: 0.5rem;
+}
+
+$body-bg: #ccc;
+.input-group {
+  width: inherit;
+}
+
+.list-group-item,
+.list-group-item .list-group-item {
+  border-bottom: 1px solid $borderColorList;
+  color: #b9bbbe;
+  background-color: #282c34;
+
+  &:hover {
+    background-color: #282c34;
+  }
+}
+
+.list-group-item:last-child {
+  border-bottom-width: 3 !important;
+}
+
+.list-group-item ul,
+.list-group-item li {
+  background-color: #282c34;
 }
 
 //FOOTER
@@ -527,6 +557,7 @@ ul.d-flex {
   > .head {
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
 }
 
@@ -564,12 +595,18 @@ ul.d-flex {
 //LISTS
 #list-list {
   position: relative;
+  min-width: 100%;
 }
 #list-list span {
   position: absolute;
-  top: -0.9em;
-  right: 0em;
+  top: 1.7em;
+  right: 3em;
   z-index: 7;
+  color: white;
+}
+
+.delete svg {
+  fill: var(--fontColorDefault);
 }
 // form {
 //   transition: visibility 2s;
