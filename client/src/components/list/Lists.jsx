@@ -7,19 +7,20 @@ import { loadItem } from '../../actions/listAction';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { submitItem } from '../../actions/listAction';
+import { useEffect } from 'react';
 
 const Lists = ({ submitItem }) => {
   const userLists = useSelector((state) =>
     state.auth.isAuthenticated ? state.auth.user.list : null
   );
-
+  const [data, setData] = useState([]);
   const [toggle, setToggle] = useState(true);
   const formStyle = () => {
     setToggle(!toggle);
   };
 
   const [title, setTitle] = useState('');
-  const [desc, setDesc] = useState([]);
+  const [desc, setDesc] = useState(['']);
   const user = useSelector((state) =>
     state.auth.isAuthenticated ? state.auth.user._id : null
   );
@@ -49,6 +50,14 @@ const Lists = ({ submitItem }) => {
   const handleAdd = () => {
     console.log('make form visible');
   };
+
+  useEffect(() => {
+    console.log('useeffect list compr', userLists);
+    setData(userLists);
+  }, [userLists, data]);
+
+  console.log(data);
+
   return (
     <>
       <div className='head'>
@@ -104,17 +113,15 @@ const Lists = ({ submitItem }) => {
       </div>
 
       <ul className='d-flex wrap' id='list-list'>
-        {userLists
-          ? userLists.map((item) => (
-              <>
-                <li
-                  key={item.id}
-                  id={item.id}
-                  className='col-xs-12 col-sm-6 col-md-6 col-lg-4'
-                >
-                  <Cards item={item} />
-                </li>
-              </>
+        {data
+          ? data.map((item) => (
+              <li
+                key={item.id}
+                id={item.id}
+                className='col-xs-12 col-sm-6 col-md-6 col-lg-4'
+              >
+                <Cards item={item} />
+              </li>
             ))
           : null}{' '}
       </ul>
@@ -126,6 +133,8 @@ Lists.propTypes = {
   userLists: PropTypes.array,
 };
 
-const mapStateToProps = (state) => {};
+const mapStateToProps = (state) => ({
+  userLists: state.auth.list,
+});
 
 export default connect(mapStateToProps, { submitItem })(Lists);

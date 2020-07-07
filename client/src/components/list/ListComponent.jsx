@@ -50,7 +50,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
     loadItem(currentId);
     console.log(submitObject);
   };
-
+  console.log(mainList);
   useEffect(() => {
     inputEl.current.focus();
     getListArr(mainList);
