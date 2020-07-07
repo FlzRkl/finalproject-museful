@@ -7,7 +7,6 @@ import {
 } from './actionTypes';
 import axios from 'axios';
 import { searchFilters } from './searchFilters';
-import { dailyLearning } from '../components/dailyLearning/dailyLearning';
 
 const datamuse = axios.create({
   baseURL: 'https://api.datamuse.com/words',
@@ -22,9 +21,14 @@ const wordnik = axios.create({
   baseURL: URL + API_KEY,
 });
 
-export const fetchRandom = (random) => async (dispatch) => {
+export const fetchRandom = () => async (dispatch) => {
+  dispatch({
+    type: FETCH_INIT,
+  });
+
   try {
-    const result = await wordnik.get('?', random);
+    const result = await wordnik.get();
+
     console.log(result);
     dispatch({
       type: FETCH_RANDOM,
@@ -32,6 +36,7 @@ export const fetchRandom = (random) => async (dispatch) => {
     });
   } catch (error) {
     console.log(error);
+
     dispatch({
       type: SET_ALERT,
       payload: {
@@ -44,19 +49,19 @@ export const fetchRandom = (random) => async (dispatch) => {
 
 export const fetchWord = (word, filter) => async (dispatch) => {
   let fQuery = 'RHY';
-  let max = '&max=8';
+  let max = '&max=10';
   for (let item in searchFilters) {
     if (item === filter) {
       console.log(searchFilters[item]);
       fQuery = searchFilters[item];
     }
-    // console.log(fQuery)
   }
 
   if (word) {
     dispatch({
       type: FETCH_INIT,
     });
+
     try {
       // console.log(url + fQuery + word);
       const result = await datamuse.get('?' + fQuery + word + max);
@@ -79,7 +84,6 @@ export const fetchWord = (word, filter) => async (dispatch) => {
 };
 
 export const setSearchFilter = (filter) => (dispatch) => {
-  // console.log(filter);
   dispatch({
     type: SET_SEARCH_FILTER,
     payload: filter,

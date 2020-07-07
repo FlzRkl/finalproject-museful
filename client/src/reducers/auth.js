@@ -9,6 +9,8 @@ import {
   ACCOUNT_DELETED,
   REGISTER_FAIL,
   LOGIN_FAIL,
+  UPDATE_ITEM_USER,
+  DELETE_ITEM_USER,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -16,6 +18,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: { list: [] },
+  list: [],
 };
 
 export default function (state = initialState, action) {
@@ -27,6 +30,7 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         loading: false,
         user: payload,
+        list: payload.list,
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
@@ -45,6 +49,7 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         loading: false,
         user: null,
+        list: null,
       };
     case AUTH_ERROR:
     case REGISTER_FAIL:
@@ -57,6 +62,44 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         loading: false,
         user: null,
+        list: null,
+      };
+    case UPDATE_ITEM_USER:
+      let updatedUser = { ...state.user };
+      updatedUser.list.push(payload);
+      let upList = [...state.list, payload];
+      return {
+        ...state,
+        user: updatedUser,
+        list: upList,
+      };
+    case DELETE_ITEM_USER:
+      let deletedUser = { ...state.user.list };
+      console.log(deletedUser);
+
+      deletedUser.forEach((item, index, array) => {
+        // let item = deletedUser[key];
+        console.log('item: ', item, '\n index: ', index, '\n array: ', array);
+        if (item.id === payload.id) {
+          array.splice(index, 1);
+          console.log('delete item:' + index, item);
+        }
+      });
+
+      console.log(deletedUser);
+
+      let delList = [...state.list, payload];
+      // upList.filter((item) => {
+      //   if (item.id === payload.id) {
+      //     return false;
+      //   } else {
+      //     return true;
+      //   }
+      // });
+      return {
+        ...state,
+        user: deletedUser,
+        list: delList,
       };
     default:
       return state;

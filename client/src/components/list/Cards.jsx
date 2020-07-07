@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Cards({ item, deleteItem, loadItem }) {
   let date = item.date;
-  let dateNow = Date.now();
+  // let dateNow = Date.now();
   // let date = (date) => {
   //   date = item.date - dateNow;
   //   x.toDateString();
@@ -39,7 +39,6 @@ function Cards({ item, deleteItem, loadItem }) {
           height='2em'
           viewBox='0 0 16 16'
           className='bi bi-x'
-          fill='black'
           xmlns='http://www.w3.org/2000/svg'
         >
           <path
@@ -53,19 +52,19 @@ function Cards({ item, deleteItem, loadItem }) {
         </svg>
       </span>
       <Link to='/dashboard/listComponent'>
-        <div className='card border-dark mb-3' onClick={handleClick}>
-          <div className='card-body text-dark'>
+        <div className='card border-light mb-3' onClick={handleClick}>
+          <div className='card-body text-light'>
             <h5 className='card-title'>{item.title}</h5>
             <p className='card-text'>{item.desc}</p>
           </div>
 
-          <div className='card-footer text-dark border-success'>{date}</div>
+          <div className='cardFooter text-light'>{date}</div>
         </div>
       </Link>
     </div>
   );
 }
 
-const mapStateToProps = (state) => {};
+const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps, { deleteItem, loadItem })(Cards);

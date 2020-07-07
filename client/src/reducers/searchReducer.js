@@ -4,8 +4,8 @@ which part of our state should be changed */
 import {
   FETCH_INIT,
   FETCH_WORDS,
-  SET_SEARCH_FILTER,
   FETCH_RANDOM,
+  SET_SEARCH_FILTER,
 } from '../actions/actionTypes';
 import { SEARCH_FILTERS } from '../components/searchWord/Search_Filters';
 /* this initialState below will represent the state saved in the store and any change to it here will change also the state in the store  */
