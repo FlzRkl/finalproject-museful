@@ -36,6 +36,7 @@ $borderRadiusInput: 4px 0 0 4px;
   --animBFlicker: none;
   --animTFlicker: none;
   --borderH: 0.2rem solid var(--fontColorDefault);
+  --borderB: 0.1rem solid var(--fontColorDefault);
   --fontAlert: rgb(223, 90, 90);
   --fontColorBtn: var(--fontColorDefault);
   --fontWeight: 700;
@@ -50,10 +51,15 @@ $borderRadiusInput: 4px 0 0 4px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
-:focus {
+*:focus {
   outline: none;
+}
+
+*::-moz-focus-inner {
+  border: none;
 }
 
 #root {
@@ -125,7 +131,7 @@ img {
   font-weight: var(--fontWeight);
   background: none;
   color: var(--fontColorBtn);
-  border: var(--borderH);
+  border: var(--borderB);
   padding: 0.5rem 1rem;
   margin: 1rem;
   border-radius: $borderRadius;
@@ -134,31 +140,37 @@ img {
 
 .btnL,
 .btnL:hover {
+  outline: none;
+
   font-family: monospace;
   // font-size: $fontSizeH2;
   // font-weight: bolder;
   // background: $ColorDefault;
-  color: var(--fontColorDefault);
-  border: $borderSH;
+  border: var(--borderB);
   padding: 0.3rem 0.7rem;
   margin-left: 2.5em;
   border-radius: $borderRadius;
   width: fit-content;
   height: 2.1rem;
+  background-color: var(--fontColorDefault);
+  color: var(--ColorDefault);
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .btnL:hover {
-  background-color: var(--fontColorDefault);
-  color: var(--ColorDefault);
+  color: var(--fontColorDefault);
+  background: transparent;
 }
 
 .btnA,
 .btnA:hover {
+  outline: none;
+
   font-family: monospace;
   font-weight: bolder;
   // background: var(--ColorDefault);
   color: var(--fontColorDefault);
-  border: var(--borderH);
+  border: var(--borderB);
   padding: 0.5rem 1rem;
   margin: 1rem;
   border-radius: $borderRadius;
@@ -187,7 +199,7 @@ ul li label {
 ul li .check {
   // display: block;
   position: absolute;
-  border: var(--borderH);
+  border: var(--borderB);
   border-radius: $borderRadius;
   height: 1.5rem;
   width: 1.5rem;
@@ -257,7 +269,7 @@ input[type='radio']:checked ~ label {
   border-right: 0;
   border-radius: 0 $borderRadiusSH 0 0;
 
-  border-bottom: $borderSH;
+  border-bottom: var(--borderB);
   padding: 0.5rem 1rem;
   margin: 2rem 0rem;
   // border-radius: $borderRadiusInput;
@@ -272,13 +284,14 @@ input[type='radio']:checked ~ label {
   font-weight: bolder;
   background: none;
   border: 0;
-  border-bottom: $borderSH;
+  border-bottom: var(--borderB);
   border-radius: $borderRadiusSH $borderRadiusSH $borderRadiusSH 0;
   color: var(--fontColorDefault);
   padding: 0.5rem 1rem;
   margin: 0;
   outline: none;
-  transition: border 0.2s linear;
+  transition: border 0.2s linear, background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
 
 .inputSearch:hover {
@@ -304,7 +317,7 @@ input[type='radio']:checked ~ label {
 }
 
 .subHeader {
-  border: $borderSH;
+  border: var(--borderB);
   border-radius: $borderRadius;
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
@@ -406,7 +419,7 @@ input[type='radio']:checked ~ label {
 //LISTS
 .card {
   max-width: 60vw;
-  border: var(--borderH);
+  border: var(--borderB);
   border-radius: $borderRadius;
   padding: 1rem 2rem;
   margin: 1rem;
@@ -434,14 +447,14 @@ $body-bg: #ccc;
   width: inherit;
 }
 
-.list-group-item,
-.list-group-item .list-group-item {
+.list-item,
+.list-item .list-item {
   border-bottom: 1px solid $borderColorList;
   color: #b9bbbe;
-  background-color: #282c34;
-
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
   &:hover {
-    background-color: #282c34;
   }
 }
 
@@ -449,10 +462,10 @@ $body-bg: #ccc;
   border-bottom-width: 3 !important;
 }
 
-.list-group-item ul,
-.list-group-item li {
-  background-color: #282c34;
-}
+// .list-group-item ul,
+// .list-group-item li {
+//   background-color: #282c34;
+// }
 
 //FOOTER
 .footer {
@@ -476,7 +489,7 @@ $body-bg: #ccc;
 }
 
 .aboutUs {
-  border: $borderSH;
+  border: var(--borderB);
   border-radius: $borderRadius;
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
@@ -531,7 +544,7 @@ ul.d-flex {
   margin: 0.5rem;
   font-weight: bolder;
   color: var(--fontColorDefault);
-  border: var(--borderH);
+  border: var(--borderB);
   border-radius: $borderRadius;
 }
 
@@ -553,9 +566,14 @@ ul.d-flex {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  > .head {
+  & .head {
+    // display: flex;
     justify-content: center;
-    align-items: center;
+    width: 100%;
+  }
+  & .headFilter {
+    display: flex;
+    justify-content: center;
     width: 100%;
   }
 }
@@ -604,6 +622,11 @@ ul.d-flex {
   color: white;
 }
 
+.flex-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
 .delete svg {
   fill: var(--fontColorDefault);
 }
@@ -611,6 +634,11 @@ ul.d-flex {
 //   transition: visibility 2s;
 // }
 
+.item-filters {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+}
 //FORMATS
 .d-flex {
   display: flex;

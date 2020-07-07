@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { connect, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchRandom } from "../../actions/searchAction";
-
-// STYLE
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchRandom } from '../../actions/searchAction';
 
 export const DailyLearning = ({ fetchRandom }) => {
   const isLoading = useSelector((state) => state.search.isLoading);
@@ -23,26 +19,19 @@ export const DailyLearning = ({ fetchRandom }) => {
   }, [fiveWord]);
 
   return (
-    <div className="bodyS">
-      <h1> Daily Learning </h1>{" "}
-      <Link className="" to="/dashboard">
-        <p className="btnBack">
-          <FontAwesomeIcon icon={faAngleLeft} size="1x" />
-        </p>{" "}
-      </Link>
-      {/* <input type='text' value='Give it a try!' /> */}{" "}
-      <button type="submit" className="btnI" onClick={getRandom}>
-        Get 5 Random Words{" "}
-      </button>{" "}
+    <div className='d-flexColumn'>
+      <h1 className='mb-4 textTitle'> Daily Learning </h1>{' '}
+      {/* <input type='text' value='Give it a try!' /> */}{' '}
+      <button type='submit' className='btnL' onClick={getRandom}>
+        Get 5 Random Words{' '}
+      </button>{' '}
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        <div className="searchResult">
+        <div className='searchResults mt-4'>
           {random
             ? random.map((item) => (
-                <div>
-                  <button className="btnI">{item.word}</button>
-                </div>
+                <div className='searchResult'>{item.word}</div>
               ))
             : null}
         </div>

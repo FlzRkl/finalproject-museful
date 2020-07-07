@@ -61,7 +61,7 @@ const Lists = ({ submitItem }) => {
   return (
     <>
       <div className='head'>
-        <div className='row my-4'>
+        <div className='flex-row mb-4'>
           <h3 className='display'>List Storage</h3>
           <div className='btnL' onClick={formStyle}>
             {toggle ? (

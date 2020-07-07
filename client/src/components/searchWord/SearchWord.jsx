@@ -27,6 +27,9 @@ export const SearchWord = ({ fetchWord }) => {
 
   return (
     <div className='d-flexColumn'>
+      <div className='flex-row mb-4'>
+        <h3 className='display'>Search Word</h3>
+      </div>
       <SearchFilter />
       <form id='formSearch' onSubmit={handleSearch}>
         <input
