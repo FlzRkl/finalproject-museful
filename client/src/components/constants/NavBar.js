@@ -95,7 +95,7 @@ const NavBar = ({ loadItem }) => {
 };
 
 NavBar.propTypes = {
-  prop: PropTypes,
+  prop: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
