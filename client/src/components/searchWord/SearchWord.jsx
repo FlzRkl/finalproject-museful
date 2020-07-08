@@ -45,8 +45,7 @@ export const SearchWord = ({ fetchWord }) => {
           onClick={handleSearch}
           type='submit'
           className='inputSearch'
-          style={{ marginTop: '8px' }}
-        >
+          style={{ marginTop: '8px' }}>
           Search
         </button>
       </form>
@@ -71,7 +70,7 @@ export const SearchWord = ({ fetchWord }) => {
 };
 
 SearchWord.propTypes = {
-  prop: PropTypes,
+  prop: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

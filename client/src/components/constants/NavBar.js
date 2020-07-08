@@ -93,8 +93,7 @@ const NavBar = ({ loadItem }) => {
         <NavbarBrand
           className='header link 
         mb-4'
-          onClick={resetSearch}
-        >
+          onClick={resetSearch}>
           <Link className='link ' to='/dashboard'>
             <span>MUSEFUL</span>
           </Link>
@@ -105,7 +104,7 @@ const NavBar = ({ loadItem }) => {
 };
 
 NavBar.propTypes = {
-  prop: PropTypes,
+  prop: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

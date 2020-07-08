@@ -9,11 +9,29 @@ const iconSize = '4x';
 const aboutUs = () => {
   return (
     <div className='dashboard pro'>
+      <div className='intro'>
+        <h3 className=''>About Museful</h3>
+        <p>
+          Our mission is to help anyone to learn anything they want in a museful
+          and playful way. Let's start to create a learning and memorizing space
+          which will grow to a user self generated and curated learning
+          management system – welcome to your museful space.
+        </p>
+        <p>
+          {' '}
+          Improve your skills with words and terms by getting your{' '}
+          <span>Daily Learnings</span> – just for fun. Enjoy your journey
+          through this open source project by searching for rhyming words. Are
+          you curiosed about the meaning of a word? You have the choice to
+          filter and search. If you are seeking for a space to collect and store
+          content you have searched for – Museful is the right place for you.{' '}
+        </p>
+      </div>
+
       <div className='profiles'>
         <a
           class='link aboutUs effectContainer'
-          href='https://github.com/FlzRkl'
-        >
+          href='https://github.com/FlzRkl'>
           <p class='underlay textTitle'>F</p>
           <FontAwesomeIcon
             class='overlay faIcon'
@@ -24,8 +42,7 @@ const aboutUs = () => {
 
         <a
           className='link aboutUs effectContainer daily-learning'
-          href='https://github.com/lanamaxic'
-        >
+          href='https://github.com/lanamaxic'>
           <p className='underlay textTitle'>L</p>
           <FontAwesomeIcon
             className='overlay faIcon'
@@ -35,8 +52,7 @@ const aboutUs = () => {
         </a>
         <a
           className='link aboutUs effectContainer'
-          href='https://github.com/harris-12'
-        >
+          href='https://github.com/harris-12'>
           <p className='underlay textTitle'>H</p>
           <FontAwesomeIcon
             className='overlay faIcon'
@@ -46,8 +62,7 @@ const aboutUs = () => {
         </a>
         <a
           className='link aboutUs effectContainer'
-          href='https://github.com/Staschek'
-        >
+          href='https://github.com/Staschek'>
           <p className='underlay textTitle'>S</p>
           <FontAwesomeIcon
             className='overlay faIcon'
@@ -57,8 +72,7 @@ const aboutUs = () => {
         </a>
         <a
           className='link aboutUs effectContainer'
-          href='https://www.mendritzk.io/'
-        >
+          href='https://www.mendritzk.io/'>
           <p className='underlay textTitle'>S</p>
           <FontAwesomeIcon
             className='overlay faIcon'
@@ -68,12 +82,12 @@ const aboutUs = () => {
         </a>
       </div>
       <div className='intro'>
-        <h1 className=''>About Us</h1>
+        <h3 className=''>About Us</h3>
         <p>
-          This is our final Project after 8 Month of heavy practical Web
-          Development learning at the DCI in Hamburg. We are Filiz, Lana,
-          Harris, Sascha and Stefan and would like to hear from you. You can
-          find our contacts in the Links above.
+          This is our final project after 8 month of heavy practical web
+          development learning at the DCI in Hamburg. We are Filiz, Lana,
+          Harris, Sascha and Stefan. You can find our contacts in the links
+          above.
         </p>
       </div>
     </div>

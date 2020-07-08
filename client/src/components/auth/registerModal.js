@@ -154,5 +154,5 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, { register, clearErrors })(
-  registerModal
+  registerModal,
 );

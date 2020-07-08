@@ -134,6 +134,7 @@ img {
   border: var(--borderB);
   padding: 0.5rem 1rem;
   margin: 1rem;
+  border-color: $fontAlert;
   border-radius: $borderRadius;
   animation: var(--animTFlicker);
 }
@@ -643,6 +644,8 @@ ul.d-flex {
 .d-flex {
   display: flex;
   align-items: center;
+  margin-top: 0.2rem;
+  padding-top: 0.2rem;
 }
 
 .d-flexColumn {
