@@ -57,7 +57,8 @@ theoretical frame / approaches / learning methodes
 - RESTful Architecture
 - Node.js
   Express.js
-- MongoDB / Atlas / Compass / Moongoose
+- MongoDB
+- Moongoose
 - Postman
 - Bcrypt
 - config
