@@ -53,11 +53,11 @@ Leitner-system?
 - Node.js
   Express.js
 - MongoDB / Atlas / Compass / Moongoose
-  Postman
-  Bcrypt
-  JWT
+- Postman
+- Bcrypt
+- JWT
 - Figma
-  SCSS
+- SCSS
   Bootstrap
   Reactstrap
 - D3.js
