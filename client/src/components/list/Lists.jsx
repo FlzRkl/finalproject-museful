@@ -8,6 +8,7 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { submitItem } from '../../actions/listAction';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Lists = ({ submitItem }) => {
   const userLists = useSelector((state) =>
@@ -25,7 +26,9 @@ const Lists = ({ submitItem }) => {
     state.auth.isAuthenticated ? state.auth.user._id : null
   );
 
-  // const handleClick = (e) => {
+  // const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
+  // const history = useHistory();
+  // const handleBack = (e) => {
   //   //aboveItem is undefined??
   //   console.log(aboveItem);
   //   aboveItem ? loadItem(aboveItem) : history.push('/dashboard/lists');
@@ -69,7 +72,7 @@ const Lists = ({ submitItem }) => {
       <div className='head'>
         <div className='flex-row mb-4'>
           <h3 className='display'>List Storage</h3>
-          <div className='btnL' onClick={formStyle}>
+          <div className='btnL ml-4' onClick={formStyle}>
             {toggle ? (
               <FontAwesomeIcon icon={faPlus} size={'1x'} className='iconAdd' />
             ) : (
@@ -79,16 +82,12 @@ const Lists = ({ submitItem }) => {
         </div>
         <form
           onSubmit={submit}
-          className={
-            toggle === true
-              ? 'd-none form col-xs-12 col-sm-10 col-md-8 col-lg-6'
-              : 'd-block form col-xs-12 col-sm-10 col-md-8 col-lg-6'
-          }
+          className={toggle === true ? 'd-none ' : 'd-flexColumn'}
         >
-          <div className='input-group mb-2'>
+          <div className='mb-2'>
             <input
               type='text'
-              className='form-control mb-2'
+              className='form-control mb-3'
               placeholder='Title'
               aria-label='Title'
               aria-describedby='input-title'
@@ -108,24 +107,16 @@ const Lists = ({ submitItem }) => {
               ></textarea>
             </div>
           </div>
-          <button
-            onClick={submit}
-            className='input-group-text'
-            id='input-addon-add'
-          >
+          <div onClick={submit} className='btnL' id='input-addon-add'>
             Add List
-          </button>
+          </div>
         </form>
       </div>
 
       <ul className='d-flex wrap' id='list-list'>
         {data
           ? data.map((item) => (
-              <li
-                key={item.id}
-                id={item.id}
-                className='col-xs-12 col-sm-6 col-md-6 col-lg-4'
-              >
+              <li key={'li-' + item.id} id={item.id} className='col-sm-6 '>
                 <Cards item={item} />
               </li>
             ))
