@@ -1,9 +1,7 @@
 export const SEARCH_FILTERS = {
-  RNoun: "Related Noun", 
-  // ML: 'Means-like',
+  RNoun: 'Related Noun',
   SYN: 'Synonym',
   RHYM: 'Rhyme',
   ANT: 'Antonyme',
- 
-  RAdj: "Related Adjective",
+  RAdj: 'Related Adjective',
 };
