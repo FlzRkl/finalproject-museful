@@ -22,6 +22,7 @@ const initialState = {
   data: [],
   random: [],
 };
+
 export default function (state = initialState, action) {
   switch (action.type) {
     case FETCH_INIT:

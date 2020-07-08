@@ -8,6 +8,7 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { submitItem } from '../../actions/listAction';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Lists = ({ submitItem }) => {
   const userLists = useSelector((state) =>
@@ -25,7 +26,9 @@ const Lists = ({ submitItem }) => {
     state.auth.isAuthenticated ? state.auth.user._id : null
   );
 
-  // const handleClick = (e) => {
+  // const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
+  // const history = useHistory();
+  // const handleBack = (e) => {
   //   //aboveItem is undefined??
   //   console.log(aboveItem);
   //   aboveItem ? loadItem(aboveItem) : history.push('/dashboard/lists');
@@ -121,11 +124,7 @@ const Lists = ({ submitItem }) => {
       <ul className='d-flex wrap' id='list-list'>
         {data
           ? data.map((item) => (
-              <li
-                key={item.id}
-                id={item.id}
-                className='col-xs-12 col-sm-6 col-md-6 col-lg-4'
-              >
+              <li key={'li-' + item.id} id={item.id} className='col-sm-6 '>
                 <Cards item={item} />
               </li>
             ))
