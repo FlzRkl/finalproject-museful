@@ -3,21 +3,27 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteItem } from '../../actions/listAction';
 
-export const ListItems = ({ item }) => {
+export const ListItems = ({ handleClick, item, deleteItem }) => {
   return (
     <>
       <ul>
         {item
           ? item.map((item) => (
               <li
-                // onClick={rabbitHole}
+                onClick={handleClick}
                 className='list-item d-flex justify-content-between align-items-center '
                 key={item.id}
                 id={item.id}
               >
                 {item.title ? item.title : item}
                 {item.desc ? <p>{item.desc}</p> : null}
-                <span onClick={deleteItem(item.id)}>x</span>
+                <button
+                  onClick={() => {
+                    deleteItem(item.id);
+                  }}
+                >
+                  delete Item
+                </button>
                 {/* <span className='badge'>
                 <svg
                   className='bi bi-box-arrow-in-down-right'

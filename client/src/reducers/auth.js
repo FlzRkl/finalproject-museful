@@ -73,33 +73,50 @@ export default function (state = initialState, action) {
         user: updatedUser,
         list: upList,
       };
+
     case DELETE_ITEM_USER:
-      let deletedUser = { ...state.user.list };
+      console.log(state);
+
+      let deletedUser = { ...state.user };
       console.log(deletedUser);
 
-      deletedUser.forEach((item, index, array) => {
-        // let item = deletedUser[key];
-        console.log('item: ', item, '\n index: ', index, '\n array: ', array);
+      deletedUser.list = deletedUser.list.filter((item) => {
         if (item.id === payload.id) {
-          array.splice(index, 1);
-          console.log('delete item:' + index, item);
+          return false;
+        } else {
+          return true;
         }
       });
-
       console.log(deletedUser);
 
-      let delList = [...state.list, payload];
-      // upList.filter((item) => {
+      // // deletedUser.forEach((item, index, array) => {
+      // //   // let item = deletedUser[key];
+      // //   console.log('item: ', item, '\n index: ', index, '\n array: ', array);
+      // //   if (item.id === payload.id) {
+      // //     array.splice(index, 1);
+      // //     console.log('delete item:' + index, item);
+      // //   }
+      // // });
+
+      // // console.log(deletedUser);
+
+      // let delList = [...state.list];
+      // console.log(delList);
+
+      // delList.filter((item) => {
       //   if (item.id === payload.id) {
       //     return false;
       //   } else {
       //     return true;
       //   }
       // });
+      // console.log(delList);
+      // deletedUser.list = delList;
+
       return {
         ...state,
         user: deletedUser,
-        list: delList,
+        list: deletedUser.list,
       };
     default:
       return state;

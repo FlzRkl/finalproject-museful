@@ -41,7 +41,8 @@ export const submitItem = (inputItem) => async (dispatch) => {
 
       dispatch(setAlert('Item Created', 'success'));
     } catch (err) {
-      const errors = err.response.data.errors;
+      console.log(err);
+      const errors = err;
 
       if (errors) {
         dispatch({
@@ -150,6 +151,7 @@ export const deleteItem = (id) => async (dispatch) => {
       };
 
       if (res.data.aboveItemId) {
+        console.log(newItemInfo);
         dispatch({
           type: DELETE_ITEM,
           payload: { data: newItemInfo },
@@ -161,8 +163,9 @@ export const deleteItem = (id) => async (dispatch) => {
 
       dispatch(setAlert('Item deleted', 'success'));
     } catch (err) {
-      const erro = err.response.data.errors;
-      console.log(erro);
+      console.log(err);
+      const erro = err;
+
       if (erro) {
         dispatch({
           type: SET_ALERT,
