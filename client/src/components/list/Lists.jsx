@@ -25,6 +25,12 @@ const Lists = ({ submitItem }) => {
     state.auth.isAuthenticated ? state.auth.user._id : null
   );
 
+  // const handleClick = (e) => {
+  //   //aboveItem is undefined??
+  //   console.log(aboveItem);
+  //   aboveItem ? loadItem(aboveItem) : history.push('/dashboard/lists');
+  // };
+
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
   };
