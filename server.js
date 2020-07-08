@@ -4,8 +4,6 @@ const app = express();
 const path = require('path');
 const clientPath = path.join(__dirname, 'client', 'build');
 
-// finalproject/client/build
-
 // Connect Database
 connectDB();
 

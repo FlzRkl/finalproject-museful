@@ -113,12 +113,8 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
             ? data.map((item, index) => (
                 <>
                   <h4 className='mt-5'>{tags[index]}</h4>
-                  <li
-                    key={tags[index] + index}
-                    id={tags[index] + index}
-                    onClick={handleClick}
-                  >
-                    <ListItems item={item} />
+                  <li key={tags[index] + index} id={tags[index] + index}>
+                    <ListItems handleClick={handleClick} item={item} />
                   </li>
                 </>
               ))
