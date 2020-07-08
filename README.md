@@ -26,13 +26,14 @@ MIT
 #### References
 
 theoretical frame / approaches / learning methodes
---> gamebasedLearning?
-GBL
-EGD & GBL (German)
-Games & GBL (German)
---> spaced-repetition algorithms ?
-SuperMemo ?
-Leitner-system?
+
+- --> gamebasedLearning?
+  GBL
+  EGD & GBL (German)
+  Games & GBL (German)
+- --> spaced-repetition algorithms ?
+  SuperMemo ?
+  Leitner-system?
 
 #### List of APIs / external links / npm packages:
 
