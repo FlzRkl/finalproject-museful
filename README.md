@@ -64,6 +64,6 @@ Leitner-system?
 - Babel
   Webpack
 - VS Code
-  git
-  Azure
-  Heroku
+- git
+- Azure
+- Heroku
