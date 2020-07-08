@@ -49,7 +49,7 @@ theoretical frame / approaches / learning methodes
 
 ## req. technologies / technical environment / methods / libraries / frameworks
 
-- React (Hooks, Native)
+- React /Hooks
   Redux
 - ES6 + Syntax
 - CRUD
@@ -60,15 +60,11 @@ theoretical frame / approaches / learning methodes
 - MongoDB / Atlas / Compass / Moongoose
 - Postman
 - Bcrypt
+- config
 - JWT
 - Figma
 - CSS/SCSS
   Bootstrap
   Reactstrap
-- D3.js
-- Babel
-  Webpack
-- VS Code
 - git
-- Azure
 - Heroku
