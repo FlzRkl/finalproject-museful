@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useSelector } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import { SET_SEARCH_EMPTY } from './../../actions/actionTypes';
 
 //TOGGLE
 // import Toggle from "./Darkmode/Toggle";
@@ -30,6 +31,13 @@ const NavBar = ({ loadItem }) => {
   //   console.log(aboveItem);
   //   aboveItem ? loadItem(aboveItem) : history.push("/dashboard/lists");
   // };
+
+  const dispatch = useDispatch();
+  const resetSearch = () => {
+    dispatch({
+      type: SET_SEARCH_EMPTY,
+    });
+  };
 
   //TOGGLE HOOK
   const [currentTheme, setTheme] = useState('dark');
@@ -85,6 +93,7 @@ const NavBar = ({ loadItem }) => {
         <NavbarBrand
           className='header link 
         mb-4'
+          onClick={resetSearch}
         >
           <Link className='link ' to='/dashboard'>
             <span>MUSEFUL</span>
