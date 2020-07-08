@@ -1,7 +1,7 @@
 ## Concept
 
 - Our goal is to build a learning environment which is not fixed for specific topics. Users can add selfgenerated content instead of just getting it. Users could decide about consuming or editing, adding and storeing content.
-  Our targeted audience are people from the age of 9-99 with focus of the young people!
+- Our targeted audience are people from the age of 9-99 with focus of the young people!
 
 #### Guideline
 
