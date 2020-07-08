@@ -11,6 +11,7 @@ export const darkTheme = {
   '--borderSearch': 'var(--fontColorDefault)',
   '--borderLists': 'var(--fontColorDefault)',
   '--borderLogout': 'var(--fontColorDefault)',
+  '--borderLana': 'var(--fontColorDefault)',
 };
 
 export const lightTheme = {
@@ -26,4 +27,5 @@ export const lightTheme = {
   '--borderSearch': '#393',
   '--borderLists': ' #07b39b',
   '--borderLogout': '#ee7752',
+  "--borderLana" : "#a32ead",
 };
