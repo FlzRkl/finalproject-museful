@@ -1,19 +1,67 @@
-# MASTERBRANCH!
+## Concept
 
-## Final-Project
+- Our goal is to build a learning environment which is not fixed for specific topics. Users can add selfgenerated content instead of just getting it. Users could decide about consuming or editing, adding and storeing content.
+  Our targeted audience are people from the age of 9-99 with focus of the young people!
 
-### DCI Hamburg Final Project FBW4 Language Learning
+#### Guideline
 
-Please create a Folder on your PC  
- Clone your Branch from gitHub into it  
- Open VisualStudio Code  
- Add Folder to Workspace  
- Change working branch(bottom left in VS Code) from Master to your Branch  
- Update your(!) readme File with "Checked <Filiz>"  
- Save and Push to your Branch on gitHub.
+Playing is the key to learn
+User is able to decide about which module to choose
+Open source based developing.
 
-### Thank you!
+MUSEFUL is a cross-plattform MERNstack application to learn, search for, create and collect content – in a musefully and playful way.
+In the one hand this CRUD grounded fullstack project gets for example the vocabulary learning component words from APIs like Datamuse, Wordnik or Oxford Dictionary. On the other hand this application coud be used to creat and store usergenerated List.
 
-### If you have any questions, please ask.
+#### Features / Userstories / optional functionalities
 
-// If you want to hire us, please reach out to us via email or Github! -- do this better with ascci
+- After login, users can view existing content and search by keyword and filter by category
+- Users can create, update, delete cards and are able to save musefulSpaceCardList(Cardlist - from User)
+- Search- and sortable (embedding semantic search, related-words, topic collections, categories …)
+- Design (userfocused, flexible, changeable UI - up to the targeted audience)
+
+#### Legals (Terms of Conditions)
+
+MIT
+
+#### References
+
+theoretical frame / approaches / learning methodes
+--> gamebasedLearning?
+GBL
+EGD & GBL (German)
+Games & GBL (German)
+--> spaced-repetition algorithms ?
+SuperMemo ?
+Leitner-system?
+
+#### List of APIs / external links / npm packages:
+
+- Datamuse
+  node module datamuse
+- Wordnik
+- Oxford Dictionary
+- WordsAPI
+
+## req. technologies / technical environment / methods / libraries / frameworks
+
+- React (Hooks, Native)
+  Redux
+- ES6 + Syntax
+- RESTful Architecture
+- Node.js
+  Express.js
+- MongoDB / Atlas / Compass / Moongoose
+  Postman
+  Bcrypt
+  JWT
+- Figma
+  SCSS
+  Bootstrap
+  Reactstrap
+- D3.js
+- Babel
+  Webpack
+- VS Code
+  git
+  Azure
+  Heroku
