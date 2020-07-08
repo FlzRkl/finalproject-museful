@@ -54,7 +54,7 @@ export default function (state = initialState, action) {
       };
     case DELETE_ITEM:
       let deletedMainList = { ...state.mainList };
-
+      console.log(deletedMainList);
       deletedMainList[payload.data.tag] = deletedMainList[
         payload.data.tag
       ].filter((item) => {
