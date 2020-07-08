@@ -5,8 +5,8 @@
 
 #### Guideline
 
-Playing is the key to learn
-User is able to decide about which module to choose
+Playing is the key to learn.
+User is able to decide about which module to choose.
 Open source based developing.
 
 MUSEFUL is a cross-plattform MERNstack application to learn, search for, create and collect content – in a musefully and playful way.
@@ -47,6 +47,8 @@ Leitner-system?
 - React (Hooks, Native)
   Redux
 - ES6 + Syntax
+- CRUD
+- PWA
 - RESTful Architecture
 - Node.js
   Express.js
