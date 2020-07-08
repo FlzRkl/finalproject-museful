@@ -11,6 +11,7 @@ import {
   LOGIN_FAIL,
   UPDATE_ITEM_USER,
   DELETE_ITEM_USER,
+  EDIT_ITEM_USER,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -75,10 +76,7 @@ export default function (state = initialState, action) {
       };
 
     case DELETE_ITEM_USER:
-      console.log(state);
-
       let deletedUser = { ...state.user };
-      console.log(deletedUser);
 
       deletedUser.list = deletedUser.list.filter((item) => {
         if (item.id === payload.id) {
@@ -87,36 +85,28 @@ export default function (state = initialState, action) {
           return true;
         }
       });
-      console.log(deletedUser);
-
-      // // deletedUser.forEach((item, index, array) => {
-      // //   // let item = deletedUser[key];
-      // //   console.log('item: ', item, '\n index: ', index, '\n array: ', array);
-      // //   if (item.id === payload.id) {
-      // //     array.splice(index, 1);
-      // //     console.log('delete item:' + index, item);
-      // //   }
-      // // });
-
-      // // console.log(deletedUser);
-
-      // let delList = [...state.list];
-      // console.log(delList);
-
-      // delList.filter((item) => {
-      //   if (item.id === payload.id) {
-      //     return false;
-      //   } else {
-      //     return true;
-      //   }
-      // });
-      // console.log(delList);
-      // deletedUser.list = delList;
-
       return {
         ...state,
         user: deletedUser,
         list: deletedUser.list,
+      };
+    case EDIT_ITEM_USER:
+      let editedUser = { ...state.user };
+      console.log(payload, editedUser);
+      editedUser.list = editedUser.list.filter((item, index) => {
+        // console.log(item, index);
+        if (item.id === payload.id) {
+          editedUser.list.splice(index, 1, payload);
+        } else {
+          return true;
+        }
+      });
+      console.log(editedUser);
+
+      return {
+        ...state,
+        user: editedUser,
+        list: editedUser.list,
       };
     default:
       return state;

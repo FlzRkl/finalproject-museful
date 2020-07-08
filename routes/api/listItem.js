@@ -140,11 +140,12 @@ router.post(
 // @desc     Update an Item
 // @access   Private
 router.put('/', [auth], async (req, res) => {
+  // console.log('req.body', req.body);
   try {
-    let { id, title, desc, tag } = req.body;
+    let { id, title, desc, tag, aboveItemId } = req.body;
     let date = Date.now();
     const item = await Item.findById(id);
-    console.log(item);
+    // console.log(item);
     // Check user
     if (item.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'User not authorized' });
@@ -176,18 +177,19 @@ router.put('/', [auth], async (req, res) => {
         },
         { new: true }
       );
+      console.log('aboveItemId update : -------- \n', aboveList);
     }
 
     if (!item.aboveItemId) {
       const userId = req.user.id;
       const user = User.findById(userId);
-      console.log(user);
       const iId = item._id;
       const filt_field_id = `${tag}.id`;
       const filt_field_title = `${tag}.$.title`;
       const filt_field_desc = `${tag}.$.desc`;
       const filt_field_date = `${tag}.$.date`;
-      let userList = await User.findOneAndUpdate(
+      // console.log('test: ', iId, filt_field_id);
+      let userList = await user.findOneAndUpdate(
         { _id: userId, [filt_field_id]: iId },
         {
           $set: {
@@ -198,14 +200,14 @@ router.put('/', [auth], async (req, res) => {
         },
         { new: true }
       );
-      console.log(userList);
+      console.log('Userlist update : -------- \n', userList);
     }
 
     res.json(updated_item);
   } catch (err) {
-    console.error(err.message);
+    console.error('errrrrrrrrrrror:\n', err.message);
 
-    res.status(500).send('Server Error');
+    res.status(500).send(err);
   }
 });
 
