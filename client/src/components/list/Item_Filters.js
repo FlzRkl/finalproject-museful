@@ -3,7 +3,6 @@ export const ITEM_FILTERS = {
   TEXT: 'text',
   VIDEO: 'video',
   BOOK: 'book',
-  WORD: 'word',
   PIC: 'picture',
   LINK: 'link',
 };

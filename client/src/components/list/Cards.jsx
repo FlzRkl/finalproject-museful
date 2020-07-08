@@ -52,7 +52,7 @@ function Cards({ item, deleteItem, loadItem }) {
         </svg>
       </span>
       <Link to='/dashboard/listComponent'>
-        <div className='card border-light mb-3' onClick={handleClick}>
+        <div className='card mb-3' onClick={handleClick}>
           <div className='card-body text-light'>
             <h5 className='card-title'>{item.title}</h5>
             <p className='card-text'>{item.desc}</p>

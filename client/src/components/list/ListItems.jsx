@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { deleteItem } from '../../actions/listAction';
 
-export default function ListItems({ item }) {
+export const ListItems = ({ item }) => {
   return (
     <>
       <ul>
@@ -8,13 +11,13 @@ export default function ListItems({ item }) {
           ? item.map((item) => (
               <li
                 // onClick={rabbitHole}
-                className='list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center '
+                className='list-item d-flex justify-content-between align-items-center '
                 key={item.id}
                 id={item.id}
               >
                 {item.title ? item.title : item}
-                {item.desc ? item.desc : <p>null Desc</p>}
-
+                {item.desc ? <p>{item.desc}</p> : null}
+                <span onClick={deleteItem(item.id)}>x</span>
                 {/* <span className='badge'>
                 <svg
                   className='bi bi-box-arrow-in-down-right'
@@ -44,32 +47,12 @@ export default function ListItems({ item }) {
       </ul>
     </>
   );
-}
+};
 
-// // MO-Hook
-// function useHover(e) {
-//   const [value, setValue] = useState(false);
+ListItems.propTypes = {
+  deleteItem: PropTypes.func.isRequired,
+};
 
-//   const ref = useRef(null);
+const mapStateToProps = (state) => ({});
 
-//   const handleMouseOver = () => setValue(true);
-//   const handleMouseOut = () => setValue(false);
-
-//   useEffect(
-//     () => {
-//       const node = ref.current;
-//       if (node) {
-//         node.addEventListener('mouseover', handleMouseOver);
-//         node.addEventListener('mouseout', handleMouseOut);
-
-//         return () => {
-//           node.removeEventListener('mouseover', handleMouseOver);
-//           node.removeEventListener('mouseout', handleMouseOut);
-//         };
-//       }
-//     },
-//     [ref.current] // Recall only if ref changes
-//   );
-
-//   return [ref, value];
-// }
+export default connect(mapStateToProps, { deleteItem })(ListItems);

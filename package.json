@@ -4,6 +4,7 @@
   "description": "Final Project of FBW4 at DCI Hamburg",
   "main": "server.js",
   "scripts": {
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "client-install": "npm install --prefix ./client",
     "start": "node server.js",
     "server": "nodemon server.js",
