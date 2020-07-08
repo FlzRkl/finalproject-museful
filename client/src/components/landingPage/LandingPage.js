@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RegisterModalF from '../auth/register';
-import LoginModalF from '../auth/login';
+import RegisterModal from '../auth/register';
+import LoginModal from '../auth/login';
 
 const LandingPage = () => {
   // const [modal, setModal] = useState(false);
@@ -20,11 +20,11 @@ const LandingPage = () => {
       <div className='regContainer '>
         <div className='regBox'>
           <h3 className='textSubtitle'>Are you interested how it works?</h3>
-          <RegisterModalF />
+          <RegisterModal />
         </div>
         <div className='regBox'>
           <h3 className='textSubtitle'>You already have an account?</h3>
-          <LoginModalF />
+          <LoginModal />
         </div>
       </div>
     </div>

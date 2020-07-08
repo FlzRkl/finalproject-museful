@@ -24,8 +24,7 @@ const Dashboard = ({ logout }) => {
     <div className='dashboard'>
       <Link
         className='subHeader link daily-learning'
-        to='/dashboard/daily-learning'
-      >
+        to='/dashboard/daily-learning'>
         <FontAwesomeIcon icon={faListUl} size={iconSize} className='faIcon' />
       </Link>
       <Link className='subHeader link search-word' to='/dashboard/search-word'>

@@ -53,7 +53,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     dispatch(loadUser());
   } catch (err) {
     dispatch(
-      returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL')
+      returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'),
     );
     // const errors = err.response.data.errors;
 
