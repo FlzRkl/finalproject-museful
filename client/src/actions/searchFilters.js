@@ -3,4 +3,6 @@ export const searchFilters = {
     ML: 'ml=',
     SYN: 'rel_syn=',
     ANT: 'rel_ant=',
+    RAdj: "rel_jjb=",
+    RNoun: "rel_jja="
 };

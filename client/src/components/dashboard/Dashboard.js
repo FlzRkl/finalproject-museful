@@ -21,7 +21,7 @@ const Dashboard = ({ logout }) => {
   // }, []);
 
   return (
-    <div className='dashboard'>
+    <div className='dashboard dashIcons'>
       <Link
         className='subHeader link daily-learning'
         to='/dashboard/daily-learning'>
