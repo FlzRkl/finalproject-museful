@@ -3,13 +3,6 @@ import PropTypes from 'prop-types';
 import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchRandom } from '../../actions/searchAction';
-<<<<<<< HEAD
-
-// STYLE
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-=======
->>>>>>> 098c4ed91723e004f8c1af9a4d1b10e1f9012cad
 
 export const DailyLearning = ({ fetchRandom }) => {
   const isLoading = useSelector((state) => state.search.isLoading);
