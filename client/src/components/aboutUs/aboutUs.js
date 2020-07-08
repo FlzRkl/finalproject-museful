@@ -13,7 +13,7 @@ const aboutUs = () => {
         <h3 className=''>About Museful</h3>
         <p>
           Our mission is to help anyone to learn anything they want in a museful
-          and playful way. Let's start to creat a learning and memorizing space
+          and playful way. Let's start to create a learning and memorizing space
           which will grow to a user self generated and curated learning
           management system – welcome to your museful space.
         </p>
@@ -21,11 +21,10 @@ const aboutUs = () => {
           {' '}
           Improve your skills with words and terms by getting your{' '}
           <span>Daily Learnings</span> – just for fun. Enjoy your journey
-          through this open source project by searching for rhyming words or are
+          through this open source project by searching for rhyming words. Are
           you curiosed about the meaning of a word? You have the choice to
-          filter and search. If your are seeking for a space to collect and
-          store content you have searched for – so Museful is the right place
-          for you.{' '}
+          filter and search. If you are seeking for a space to collect and store
+          content you have searched for – Museful is the right place for you.{' '}
         </p>
       </div>
 
