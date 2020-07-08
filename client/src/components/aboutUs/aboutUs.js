@@ -24,8 +24,8 @@ const aboutUs = () => {
           through this open source project by searching for rhyming words or are
           you curiosed about the meaning of a word? You have the choice to
           filter and search. If your are seeking for a space to collect and
-          store content you have searched for, so Museful is the right place for
-          you.{' '}
+          store content you have searched for – so Museful is the right place
+          for you.{' '}
         </p>
       </div>
 
