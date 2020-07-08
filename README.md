@@ -1,3 +1,7 @@
+## Final-Project
+
+### DCI Hamburg Final Project FBW4 Language Learning
+
 ## Concept
 
 - Our goal is to build a learning environment which is not fixed for specific topics. Users can add selfgenerated content instead of just getting it. Users could decide about consuming or editing, adding and storing content.
