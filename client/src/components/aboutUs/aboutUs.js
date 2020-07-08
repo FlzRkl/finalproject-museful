@@ -41,7 +41,7 @@ const aboutUs = () => {
         </a>
 
         <a
-          className='link aboutUs effectContainer'
+          className='link aboutUs effectContainer daily-learning'
           href='https://github.com/lanamaxic'>
           <p className='underlay textTitle'>L</p>
           <FontAwesomeIcon

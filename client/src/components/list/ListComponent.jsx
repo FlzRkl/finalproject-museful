@@ -64,9 +64,9 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
 
   return (
     <>
-      <div className='head'>
-        <h1 className='mb-3'>{mainList.title}</h1>
-        <div className='mb-2'>{mainList.desc}</div>
+      <div className='d-flexColumn'>
+        <h1 className='mb-1'>{mainList.title}</h1>
+        <div className='mb-3'>{mainList.desc}</div>
       </div>
 
       <ItemFilter />
@@ -108,16 +108,15 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
       </form>
       <hr />
       <div className='col-lg-8'>
-        <ul className='list-group list-group-flush bg-transperent text-light text-center'>
+        <ul className='text-center'>
           {data
             ? data.map((item, index) => (
                 <>
-                  <h4>{tags[index]}</h4>
+                  <h4 className='mt-5'>{tags[index]}</h4>
                   <li
                     key={tags[index] + index}
                     id={tags[index] + index}
                     onClick={handleClick}
-                    className='list-group-item'
                   >
                     <ListItems item={item} />
                   </li>

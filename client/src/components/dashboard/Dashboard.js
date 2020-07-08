@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-
 import { logout } from '../../actions/auth';
 
 //STYLING
@@ -17,6 +16,9 @@ const iconSize = '1x';
 
 const Dashboard = ({ logout }) => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  // useEffect(() => {
+  // }, []);
 
   return (
     <div className='dashboard'>
@@ -47,7 +49,10 @@ Dashboard.propTypes = {
   prop: PropTypes,
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  data: state.search.data,
+  random: state.search.random,
+});
 
 const mapDispatchToProps = {};
 
