@@ -12,6 +12,7 @@ import {
   CLEAR_PROFILE,
   UPDATE_ITEM_USER,
   DELETE_ITEM_USER,
+  EDIT_ITEM_USER,
   // ACCOUNT_DELETED,
 } from './actionTypes';
 
@@ -108,6 +109,13 @@ export const addItemUser = (data) => (dispatch) => {
 export const deleteItemUser = (data) => (dispatch) => {
   dispatch({
     type: DELETE_ITEM_USER,
+    payload: data,
+  });
+};
+
+export const editItemUser = (data) => (dispatch) => {
+  dispatch({
+    type: EDIT_ITEM_USER,
     payload: data,
   });
 };

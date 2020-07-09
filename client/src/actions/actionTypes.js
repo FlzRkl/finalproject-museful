@@ -35,6 +35,7 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const UPDATE_ITEM_USER = 'UPDATE_ITEM_USER';
 export const DELETE_ITEM_USER = 'DELETE_ITEM_USER';
+export const EDIT_ITEM_USER = 'EDIT_ITEM_USER';
 
 //LIST
 export const SUBMIT_ITEM = 'SUBMIT_ITEM';
@@ -44,3 +45,4 @@ export const SORT_ITEMS = 'SORT_ITEMS';
 export const SET_ITEM_FILTER = 'SET_ITEM_FILTER';
 export const FILTERED_LIST = 'FILTERED_LIST';
 export const DELETE_ITEM = 'DELETE_ITEM';
+export const EDIT_ITEM = 'EDIT_ITEM';

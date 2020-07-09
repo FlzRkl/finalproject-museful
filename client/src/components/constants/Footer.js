@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <div className='footer'>
       <div className='copyright'>
-        &copy;Copyright 2020
+        &copy; Copyright 2020
         <Link className='copyright link' to='/about-us'>
           FLHSS
         </Link>
