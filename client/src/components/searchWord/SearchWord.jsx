@@ -5,6 +5,9 @@ import { connect, useSelector } from 'react-redux';
 import { fetchWord } from '../../actions/searchAction';
 import SearchFilter from './SearchFilter';
 
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 export const SearchWord = ({ fetchWord }) => {
   const [word, setWord] = useState('');
   const isLoading = useSelector((state) => state.search.isLoading);
@@ -45,7 +48,8 @@ export const SearchWord = ({ fetchWord }) => {
           onClick={handleSearch}
           type='submit'
           className='inputSearch'
-          style={{ marginTop: '8px' }}>
+          // style={{ marginTop: '8px' }}
+        >
           Search
         </button>
       </form>
@@ -53,13 +57,19 @@ export const SearchWord = ({ fetchWord }) => {
       {isError && <div>Something went wrong ...</div>}
 
       {isLoading ? (
-        <div>Loading ...</div>
+        <FontAwesomeIcon
+          icon={faSpinner}
+          spin
+          size='4x'
+
+          // color='#999'
+        />
       ) : (
         <div className='searchResults'>
           {data
             ? data.map((item) => (
                 <div key={item.word} id={item.word}>
-                  <button className='searchResult'>{item.word}</button>
+                  <div className='searchResult'>{item.word}</div>
                 </div>
               ))
             : null}

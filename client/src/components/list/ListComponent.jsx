@@ -4,18 +4,28 @@ import PropTypes from 'prop-types';
 import ListItems from './ListItems';
 import { ItemFilter } from './ItemFilter';
 import { submitItem } from '../../actions/listAction';
-import { loadItem, getListArr } from '../../actions/listAction';
+import { loadItem, getListArr, putEditItems } from '../../actions/listAction';
 import { connect, useSelector, useDispatch } from 'react-redux';
 
-export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
+export const ListComponent = ({
+  submitItem,
+  loadItem,
+  getListArr,
+  putEditItems,
+}) => {
   const inputEl = useRef(null);
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
+  const [titleEdit, setTitleEdit] = useState('');
+  const [descEdit, setDescEdit] = useState('');
+  const [toggleEdit, setToggleEdit] = useState(false);
   const mainList = useSelector((state) => state.list.mainList);
   const filteredList = useSelector((state) => state.list.filteredList);
   const filter = useSelector((state) => state.list.filter);
   const user = useSelector((state) => state.auth.user._id);
   const currentId = useSelector((state) => state.list.mainList._id);
+  const aboveId = useSelector((state) => state.list.mainList.aboveItemId);
+  const editTag = useSelector((state) => state.list.mainList.tag);
   const [tags, setTags] = useState([]);
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
@@ -34,6 +44,35 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
     console.log(id);
   };
 
+  const handleEditTitle = (e) => {
+    setTitleEdit(e.target.value);
+  };
+
+  const handleEditDesc = (e) => {
+    setDescEdit(e.target.value);
+  };
+
+  const toggleEditButton = (e) => {
+    setToggleEdit(!toggleEdit);
+  };
+
+  let editObject = {
+    id: currentId,
+    user: user,
+    title: titleEdit,
+    desc: descEdit,
+    tag: editTag,
+    aboveItemId: aboveId,
+  };
+
+  const submitEdit = (e) => {
+    e.preventDefault();
+    putEditItems(editObject);
+    // loadItem(currentId);
+    setToggleEdit(!toggleEdit);
+    console.log(editObject);
+  };
+
   let submitObject = {
     user: user,
     title: title,
@@ -50,7 +89,7 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
     loadItem(currentId);
     console.log(submitObject);
   };
-  console.log(mainList);
+
   useEffect(() => {
     inputEl.current.focus();
     getListArr(mainList);
@@ -65,15 +104,68 @@ export const ListComponent = ({ submitItem, loadItem, getListArr }) => {
   return (
     <>
       <div className='d-flexColumn'>
-        <h1 className='mb-1'>{mainList.title}</h1>
-        <div className='mb-3'>{mainList.desc}</div>
+        {toggleEdit ? (
+          <>
+            <input
+              type='text'
+              className='inputEdit'
+              placeholder={mainList.title}
+              aria-label='Title'
+              aria-describedby='input-title'
+              value={titleEdit}
+              name='titleEdit'
+              id='titleEdit'
+              onChange={handleEditTitle}
+            />
+            <input
+              type='text'
+              className='inputEdit'
+              placeholder={mainList.desc}
+              aria-label='Desc'
+              aria-describedby='input-title'
+              value={descEdit}
+              name='descEdit'
+              id='descEdit'
+              onChange={handleEditDesc}
+            />
+            <button className='btnL' onClick={submitEdit}>
+              Save Edit
+            </button>
+          </>
+        ) : (
+          <>
+            <h1 className='mb-1'>{mainList.title}</h1>
+            <div className='mb-3'>{mainList.desc}</div>
+          </>
+        )}
+        <button className='btnI' onClick={toggleEditButton}>
+          {toggleEdit ? (
+            'cancel edit'
+          ) : (
+            <svg
+              width='1em'
+              height='1em'
+              viewBox='0 0 16 16'
+              class='bi bi-pen'
+              fill='currentColor'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                fill-rule='evenodd'
+                d='M5.707 13.707a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391L10.086 2.5a2 2 0 0 1 2.828 0l.586.586a2 2 0 0 1 0 2.828l-7.793 7.793zM3 11l7.793-7.793a1 1 0 0 1 1.414 0l.586.586a1 1 0 0 1 0 1.414L5 13l-3 1 1-3z'
+              />
+              <path
+                fill-rule='evenodd'
+                d='M9.854 2.56a.5.5 0 0 0-.708 0L5.854 5.855a.5.5 0 0 1-.708-.708L8.44 1.854a1.5 1.5 0 0 1 2.122 0l.293.292a.5.5 0 0 1-.707.708l-.293-.293z'
+              />
+              <path d='M13.293 1.207a1 1 0 0 1 1.414 0l.03.03a1 1 0 0 1 .03 1.383L13.5 4 12 2.5l1.293-1.293z' />
+            </svg>
+          )}
+        </button>
       </div>
 
       <ItemFilter />
-      <form
-        onSubmit={submit}
-        className='form col-xs-12 col-sm-10 col-md-8 col-lg-6'
-      >
+      <form onSubmit={submit} className='form col-xs-12 col-sm-10 '>
         <div className='formSearch mb-2'>
           {/* <div className='input-group-prepend'>
             <span className='input-group-text' id='input-addon-filter'>
@@ -133,6 +225,9 @@ const mapStateToProps = (state) => ({
   list: state.list,
 });
 
-export default connect(mapStateToProps, { submitItem, loadItem, getListArr })(
-  ListComponent
-);
+export default connect(mapStateToProps, {
+  submitItem,
+  loadItem,
+  getListArr,
+  putEditItems,
+})(ListComponent);

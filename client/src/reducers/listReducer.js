@@ -5,6 +5,7 @@ import {
   FILTERED_LIST,
   SET_ITEM_FILTER,
   DELETE_ITEM,
+  EDIT_ITEM,
 } from '../actions/actionTypes';
 import { ITEM_FILTERS } from '../components/list/Item_Filters';
 
@@ -67,6 +68,22 @@ export default function (state = initialState, action) {
       return {
         ...state,
         mainList: deletedMainList,
+      };
+    case EDIT_ITEM:
+      let editedMainList = { ...state.mainList };
+      console.log(deletedMainList);
+      editedMainList[payload.data.tag] = deletedMainList[
+        payload.data.tag
+      ].filter((item) => {
+        if (item.id === payload.data.id) {
+          return payload.data;
+        } else {
+          return true;
+        }
+      });
+      return {
+        ...state,
+        mainList: editedMainList,
       };
     default:
       return state;

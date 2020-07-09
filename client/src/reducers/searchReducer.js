@@ -18,10 +18,11 @@ import { SEARCH_FILTERS } from '../components/searchWord/Search_Filters';
 const initialState = {
   isLoading: false,
   isError: false,
-  filter: SEARCH_FILTERS.RYM,
+  filter: 'RHYM',
   data: [],
   random: [],
 };
+
 export default function (state = initialState, action) {
   switch (action.type) {
     case FETCH_INIT:
@@ -50,7 +51,13 @@ export default function (state = initialState, action) {
         filter: action.payload,
       };
     case SET_SEARCH_EMPTY:
-      return { ...state, data: [], random: [] };
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: [],
+        random: [],
+      };
     default:
       return state;
   }
