@@ -93,12 +93,12 @@ export default function (state = initialState, action) {
     case EDIT_ITEM_USER:
       let editedUser = { ...state.user };
       console.log(payload, editedUser);
-      editedUser.list = editedUser.list.filter((item, index) => {
+      editedUser.list = editedUser.list.map((item, index) => {
         // console.log(item, index);
         if (item.id === payload.id) {
-          editedUser.list.splice(index, 1, payload);
+          return payload;
         } else {
-          return true;
+          return item;
         }
       });
       console.log(editedUser);

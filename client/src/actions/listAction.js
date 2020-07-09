@@ -76,12 +76,12 @@ export const putEditItems = (editItem) => async (dispatch) => {
         id: res.data._id,
       };
 
-      if (res.data.aboveItemId) {
-        dispatch({
-          type: EDIT_ITEM,
-          payload: { data: newItemInfo },
-        });
-      } else {
+      dispatch({
+        type: EDIT_ITEM,
+        payload: { data: newItemInfo },
+      });
+
+      if (!res.data.aboveItemId) {
         dispatch(editItemUser(newItemInfo));
       }
 
