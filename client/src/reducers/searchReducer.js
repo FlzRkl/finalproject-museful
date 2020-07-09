@@ -51,7 +51,13 @@ export default function (state = initialState, action) {
         filter: action.payload,
       };
     case SET_SEARCH_EMPTY:
-      return { ...state, data: [], random: [] };
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: [],
+        random: [],
+      };
     default:
       return state;
   }
