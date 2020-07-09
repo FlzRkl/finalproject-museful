@@ -71,16 +71,11 @@ export default function (state = initialState, action) {
       };
     case EDIT_ITEM:
       let editedMainList = { ...state.mainList };
-      console.log(deletedMainList);
-      editedMainList[payload.data.tag] = deletedMainList[
-        payload.data.tag
-      ].filter((item) => {
-        if (item.id === payload.data.id) {
-          return payload.data;
-        } else {
-          return true;
-        }
-      });
+      console.log(editedMainList);
+
+      editedMainList.title = payload.data.title;
+      editedMainList.desc = payload.data.desc;
+
       return {
         ...state,
         mainList: editedMainList,

@@ -18,11 +18,12 @@ export const ListItems = ({ handleClick, item, deleteItem }) => {
                 {item.title ? item.title : item}
                 {item.desc ? <p>{item.desc}</p> : null}
                 <button
+                  className='btnI'
                   onClick={() => {
                     deleteItem(item.id);
                   }}
                 >
-                  delete Item
+                  delete
                 </button>
                 {/* <span className='badge'>
                 <svg

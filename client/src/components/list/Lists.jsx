@@ -8,7 +8,6 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { submitItem } from '../../actions/listAction';
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
 const Lists = ({ submitItem }) => {
   const userLists = useSelector((state) =>
@@ -25,14 +24,6 @@ const Lists = ({ submitItem }) => {
   const user = useSelector((state) =>
     state.auth.isAuthenticated ? state.auth.user._id : null
   );
-
-  // const aboveItem = useSelector((state) => state.list.mainList.aboveItemId);
-  // const history = useHistory();
-  // const handleBack = (e) => {
-  //   //aboveItem is undefined??
-  //   console.log(aboveItem);
-  //   aboveItem ? loadItem(aboveItem) : history.push('/dashboard/lists');
-  // };
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
