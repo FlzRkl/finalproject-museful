@@ -1,5 +1,3 @@
-## Final-Project
-
 ### DCI Hamburg Final Project FBW4 Learning
 
 ## Concept
@@ -10,55 +8,40 @@
 #### Guideline
 
 Playing is the key to learn.
-User is able to decide about which module to choose.
-Open source based developing.
+Users are able to decide about which module to choose.
+Open source based developing
 
 MUSEFUL is a cross-plattform MERNstack application to learn, search for, create and collect content – in a musefully and playful way.
-In the one hand this CRUD grounded fullstack project gets for example the vocabulary learning component words from APIs like Datamuse, Wordnik or Oxford Dictionary. On the other hand this application could be used to create and store user-generated list.
+In the one hand this fullstack project gets for example the vocabulary learning component words from APIs like Datamuse, Wordnik. On the other hand this application could be used to create and store user-generated lists.
 
 #### Features / User-stories / optional functionalities
 
 - After login, users can view existing content and search by keyword and filter by category
-- Users can create, update, delete cards and are able to save musefulSpaceCardList(Cardlist - from User)
+- Users can create, read, update, delete input and are able to save them
 - Search- and sortable (embedding semantic search, related-words, topic collections, categories …)
-- Design (userfocused, flexible, changeable UI - up to the targeted audience)
+- Design (userfocused, flexible, changeable UI – up to the targeted audience)
 
 #### Legals (Terms of Conditions)
 
 MIT
 
-#### References
-
-theoretical frame / approaches / learning methodes
-
-- --> gamebasedLearning?
-  GBL
-  EGD & GBL (German)
-  Games & GBL (German)
-- --> spaced-repetition algorithms ?
-  SuperMemo ?
-  Leitner-system?
-
-#### List of APIs / external links / npm packages:
+#### List of APIs
 
 - Datamuse
-  node module datamuse
 - Wordnik
-- Oxford Dictionary
-- WordsAPI
 
 ## req. technologies / technical environment / methods / libraries / frameworks
 
 - React /Hooks
-  Redux
+- Redux
 - ES6 + Syntax
 - CRUD
 - PWA
 - RESTful Architecture
 - Node.js
-  Express.js
+- Express.js
 - MongoDB
-- Moongoose
+- Mongoose
 - Postman
 - Bcrypt
 - config
